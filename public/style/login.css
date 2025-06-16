@@ -1,0 +1,24 @@
+
+.login{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(210, 169, 112);
+
+
+
+}
+
+
+
+
+.login-box {
+    min-width: 340px;
+    max-width: 400px;
+
+    /* Puedes agregar más estilos personalizados aquí si quieres */
+    /* Por ejemplo: */
+    /* border: 2px solid #007bff; */
+    /* background-color: #fffbe6; */
+}

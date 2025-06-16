@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forum de Proyectos</title>
+  <!-- Tipografía limpia similar a Scribd -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* -------------------------------
+       Variables de color
+       ------------------------------- */
+    :root {
+      --color-acento: rgb(255, 94, 0);       /* Azul intenso */
+      --color-fondo: #f5f5f5;        /* Gris muy claro de fondo */
+      --color-texto: #333333;        /* Gris oscuro para textos */
+      --color-header: #ffffff;       /* Fondo blanco del header */
+      --color-nav: #ffffff;          /* Fondo blanco de la barra de navegación */
+      --color-botones: rgb(255, 94, 0);      /* Azul para botones */
+      --radio-bordes: 4px;
+      --sombra-card: rgba(0, 0, 0, 0.1);
+    }
+
+    /* -------------------------------
+       Reglas globales
+       ------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      height: 100%;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1737238110003-a7943a6770cf') center/cover no-repeat;
+      opacity: 0.3;
+      z-index: -1;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+
+    /* -------------------------------
+       Header principal
+       ------------------------------- */
+    header {
+      background-color: var(--color-header);
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px var(--sombra-card);
+    }
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 32px;
+      margin-right: 0.5rem;
+    }
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-acento);
+      letter-spacing: 1px;
+    }
+    .login-link {
+      font-weight: 500;
+      color: var(--color-texto);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radio-bordes);
+      transition: background-color 0.2s ease;
+    }
+    .login-link:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* -------------------------------
+       Barra de navegación secundaria
+       ------------------------------- */
+    nav {
+      background-color: var(--color-nav);
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      gap: 1.5rem;
+    }
+    .nav-container a {
+      font-weight: 500;
+      color: var(--color-texto);
+      font-size: 0.95rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .nav-container a:hover {
+      color: var(--color-acento);
+      transform: translateY(-2px);
+    }
+
+    /* -------------------------------
+       Sección de búsqueda principal
+       ------------------------------- */
+    .search-section {
+      background-color: var(--color-header);
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 4px var(--sombra-card);
+    }
+    .search-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .search-container input[type="text"] {
+      flex: 2;
+      min-width: 200px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: var(--radio-bordes);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-container input[type="text"]:focus {
+      border-color: var(--color-acento);
+      box-shadow: 0 0 5px rgb(53, 35, 210);
+    }
+    .search-container select {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: var(--radio-bordes);
+      font-size: 1rem;
+      background-color: #fff;
+      min-width: 120px;
+    }
+    .search-container button {
+      background-color: var(--color-botones);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radio-bordes);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.2s;
+      min-width: 100px;
+    }
+    .search-container button:hover {
+      background-color: rgb(255, 94, 0);
+    }
+
+    /* -------------------------------
+       Contenido principal: sección de documentos destacados
+       ------------------------------- */
+    .main-content {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex: 1;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: var(--radio-bordes);
+      box-shadow: 0 1px 3px var(--sombra-card);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px var(--sombra-card);
+    }
+    .card img {
+      width: 100%;
+      display: block;
+      height: 140px;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 0.75rem 1rem 1rem 1rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--color-texto);
+    }
+    .card-meta {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* -------------------------------
+       Sección de frases motivacionales
+       ------------------------------- */
+    .motivational-quotes {
+      background-color: #ffffff;
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem 1rem;
+      border-radius: var(--radio-bordes);
+      box-shadow: 0 1px 3px var(--sombra-card);
+    }
+    .motivational-quotes h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--color-acento);
+      text-align: center;
+    }
+    .quotes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .quote-item {
+      background-color: var(--color-fondo);
+      padding: 1rem;
+      border-left: 4px solid var(--color-acento);
+      border-radius: var(--radio-bordes);
+      font-style: italic;
+      color: var(--color-texto);
+      position: relative;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* -------------------------------
+       Footer - FIJO EN LA PARTE INFERIOR
+       ------------------------------- */
+    footer {
+      background-color: var(--color-acento);
+      color: #fff;
+      padding: 2rem 1rem;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+      margin-top: auto;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .footer-column {
+      flex: 1 1 200px;
+    }
+    .footer-column h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .footer-column ul li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-column a {
+      color: #f0f0f0;
+      font-size: 0.9rem;
+    }
+    .footer-column a:hover {
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    /* -------------------------------
+       Responsive tweaks
+       ------------------------------- */
+    @media (max-width: 600px) {
+      .search-container {
+        flex-direction: column;
+      }
+      .search-container input[type="text"],
+      .search-container select,
+      .search-container button {
+        width: 100%;
+        border-radius: var(--radio-bordes);
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .quotes-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    .user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-status {
+  font-weight: 500;
+  color: var(--color-texto);
+  padding: 0.5rem 0.75rem;
+}
+
+.logout-link {
+  font-weight: 500;
+  color: var(--color-texto);
+  padding: 0.5rem;
+  border-radius: var(--radio-bordes);
+  transition: background-color 0.2s ease;
+}
+
+.logout-link:hover {
+  background-color: #f0f0f0;
+  color: #dc2626;
+}
+  </style>
+</head>
+
+<body>
+  
+  <!-- Header principal -->
+  <header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="LOGOFP.png" alt="LOGOFP" />
+      <span>Foro de Proyectos</span>
+    </div>
+    <div class="user-actions">
+      <span class="user-status">
+        <i class="fas fa-user-check"></i> Usuario Conectado
+      </span>
+      <a href="index.php" class="logout-link">
+        <i class="fas fa-sign-out-alt"></i>
+      </a>
+    </div>
+  </div>
+</header>
+
+  <!-- Barra de navegación -->
+  <nav>
+    <div class="nav-container">
+      <a href="indexusuario.php">Inicio</a>
+      <a href="proyectosusuario.php">Proyectos</a>
+      <a href="ayudausuario.php">Ayuda</a>
+      <a href="contactousuario.php">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- Sección de búsqueda -->
+  <section class="search-section">
+    <div class="search-container">
+      <input type="text" placeholder="Buscar documentos, tesis, proyectos..." />
+      <select>
+        <option value="">Seleccionar Año</option>
+        <?php
+          for ($year = date('Y'); $year >= 2000; $year--) {
+            echo "<option value='$year'>$year</option>";
+          }
+        ?>
+      </select>
+      <select>
+        <option value="">Carrera</option>
+        <option value="informatica">Informática</option>
+        <option value="maritima">Marítima</option>
+        <option value="ambiental">Ambiental</option>
+        <option value="turismo">Turismo</option>
+        <option value="administracion">Administración</option>
+      </select>
+      <button type="button"><i class="fas fa-search"></i> Buscar</button>
+    </div>
+  </section>
+
+  <!-- Contenido principal: Documentos Destacados -->
+  <main class="main-content">
+    <h2 class="section-title">Documentos Destacados</h2>
+    <div class="cards-grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 1" />
+        <div class="card-body">
+          <div class="card-title">Título del Documento 1</div>
+          <div class="card-meta">Autor: Juan Pérez · 2024</div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 2" />
+        <div class="card-body">
+          <div class="card-title">Título del Documento 2</div>
+          <div class="card-meta">Autor: María López · 2023</div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 3" />
+        <div class="card-body">
+          <div class="card-title">Título del Documento 3</div>
+          <div class="card-meta">Autor: Luis García · 2022</div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 4" />
+        <div class="card-body">
+          <div class="card-title">Título del Documento 4</div>
+          <div class="card-meta">Autor: Ana Torres · 2021</div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 5" />
+        <div class="card-body">
+          <div class="card-title">Título del Documento 5</div>
+          <div class="card-meta">Autor: Carlos Mendoza · 2020</div>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 6" />
+        <div class="card-body">
+          <div class="card-title">Título del Documento 6</div>
+          <div class="card-meta">Autor: Sofía Ramírez · 2019</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de frases motivacionales respecto al estudio -->
+    <section class="motivational-quotes">
+      <h2>Siempre aprende más</h2>
+      <div class="quotes-list">
+        <div class="quote-item">
+          "El aprendizaje es un tesoro que seguirá a su dueño a todas partes." – Proverbio chino
+        </div>
+        <div class="quote-item">
+          "La educación no es preparación para la vida; la educación es la vida misma." – John Dewey
+        </div>
+        <div class="quote-item">
+          "No te rindas. Sufre ahora y vive el resto de tu vida como un campeón." – Muhammad Ali
+        </div>
+        <div class="quote-item">
+          "La inversión en conocimiento paga el mejor interés." – Benjamin Franklin
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Acerca de</h3>
+        <ul>
+          <li><a href="nuestramisionusuario.php">Nuestra Misión</a></li>
+          <li><a href="equipousuario.php">Equipo</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Redes Sociales</h3>
+        <ul>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Forum de Proyectos. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
