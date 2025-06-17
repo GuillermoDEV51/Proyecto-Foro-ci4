@@ -471,8 +471,8 @@
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="nuestramision.php">Nuestra Misión</a></li>
-          <li><a href="equipo.php">Equipo</a></li>
+          <li><a href="<?php echo base_url() ?>nuestramision">Nuestra Misión</a></li>
+          <li><a href="<?php echo base_url() ?>equipo">Equipo</a></li>
         </ul>
       </div>
       <div class="footer-column">
