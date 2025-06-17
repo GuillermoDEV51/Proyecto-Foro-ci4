@@ -477,7 +477,7 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="LOGOFP.png" alt="LOGOFP" />
+        <img src="<?php echo base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
         <span>Foro de Proyectos</span>
       </div>
       <div class="header-actions">

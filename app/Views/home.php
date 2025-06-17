@@ -353,7 +353,7 @@
         <img src="<?php echo base_url() ?>img\LOGOFP.png" alt="LOGOFP" />
         <span>Foro de Proyectos</span>
       </div>
-      <a href="<?php echo base_url() ?>/login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
+      <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
   </header>
 
@@ -361,9 +361,9 @@
   <nav>
     <div class="nav-container">
       <a href="<?php echo base_url() ?>">Inicio</a>
-      <a href="<?php echo base_url() ?>/proyectos">Proyectos</a>
-      <a href="<?php echo base_url() ?>/ayuda">Ayuda</a>
-      <a href="<?php echo base_url() ?>/contacto">Contacto</a>
+      <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
+      <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
+      <a href="<?php echo base_url() ?>contacto">Contacto</a>
     </div>
   </nav>
 

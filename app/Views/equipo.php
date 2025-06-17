@@ -354,17 +354,17 @@
         <img src="LOGOFP.png" alt="LOGOFP" />
         <span>Foro de Proyectos</span>
       </div>
-      <a href="login.php" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
+      <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
   </header>
 
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <a href="index.php">Inicio</a>
-      <a href="proyectos.php">Proyectos</a>
-      <a href="ayuda.php">Ayuda</a>
-      <a href="contacto.php">Contacto</a>
+      <a href="<?php echo base_url() ?>">Inicio</a>
+      <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
+      <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
+      <a href="<?php echo base_url() ?>contacto">Contacto</a>
     </div>
   </nav>
 
@@ -435,7 +435,7 @@
       <p class="cta-text">
         Buscamos talento apasionado por la educación y la tecnología para hacer la diferencia.
       </p>
-      <a href="contacto.php" class="cta-button">
+      <a href="<?php echo base_url() ?>contacto" class="cta-button">
         Contáctanos
       </a>
     </section>
@@ -447,8 +447,8 @@
     <div class="footer-content">
       <div class="footer-links">
         <a href="nuestramision.php">Nuestra Misión</a>
-        <a href="equipo.php">Equipo</a>
-        <a href="contacto.php">Contacto</a>
+        <a href="<?php echo base_url() ?>equipo">Equipo</a>
+        <a href="<?php echo base_url() ?>contacto">Contacto</a>
       </div>
       <p>&copy; 2025 Foro de Proyectos. Todos los derechos reservados.</p>
     </div>
