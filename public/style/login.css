@@ -10,7 +10,12 @@
 
 }
 
-
+/* Selecciona el icono por su clase o id */
+.icono {
+    width: 50px;   /* Cambia el tamaño según lo necesites */
+    height: 50px; 
+   
+}
 
 
 .login-box {
