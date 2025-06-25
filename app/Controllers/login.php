@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\loginModel;
+use App\Models\UserModel;
 
 class login extends BaseController
 {
@@ -17,17 +17,51 @@ class login extends BaseController
     public function index(): string
     {
 
-        $loginModel = new loginModel();
+        helper(['form']);
+        return view('login');
 
+    }
+
+    
+
+  public function login()
+    {
+        
+        if ($this->request->getMethod() === 'post') {
+            $rules = [
+                'codigo' => 'required',
+                'password' => 'required'
+            ];
+            if (! $this->validate($rules)) {
+                return view('autenticacion/login', ['validacion' => $this->validator]);
+            }
+
+            $userModel = new UserModel();
+            $user = $userModel->where('codigo', $this->request->getPost('codigo'))->first();
+
+            if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
+                $ses_data = [
+                    'codigo_id'   => $user['id'],
+                    'codigo'  => $user['codigo'],
+                    'rol'      => $user['rol'],
+                    'LoggedIn'=> true
+                ];
+                session()->set($ses_data);
+                if ($user['rol'] === 'administrador') {
+                    return redirect()->to('');
+                } else {
+                    return redirect()->to('');
+                }
+            } else {
+                return view('login', ['error' => 'Credenciales incorrectas']);
+            }
+        }
         return view('login');
     }
 
-    public function validar(): string
+    public function logout()
     {
-        $codigo = $this->request->getPost('codigo');
-        $password = $this->request->getPost('password');
-
-        // Ejemplo de uso de las variables y retorno de una vista
-        return view('login_result', ['codigo' => $codigo, 'password' => $password]);
+        session()->destroy();
+        return redirect()->to('/login');
     }
 }

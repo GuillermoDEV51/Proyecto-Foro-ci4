@@ -28,7 +28,7 @@
 
 
             <!-- Formulario de inicio de sesión -->
-            <form method="post" action="<?php echo base_url() ?>/login-validar">
+            <form method="post" action="<?php echo base_url() ?>login">
 
 
                 <!-- Grupo usuario -->
