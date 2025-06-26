@@ -3,47 +3,47 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
-class Proyecto extends BaseController
+class Proyectos extends BaseController
 {
+    private array $proyectos = [
+        [
+            'id' => 101,
+            'titulo' => 'Sistema de Gestión Académica',
+            'autor'  => 'Laura Gómez',
+            'anio'   => 2024,
+            'carrera' => 'Ingeniería de Sistemas',
+            'pdf'    => 'parcial',
+            'descripcion' => 'Este documento presenta un sistema completo para gestión académica.',
+        ],
+        // Puedes añadir más proyectos aquí...
+    ];
+
     public function index()
     {
-        // Aquí irían los datos del listado (puedes conectar a base de datos después)
-        $proyectos = [
-            [
-                'id' => 0,
-                'titulo' => 'Sistema de Gestión Académica',
-                'autor'  => 'Laura Gómez',
-                'anio'   => 2024,
-                'carrera' => 'Ingeniería de Sistemas',
-                'pdf'    => 'academica.pdf',
-                'descripcion' => 'Este documento presenta un sistema completo para gestión académica.',
-            ],
-            // Agrega más proyectos aquí...
-        ];
+        helper('url');
 
-        return view('proyectos', ['proyectos' => $proyectos]);
+        return view('proyectos', ['proyectos' => $this->proyectos]);
     }
 
-    public function visor($id = null)
-    {
-        // Simula los datos (eventualmente cargar desde DB)
-        $proyectos = [
-            [
-                'id' => 0,
-                'titulo' => 'Sistema de Gestión Académica',
-                'autor'  => 'Laura Gómez',
-                'anio'   => 2024,
-                'carrera' => 'Ingeniería de Sistemas',
-                'pdf'    => 'academica.pdf',
-                'descripcion' => 'Este documento presenta un sistema completo para gestión académica.',
-            ]
-        ];
+   public function visor($id = null)
+{
+    helper('url');
 
-        if (!isset($proyectos[$id])) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    $proyecto = null;
+
+    foreach ($this->proyectos as $p) {
+        if ($p['id'] == $id) {
+            $proyecto = $p;
+            break;
         }
-
-        return view('visor', ['documento' => $proyectos[$id]]);
     }
+
+    if ($proyecto === null) {
+        throw PageNotFoundException::forPageNotFound("Proyecto con ID $id no encontrado.");
+    }
+
+    return view('visor', ['documento' => $proyecto]);
 }
+  }

@@ -1,4 +1,8 @@
 <?php
+helper('url');
+?>
+
+<?php
 // proyectos.php
 ?>
 <!DOCTYPE html>
@@ -9,13 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Proyectos – Forum de Proyectos</title>
   <!-- Tipografía similar a Scribd -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="<?php echo base_url() ?>style/proyectos.css"/>
+    <style>
 
-  <style>
-    
-  </style>
+    </style><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="<?= base_url('style/proyectos.css') ?>"/>
+  
 </head>
 
 <body>
@@ -23,7 +26,7 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="<?php echo base_url() ?>img/LOGOFP.png" alt="Logo Foro de Proyectos" />
+        <img src="<?= base_url('img/LOGOFP.png') ?>" alt="Logo Foro de Proyectos" />
         <span>Foro de Proyectos</span>
       </div>
       <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
@@ -111,8 +114,8 @@
       
       <div class="projects-horizontal" id="projects-scroll">
         <?php
-          // Ejemplo estático de proyectos con más datos.
-          $proyectos = [
+// Solo si no viene desde el controlador:
+$proyectos = [
   [
     'id' => 101,
     'titulo' => 'Sistema de Gestión Académica',
@@ -129,16 +132,15 @@
     'carrera' => 'Ingeniería Industrial',
     'imagen' => 'https://source.unsplash.com/collection/190732/300x200'
   ],
-          ];
-
-foreach ($proyectos as $index => $p): ?>
-<a href="' . site_url('proyecto/visor/' . $p['id']) ?>" 
-  style="text-decoration: none; color: inherit;">
-    <div class="project-card" 
-         data-year="<?= htmlspecialchars($p['anio']) ?>" 
-         data-career="<?= htmlspecialchars($p['carrera']) ?>" 
+];
+?>
+<?php foreach ($proyectos as $p): ?>
+  <a href="<?= site_url('proyecto/visor/' . $p['id']) ?>" style="text-decoration: none; color: inherit;">
+    <div class="project-card"
+         data-year="<?= htmlspecialchars($p['anio']) ?>"
+         data-career="<?= htmlspecialchars($p['carrera']) ?>"
          data-title="<?= htmlspecialchars(strtolower($p['titulo'])) ?>">
-      <img src="<?= htmlspecialchars($p['imagen']) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>" />
+      <img src="<?= htmlspecialchars($p['imagen'] ?? 'https://via.placeholder.com/300x200?text=Proyecto') ?>" alt="<?= htmlspecialchars($p['titulo']) ?>" />
       <div class="project-body">
         <div class="project-title"><?= htmlspecialchars($p['titulo']) ?></div>
         <div class="project-meta">
@@ -150,6 +152,7 @@ foreach ($proyectos as $index => $p): ?>
     </div>
   </a>
 <?php endforeach; ?>
+
 
 
       <!-- Mensaje cuando no hay resultados -->
@@ -167,8 +170,8 @@ foreach ($proyectos as $index => $p): ?>
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="nuestramision.php">Nuestra Misión</a></li>
-          <li><a href="equipo.php">Equipo</a></li>
+<li><a href="<?= base_url('nuestramision') ?>">Nuestra Misión</a></li>
+<li><a href="<?= base_url('equipo') ?>">Equipo</a></li>
         </ul>
       </div>
      <div class="footer-column">

@@ -37,9 +37,18 @@ $routes->get('/nuestramision', 'nuestramision::index');
 
 // rutas del visor de proyectos con ID
 $routes->get('visor/(:num)', 'VisorController::index/$1');
+<<<<<<< Updated upstream
 $routes->get('proyecto', 'Proyecto::index');
 $routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
 
+=======
+
+
+$routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
+
+
+$routes->get('proyectos', 'Proyectos::index');
+>>>>>>> Stashed changes
 
 
 
