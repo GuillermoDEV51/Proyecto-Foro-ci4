@@ -117,6 +117,12 @@
       </div>
       <p>&copy; 2025 Foro de Proyectos. Todos los derechos reservados.</p>
     </div>
+
+   
+  
+    
+
+    
   </footer>
 
 </body>

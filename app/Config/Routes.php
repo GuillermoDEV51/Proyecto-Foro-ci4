@@ -18,8 +18,13 @@ $routes->get('/proyectos', 'proyectos::index');
 $routes->get('/ayuda', 'ayuda::index');
 // routas para contacto
 $routes->get('/contacto', 'contacto::index');
+
+
 // routas para el login
 $routes->get('/login', 'login::index');
+$routes->match(['get', 'post'], 'login/loginAutenticacion', 'login::loginAutenticacion');
+
+
 // routas para el login
 $routes->get('/equipo',  'equipo::index');
 // rutas del visor de proyectos 
@@ -31,4 +36,7 @@ $routes->get('visor/(:num)', 'VisorController::index/$1');
 
 $routes->get('proyecto', 'Proyecto::index');
 $routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
+
+
+
 
