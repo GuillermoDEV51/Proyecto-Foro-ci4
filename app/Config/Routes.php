@@ -32,6 +32,7 @@ $routes->get('/equipo',  'equipo::index');
 
 // rutas del visor de proyectos 
 $routes->get('/visor', 'visor::index');
+
 // rutas de nuestra misión
 $routes->get('/nuestramision', 'nuestramision::index');
 
