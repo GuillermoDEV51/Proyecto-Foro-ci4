@@ -3,6 +3,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -72,17 +73,19 @@
           </select>
         </div>
         
+          
+          
         <div class="filter-group">
           <label class="filter-label" for="career-filter">Carrera</label>
           <select id="career-filter" class="filter-select" onchange="applyFilters()">
             <option value="">Todas las carreras</option>
-            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
-            <option value="Ingeniería Industrial">Ingeniería Industrial</option>
-            <option value="Administración">Administración</option>
-            <option value="Diseño Gráfico">Diseño Gráfico</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Arquitectura">Arquitectura</option>
+            <option value="Ingeniería de Informática">Ingeniería de Informática</option>
+            <option value="Ingeniería Marítima">Ingeniería Marítima</option>
+
           </select>
+
+          <!-- Para agregar carreras a futuro -->
+
         </div>
       </div>
       
@@ -110,96 +113,45 @@
         <?php
           // Ejemplo estático de proyectos con más datos.
           $proyectos = [
-            [
-              'titulo' => 'Sistema de Gestión Académica',
-              'autor'  => 'Laura Gómez',
-              'anio'   => 2024,
-              'carrera' => 'Ingeniería de Sistemas',
-              'imagen' => 'https://source.unsplash.com/collection/190731/300x200'
-            ],
-            [
-              'titulo' => 'Optimización de Procesos Industriales',
-              'autor'  => 'Carlos Méndez',
-              'anio'   => 2023,
-              'carrera' => 'Ingeniería Industrial',
-              'imagen' => 'https://source.unsplash.com/collection/190732/300x200'
-            ],
-            [
-              'titulo' => 'Identidad Visual Corporativa',
-              'autor'  => 'Ana Torres',
-              'anio'   => 2022,
-              'carrera' => 'Diseño Gráfico',
-              'imagen' => 'https://source.unsplash.com/collection/190733/300x200'
-            ],
-            [
-              'titulo' => 'Plan de Marketing Digital',
-              'autor'  => 'Luis Ramírez',
-              'anio'   => 2021,
-              'carrera' => 'Marketing',
-              'imagen' => 'https://source.unsplash.com/collection/190734/300x200'
-            ],
-            [
-              'titulo' => 'Aplicación Web de E-commerce',
-              'autor'  => 'María González',
-              'anio'   => 2024,
-              'carrera' => 'Ingeniería de Sistemas',
-              'imagen' => 'https://source.unsplash.com/collection/190735/300x200'
-            ],
-            [
-              'titulo' => 'Análisis Financiero Empresarial',
-              'autor'  => 'Pedro Martínez',
-              'anio'   => 2023,
-              'carrera' => 'Administración',
-              'imagen' => 'https://source.unsplash.com/collection/190736/300x200'
-            ],
-            [
-              'titulo' => 'Diseño Arquitectónico Sostenible',
-              'autor'  => 'Sofia Vargas',
-              'anio'   => 2024,
-              'carrera' => 'Arquitectura',
-              'imagen' => 'https://source.unsplash.com/collection/190737/300x200'
-            ],
-            [
-              'titulo' => 'Sistema de Control de Calidad',
-              'autor'  => 'Miguel Angel',
-              'anio'   => 2022,
-              'carrera' => 'Ingeniería Industrial',
-              'imagen' => 'https://source.unsplash.com/collection/190738/300x200'
-            ],
-            [
-              'titulo' => 'Campaña Publicitaria Integral',
-              'autor'  => 'Valentina Cruz',
-              'anio'   => 2023,
-              'carrera' => 'Marketing',
-              'imagen' => 'https://source.unsplash.com/collection/190739/300x200'
-            ],
-            [
-              'titulo' => 'Portfolio Digital Interactivo',
-              'autor'  => 'Diego Morales',
-              'anio'   => 2021,
-              'carrera' => 'Diseño Gráfico',
-              'imagen' => 'https://source.unsplash.com/collection/190740/300x200'
-            ]
+  [
+    'id' => 101,
+    'titulo' => 'Sistema de Gestión Académica',
+    'autor'  => 'Laura Gómez',
+    'anio'   => 2024,
+    'carrera' => 'Ingeniería de Sistemas',
+    'imagen' => 'https://source.unsplash.com/collection/190731/300x200'
+  ],
+  [
+    'id' => 102,
+    'titulo' => 'Optimización de Procesos Industriales',
+    'autor'  => 'Carlos Méndez',
+    'anio'   => 2023,
+    'carrera' => 'Ingeniería Industrial',
+    'imagen' => 'https://source.unsplash.com/collection/190732/300x200'
+  ],
           ];
 
-          foreach ($proyectos as $p) {
-            echo '
-            <div class="project-card" data-year="' . htmlspecialchars($p['anio']) . '" data-career="' . htmlspecialchars($p['carrera']) . '" data-title="' . htmlspecialchars(strtolower($p['titulo'])) . '">
-              <img src="' . htmlspecialchars($p['imagen']) . '" alt="' . htmlspecialchars($p['titulo']) . '" />
-              <div class="project-body">
-                <div class="project-title">' . htmlspecialchars($p['titulo']) . '</div>
-                <div class="project-meta">
-                  <div><strong>Autor:</strong> ' . htmlspecialchars($p['autor']) . '</div>
-                  <div><strong>Año:</strong> ' . htmlspecialchars($p['anio']) . '</div>
-                  <div><strong>Carrera:</strong> ' . htmlspecialchars($p['carrera']) . '</div>
-                </div>
-              </div>
-            </div>
-            ';
-          }
-        ?>
+foreach ($proyectos as $index => $p): ?>
+<a href="' . site_url('proyecto/visor/' . $p['id']) ?>" 
+  style="text-decoration: none; color: inherit;">
+    <div class="project-card" 
+         data-year="<?= htmlspecialchars($p['anio']) ?>" 
+         data-career="<?= htmlspecialchars($p['carrera']) ?>" 
+         data-title="<?= htmlspecialchars(strtolower($p['titulo'])) ?>">
+      <img src="<?= htmlspecialchars($p['imagen']) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>" />
+      <div class="project-body">
+        <div class="project-title"><?= htmlspecialchars($p['titulo']) ?></div>
+        <div class="project-meta">
+          <div><strong>Autor:</strong> <?= htmlspecialchars($p['autor']) ?></div>
+          <div><strong>Año:</strong> <?= htmlspecialchars($p['anio']) ?></div>
+          <div><strong>Carrera:</strong> <?= htmlspecialchars($p['carrera']) ?></div>
+        </div>
       </div>
-      
+    </div>
+  </a>
+<?php endforeach; ?>
+
+
       <!-- Mensaje cuando no hay resultados -->
       <div class="no-results" id="no-results" style="display: none;">
         <i class="fas fa-search"></i>
@@ -267,6 +219,8 @@
         
         // Filtro por carrera
         const careerMatch = !selectedCareer || career === selectedCareer;
+
+        // Para agregar carreras adicionales a futuro
 
         return titleMatch && yearMatch && careerMatch;
       });
@@ -360,3 +314,4 @@
   </script>
 </body>
 </html>
+

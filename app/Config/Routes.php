@@ -26,6 +26,9 @@ $routes->get('/equipo',  'equipo::index');
 $routes->get('/visor', 'visor::index');
 // rutas de nuestra misión
 $routes->get('/nuestramision', 'nuestramision::index');
+// rutas del visor de proyectos con ID
+$routes->get('visor/(:num)', 'VisorController::index/$1');
 
-
+$routes->get('proyecto', 'Proyecto::index');
+$routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
 

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Visor de PDFs - Forum de Proyectos</title>
-  <!-- Tipografía limpia similar a Scribd -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="<?php echo base_url() ?>style/visor.css"/> 
   
   <!-- PDF.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<h1>Proyecto ID: <?= esc($id) ?></h1>
 
 
 </head>
@@ -199,7 +200,20 @@
 
     // Actualizar información del documento en el panel lateral
     function updateDocumentInfo(data) {
-      document.getElementById('documentTitle').textContent = data.title;
+<title><?= esc($documento['titulo']) ?></title>
+...
+<script>
+  const documentData = {
+    title: <?= json_encode($documento['titulo']) ?>,
+    author: <?= json_encode($documento['autor']) ?>,
+    date: <?= json_encode($documento['anio']) ?>,
+    career: <?= json_encode($documento['carrera']) ?>,
+    description: <?= json_encode($documento['descripcion']) ?>,
+    size: "2.5 MB",
+    pdfUrl: "<?= base_url('uploads/' . $documento['pdf']) ?>" // Suponiendo que están en /public/uploads/
+  };
+</script>
+
       document.getElementById('documentAuthor').textContent = data.author;
       document.getElementById('documentDate').textContent = data.date;
       document.getElementById('documentCareer').textContent = data.career;
