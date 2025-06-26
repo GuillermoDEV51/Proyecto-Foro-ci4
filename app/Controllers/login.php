@@ -24,7 +24,7 @@ class login extends BaseController
 
     
 
-  public function login()
+  public function loginAutenticacion()
     {
         
         if ($this->request->getMethod() === 'post') {
@@ -32,21 +32,26 @@ class login extends BaseController
                 'codigo' => 'required',
                 'password' => 'required'
             ];
+
             if (! $this->validate($rules)) {
                 return view('autenticacion/login', ['validacion' => $this->validator]);
             }
 
             $userModel = new UserModel();
+            
             $user = $userModel->where('codigo', $this->request->getPost('codigo'))->first();
 
             if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
+                
+                $session = session();
+                
                 $ses_data = [
                     'codigo_id'   => $user['id'],
                     'codigo'  => $user['codigo'],
                     'rol'      => $user['rol'],
                     'LoggedIn'=> true
                 ];
-                session()->set($ses_data);
+                $session()->set($ses_data);
                 if ($user['rol'] === 'administrador') {
                     return redirect()->to('');
                 } else {

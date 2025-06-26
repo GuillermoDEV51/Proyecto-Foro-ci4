@@ -34,6 +34,28 @@
       <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
       <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
       <a href="<?php echo base_url() ?>contacto">Contacto</a>
+      <a href="<?php echo base_url() ?>DashbordAdmin">Admin</a>
+      
+     <?php $role = session()->get('role'); ?>
+<?php if ($role === 'admin'): ?>
+
+    <!-- Opciones para admin -->
+
+    <a href="<?php echo base_url() ?>DashbordAdmin">Admin</a>
+
+
+<?php elseif ($role === 'estudiante'): ?>
+
+    <!-- Opciones para estudiante -->
+
+<?php else: ?>
+
+    <!-- Opciones para visitante -->
+     
+<?php endif; ?>
+
+
+
     </div>
   </nav>
 

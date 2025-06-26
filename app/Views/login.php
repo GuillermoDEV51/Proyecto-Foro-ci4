@@ -27,10 +27,18 @@
             </div>
 
 
+
+            <!-- Mensaje de error -->
+            <?php if(session()->getFlashdata('msg')):?>
+                    <div class="alert alert-warning">
+                       <?= session()->getFlashdata('msg') ?>
+                    </div>
+                <?php endif;?>
+
             <!-- Formulario de inicio de sesión -->
-            <form method="post" action="<?php echo base_url() ?>login">
+            <form method="post" action="<?php echo base_url() ?>login/loginAutenticacion">
 
-
+            
                 <!-- Grupo usuario -->
                 <div class="usuario">
                     <div class="mb-3">
@@ -45,22 +53,12 @@
                     <label for="Password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="Password" name="password" required>
                     
-                    <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm" viewBox="0 0 16 16">
-                       contenido del SVG 
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-                    </svg> -->
+                    
 
                 </div>
 
 
-                <!--<div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
-                </div>-->
-
-
-
-                
+                <!-- Botones de acción --> 
 
                 <div class="d-flex mb-3 ">
                     <button type="submit" class="btn btn-warning">Ingresar</button>
