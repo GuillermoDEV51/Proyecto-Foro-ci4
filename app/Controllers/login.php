@@ -51,14 +51,17 @@ class login extends BaseController
                     'rol'      => $user['rol'],
                     'LoggedIn'=> true
                 ];
-                $session()->set($ses_data);
+               $session->set($ses_data);
                 if ($user['rol'] === 'administrador') {
-                    return redirect()->to('');
+                    return redirect()->to('proyectos');
                 } else {
                     return redirect()->to('');
                 }
             } else {
-                return view('login', ['error' => 'Credenciales incorrectas']);
+                $session = session();
+                $session->setFlashdata('msg', 'Password is incorrect.');
+
+                return redirect()->to('/login');
             }
         }
         return view('login');

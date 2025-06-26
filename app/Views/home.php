@@ -35,6 +35,7 @@
       <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
       <a href="<?php echo base_url() ?>contacto">Contacto</a>
       <a href="<?php echo base_url() ?>DashbordAdmin">Admin</a>
+      <a href="<?php echo base_url() ?>visor">Visor de Proyectos</a>
       
      <?php $role = session()->get('role'); ?>
 <?php if ($role === 'admin'): ?>
