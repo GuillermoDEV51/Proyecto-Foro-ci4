@@ -112,17 +112,17 @@
     </main>
   </div>
 
-  <script>
-    // Datos del documento desde PHP
-    const documentData = {
-      title: <?= json_encode($documento['titulo']) ?>,
-      author: <?= json_encode($documento['autor']) ?>,
-      date: <?= json_encode($documento['anio']) ?>,
-      career: <?= json_encode($documento['carrera']) ?>,
-      description: <?= json_encode($documento['descripcion']) ?>,
-      size: "--", // Aquí podrías calcular tamaño si quieres
-      pdfUrl: "<?= base_url('uploads/' . $documento['pdf']) ?>"  // Ruta al PDF en public/uploads/
-    };
+<script>
+  const documentData = {
+    title: <?= json_encode($documento['titulo']) ?>,
+    author: <?= json_encode($documento['autor']) ?>,
+    date: <?= json_encode($documento['anio']) ?>,
+    career: <?= json_encode($documento['carrera']) ?>,
+    description: <?= json_encode($documento['descripcion']) ?>,
+    size: <?= json_encode($documento['size'] ?? 'Desconocido') ?>,
+
+    pdfUrl: "<?= base_url('uploads/' . $documento['pdf']) ?>"
+  };
 
     // Resto del código JavaScript para PDF.js (igual que en tu visor, adaptado)...
 
@@ -156,6 +156,14 @@
         const pagesText = totalPages > MAX_PAGES_ALLOWED
           ? `${availablePages} de ${totalPages} (Vista previa)`
           : `${availablePages} páginas`;
+          if (totalPages > MAX_PAGES_ALLOWED) {
+  const notice = document.createElement('p');
+  notice.textContent = `Estás viendo una vista previa pública. Inicia sesión para ver el documento completo.`;
+  notice.style.fontSize = '0.9rem';
+  notice.style.color = '#888';
+  document.querySelector('.document-meta').appendChild(notice);
+}
+
 
         document.getElementById('totalPages').textContent = availablePages;
         document.getElementById('pageInput').max = availablePages;
@@ -176,7 +184,10 @@
       }
     }
 
-    async function renderPage(num) {
+async function renderPage(num) {
+  const maxPage = Math.min(pdfDoc.numPages, MAX_PAGES_ALLOWED);
+  if (num > maxPage) num = maxPage;
+
       if (pageIsRendering) {
         pageNumIsPending = num;
         return;
@@ -219,6 +230,18 @@
         pageIsRendering = false;
       }
     }
+    
+    function goToPage() {
+  const inputPage = parseInt(document.getElementById('pageInput').value);
+  const maxPage = Math.min(pdfDoc.numPages, MAX_PAGES_ALLOWED);
+  if (inputPage >= 1 && inputPage <= maxPage) {
+    renderPage(inputPage);
+  } else {
+    alert(`Esta es una vista pública. Solo puedes ver hasta ${maxPage} páginas.`);
+    document.getElementById('pageInput').value = pageNum;
+  }
+}
+
 
     function previousPage() {
       if (pageNum <= 1) return;

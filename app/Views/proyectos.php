@@ -1,8 +1,4 @@
 <?php
-helper('url');
-?>
-
-<?php
 // proyectos.php
 ?>
 <!DOCTYPE html>
@@ -82,7 +78,7 @@ helper('url');
           <label class="filter-label" for="career-filter">Carrera</label>
           <select id="career-filter" class="filter-select" onchange="applyFilters()">
             <option value="">Todas las carreras</option>
-            <option value="Ingeniería de Informática">Ingeniería de Informática</option>
+            <option value="Ingeniería Informática">Ingeniería de Informática</option>
             <option value="Ingeniería Marítima">Ingeniería Marítima</option>
 
           </select>
@@ -118,24 +114,24 @@ helper('url');
 $proyectos = [
   [
     'id' => 101,
-    'titulo' => 'Sistema de Gestión Académica',
-    'autor'  => 'Laura Gómez',
+    'titulo' => 'Tecnologia Digital',
+    'autor'  => 'Jonathan Alarcon',
     'anio'   => 2024,
-    'carrera' => 'Ingeniería de Sistemas',
-    'imagen' => 'https://source.unsplash.com/collection/190731/300x200'
+    'carrera' => 'Ingeniería Informática',
+    'imagen' => 'https://images.unsplash.com/photo-1617839625591-e5a789593135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/300x200'
   ],
   [
     'id' => 102,
     'titulo' => 'Optimización de Procesos Industriales',
     'autor'  => 'Carlos Méndez',
     'anio'   => 2023,
-    'carrera' => 'Ingeniería Industrial',
-    'imagen' => 'https://source.unsplash.com/collection/190732/300x200'
+    'carrera' => 'Ingeniería Marítima',
+    'imagen' => 'https://images.unsplash.com/photo-1568347877321-f8935c7dc5a3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/300x200'
   ],
 ];
 ?>
 <?php foreach ($proyectos as $p): ?>
-  <a href="<?= site_url('proyecto/visor/' . $p['id']) ?>" style="text-decoration: none; color: inherit;">
+  <a href="<?= site_url('proyectos/visor/' . $p['id']) ?>" style="text-decoration: none; color: inherit;">
     <div class="project-card"
          data-year="<?= htmlspecialchars($p['anio']) ?>"
          data-career="<?= htmlspecialchars($p['carrera']) ?>"
