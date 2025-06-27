@@ -20,6 +20,9 @@ $routes->get('/nuestramision', 'Nuestramision::index');
 // Rutas para visor con ID
 $routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
 
-// Rutas de prueba
-$routes->get('testdb', 'TestDB::index');
-$routes->get('testdb2', 'TestDB2::index');
+$routes->get('proyecto', 'Proyecto::index');
+$routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
+
+
+
+
