@@ -14,15 +14,15 @@ class Proyectos extends BaseController
             'autor'  => 'Jonathan Alarcon',
             'anio'   => 2024,
             'carrera' => 'Ingeniería Informática',
-            'pdf'    => 'Tecnologia.pdf',
-            'descripcion' => 'Este documento presenta un sumador en TEC.',
+            'pdf'    => 'Tecno.pdf',
+            'descripcion' => 'Este documento presenta una vista crítica basado en experiencia tomada por viajes e interacciones con la tecnologia.',
         ],
 
         
     [
     'id' => 102,
     'titulo' => 'Optimización de Procesos Industriales',
-    'autor'  => 'Carlos Méndez',
+    'autor'  => 'Jeyson Patricio Egas Garcia',
     'anio'   => 2023,
     'carrera' => 'Ingeniería Marítima',
         'pdf' => 'OptimizacionDeProcesos.pdf',
@@ -40,7 +40,7 @@ class Proyectos extends BaseController
     [
         'id' => 104,
         'titulo' => 'Seguridad en Redes',
-        'autor' => 'Ana Sofía Delgado',
+        'autor' => 'Ruben Bustamante',
         'anio' => 2024,
         'carrera' => 'Ingeniería Informática',
         'pdf' => 'SeguridadRedes.pdf',
@@ -58,7 +58,7 @@ class Proyectos extends BaseController
     [
         'id' => 106,
         'titulo' => 'Inteligencia Artificial en Videojuegos',
-        'autor' => 'Valeria Contreras',
+        'autor' => 'Pablo Luis Guiterrez',
         'anio' => 2025,
         'carrera' => 'Ingeniería Informática',
         'pdf' => 'IA_Videojuegos.pdf',
@@ -67,7 +67,7 @@ class Proyectos extends BaseController
     [
         'id' => 107,
         'titulo' => 'Optimización de Bases de Datos',
-        'autor' => 'José Manuel Ortega',
+        'autor' => 'Gisella Luisa ',
         'anio' => 2024,
         'carrera' => 'Ingeniería Informática',
         'pdf' => 'OptimizacionBD.pdf',
@@ -76,7 +76,7 @@ class Proyectos extends BaseController
     [
         'id' => 108,
         'titulo' => 'Aplicaciones Web Responsivas',
-        'autor' => 'Camila Pérez',
+        'autor' => 'Marcos Gonzalez Pancho',
         'anio' => 2023,
         'carrera' => 'Ingeniería Informática',
         'pdf' => 'WebResponsiva.pdf',
