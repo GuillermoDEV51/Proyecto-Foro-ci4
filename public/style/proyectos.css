@@ -235,14 +235,15 @@
       margin-top: 1rem;
     }
     
-    .projects-horizontal {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding: 1rem 0;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
+.projects-horizontal {
+  display: flex;
+  gap: 2rem; /* ← Aumentamos el espacio entre tarjetas */
+  overflow-x: auto;
+  padding: 1.5rem 1rem; /* Más aire a los costados */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
     
     /* Estilo para la scrollbar */
     .projects-horizontal::-webkit-scrollbar {
@@ -269,8 +270,8 @@
       box-shadow: 0 1px 3px var(--sombra-card);
       overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
-      flex: 0 0 280px; /* Ancho fijo para las tarjetas */
-      min-height: 320px;
+      flex: 0 0 260px; /* Ancho fijo para las tarjetas */
+      min-height: 300px;
     }
     
     .project-card:hover {
@@ -380,43 +381,46 @@
       opacity: 0.9;
     }
 
-    /* -------------------------------
-       Responsive tweaks
-       ------------------------------- */
-    @media (max-width: 768px) {
-      .project-card {
-        flex: 0 0 250px;
-      }
-      
-      .nav-button {
-        display: none; /* Ocultar botones en móvil */
-      }
+/* ------------------------------- 
+   Responsive tweaks
+   ------------------------------- */
 
-      .filters-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
+/* DESACTIVAR RESPONSIVE QUE REDUCE TAMAÑO DE TARJETAS */
 
-      .clear-filters-btn {
-        justify-self: stretch;
-        justify-content: center;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .project-card {
-        flex: 0 0 220px;
-      }
-      
-      .main-content {
-        padding: 0 0.5rem;
-      }
-      
-      .projects-horizontal {
-        padding: 1rem 0.5rem;
-      }
+@media (max-width: 768px) {
+  .project-card {
+    flex: 0 0 250px;
+  }
 
-      .filters-container {
-        padding: 1rem;
-      }
-    }
+  .nav-button {
+    display: none;
+  }
+
+  .filters-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .clear-filters-btn {
+    justify-self: stretch;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    flex: 0 0 220px;
+  }
+
+  .main-content {
+    padding: 0 0.5rem;
+  }
+
+  .projects-horizontal {
+    padding: 1rem 0.5rem;
+  }
+
+  .filters-container {
+    padding: 1rem;
+  }
+  }
