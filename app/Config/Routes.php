@@ -23,6 +23,3 @@ $routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
 $routes->get('proyecto', 'Proyecto::index');
 $routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
 
-
-
-
