@@ -35,7 +35,6 @@
       <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
       <a href="<?php echo base_url() ?>contacto">Contacto</a>
       <a href="<?php echo base_url() ?>DashbordAdmin">Admin</a>
-      <a href="<?php echo base_url() ?>visor">Visor de Proyectos</a>
       
      <?php $role = session()->get('role'); ?>
 <?php if ($role === 'admin'): ?>
@@ -84,59 +83,22 @@
     </div>
   </section>
 
-  <!-- Contenido principal: Documentos Destacados -->
-  <main class="main-content">
-    <h2 class="section-title">Documentos Destacados</h2>
-    <div class="cards-grid">
-      <!-- Card 1 -->
+<main class="main-content">
+  <h2 class="section-title">Documentos Destacados</h2>
+  <div class="cards-grid">
+    <?php foreach ($destacados as $doc): ?>
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 1" />
+        <a href="<?= base_url('proyectos/visor/' . $doc['id']) ?>">
+          <img src="<?= esc($doc['imagen']) ?>" alt="<?= esc($doc['titulo']) ?>" />
+        </a>
         <div class="card-body">
-          <div class="card-title">Título del Documento 1</div>
-          <div class="card-meta">Autor: Juan Pérez · 2024</div>
+          <div class="card-title"><?= esc($doc['titulo']) ?></div>
+          <div class="card-meta">Autor: <?= esc($doc['autor']) ?> · <?= esc($doc['anio']) ?></div>
         </div>
       </div>
-      <!-- Card 2 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 2" />
-        <div class="card-body">
-          <div class="card-title">Título del Documento 2</div>
-          <div class="card-meta">Autor: María López · 2023</div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 3" />
-        <div class="card-body">
-          <div class="card-title">Título del Documento 3</div>
-          <div class="card-meta">Autor: Luis García · 2022</div>
-        </div>
-      </div>
-      <!-- Card 4 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 4" />
-        <div class="card-body">
-          <div class="card-title">Título del Documento 4</div>
-          <div class="card-meta">Autor: Ana Torres · 2021</div>
-        </div>
-      </div>
-      <!-- Card 5 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 5" />
-        <div class="card-body">
-          <div class="card-title">Título del Documento 5</div>
-          <div class="card-meta">Autor: Carlos Mendoza · 2020</div>
-        </div>
-      </div>
-      <!-- Card 6 -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e" alt="Documento 6" />
-        <div class="card-body">
-          <div class="card-title">Título del Documento 6</div>
-          <div class="card-meta">Autor: Sofía Ramírez · 2019</div>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
+  </div>
+
 
     <!-- Sección de frases motivacionales respecto al estudio -->
     <section class="motivational-quotes">

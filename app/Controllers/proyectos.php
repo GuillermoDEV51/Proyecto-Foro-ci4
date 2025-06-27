@@ -17,22 +17,15 @@ class Proyectos extends BaseController
             'pdf'    => 'Tecnologia.pdf',
             'descripcion' => 'Este documento presenta un sumador en TEC.',
         ],
-                [
-            'id' => 102,
-            'titulo' => 'Tecnologia Digital',
-            'autor'  => 'Jonathan Alarcon',
-            'anio'   => 2024,
-            'carrera' => 'Ingeniería Informática',
-            'pdf'    => 'parcial.pdf',
-            'descripcion' => 'Este documento presenta un sumador en TEC.',
-        ],
+
+        
     [
         'id' => 102,
         'titulo' => 'Sistemas Distribuidos',
         'autor' => 'María Fernanda Rivas',
         'anio' => 2023,
         'carrera' => 'Ingeniería Informática',
-        'pdf' => 'SistemasDistribuidos.pdf',
+        'pdf' => 'PRACTICA.pdf',
         'descripcion' => 'Análisis de arquitectura cliente-servidor y su implementación en Java.'
     ],
     [
