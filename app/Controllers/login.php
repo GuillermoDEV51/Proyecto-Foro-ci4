@@ -53,7 +53,7 @@ class login extends BaseController
                 ];
                $session->set($ses_data);
                 if ($user['rol'] === 'administrador') {
-                    return redirect()->to('proyectos');
+                    return redirect()->to('');
                 } else {
                     return redirect()->to('');
                 }

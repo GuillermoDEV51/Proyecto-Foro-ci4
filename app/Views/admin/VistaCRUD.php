@@ -164,10 +164,9 @@ if($session->getFlashdata('success'))
         <div class="table-responsive display" id="myTable" >
             <table class="table table-striped table-bordered">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Gender</th>
+                    <th>codigo</th>
+                    <th>nombre</th>
+                    <th>rol</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -179,10 +178,9 @@ if($session->getFlashdata('success'))
                     {
                         echo '
                         <tr>
-                            <td>'.$user["id"].'</td>
-                            <td>'.$user["name"].'</td>
-                            <td>'.$user["email"].'</td>
-                            <td>'.$user["gender"].'</td>
+                            <td>'.$user["codigo"].'</td>
+                            <td>'.$user["nombre"].'</td>
+                            <td>'.$user["rol"].'</td>
                             <td><a href="'.base_url().'/crud/fetch_single_data/'.$user["id"].'" class="btn btn-sm btn-warning">Edit</a></td>
                             <td><button type="button" onclick="delete_data('.$user["id"].')" class="btn btn-danger btn-sm">Delete</button></td>
                         </tr>';

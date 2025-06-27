@@ -34,26 +34,7 @@
       <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
       <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
       <a href="<?php echo base_url() ?>contacto">Contacto</a>
-      <a href="<?php echo base_url() ?>DashbordAdmin">Admin</a>
       
-     <?php $role = session()->get('role'); ?>
-<?php if ($role === 'admin'): ?>
-
-    <!-- Opciones para admin -->
-
-    <a href="<?php echo base_url() ?>DashbordAdmin">Admin</a>
-
-
-<?php elseif ($role === 'estudiante'): ?>
-
-    <!-- Opciones para estudiante -->
-
-<?php else: ?>
-
-    <!-- Opciones para visitante -->
-     
-<?php endif; ?>
-
             <div class="container">
                 
 
@@ -67,54 +48,62 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col">User Form</div>
+                            <div class="col">Añadir Usuario</div>
                             <div class="col text-right">
                                 
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
+
+                        <!-- Formulario de añadir usuario -->
                         <form method="post" action="<?php echo base_url("/crud/add_validation")?>">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control" />
+
+                            <!-- Añadir nombre de usuario -->
+                                <label>Nombre</label>
+                                <input type="text" name="nombre" class="form-control" />
+                                <!-- Error -->
                                 <?php
-                                if($validation->getError('name'))
+                                if($validation->getError('nombre'))
                                 {
-                                    echo '<div class="alert alert-danger mt-2">'.$validation->getError('name').'</div>';
+                                    echo '<div class="alert alert-danger mt-2">'.$validation->getError('nombre').'</div>';
                                 }
                                 ?>
                             </div>
 
+
+                            <!-- Añadir Codigo de usuario -->
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" name="email" class="form-control" />
+                                <label>codigo</label>
+                                <input type="text" name="codigo" class="form-control" />
+                                <!-- Error -->
                                 <?php
-                                if($validation->getError('email'))
+                                if($validation->getError('codigo'))
                                 {
                                     echo "
                                     <div class='alert alert-danger mt-2'>
-                                    ".$validation->getError('email')."
+                                    ".$validation->getError('codigo')."
                                     </div>
                                     ";
                                 }
                                 ?>
                             </div>
-
+                            <!-- Añadir contraseña de usuario -->
                             <div class="form-group">
-                                <label>Gender</label>
-                                <select name="gender" class="form-control">
-                                    <option value="">Select Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                <label>rol</label>
+                                <select name="role" class="form-control">
+                                    <option value="">Seleccionar rol</option>
+                                    <option value="Male">Estudiante</option>
+                                    <option value="Female">administrador</option>
                                 </select>
-
+                                <!-- Error -->
                                 <?php
 
-                                if($validation->getError('gender'))
+                                if($validation->getError('rol'))
                                 {
                                     echo '<div class="alert alert-danger mt-2">
-                                    '.$validation->getError("gender").'
+                                    '.$validation->getError("rol").'
                                     </div>';
                                 }
 
