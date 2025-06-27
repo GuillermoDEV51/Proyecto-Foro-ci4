@@ -115,7 +115,7 @@ $proyectos = [
   [
     'id' => 101,
     'titulo' => 'Tecnologia Digital',
-    'autor'  => 'Jonathan Alarcon',
+    'autor'  => 'Ana Laura Rivoir',
     'anio'   => 2024,
     'carrera' => 'Ingeniería Informática',
     'imagen' => 'https://images.unsplash.com/photo-1617839625591-e5a789593135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/300x200'
@@ -123,10 +123,58 @@ $proyectos = [
   [
     'id' => 102,
     'titulo' => 'Optimización de Procesos Industriales',
-    'autor'  => 'Carlos Méndez',
+    'autor'  => 'Jeyson Patricio Egas Garcia',
     'anio'   => 2023,
     'carrera' => 'Ingeniería Marítima',
     'imagen' => 'https://images.unsplash.com/photo-1568347877321-f8935c7dc5a3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/300x200'
+  ],
+  [
+    'id' => 103,
+    'titulo' => 'Algoritmos Genéticos Aplicados',
+    'autor'  => 'Carlos Mendoza',
+    'anio'   => 2022,
+    'carrera' => 'Ingeniería Informática',
+    'imagen' => 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  ],
+  [
+    'id' => 104,
+    'titulo' => 'Seguridad en Redes',
+    'autor'  => 'Ruben Bustamante',
+    'anio'   => 2024,
+    'carrera' => 'Ingeniería Informática',
+    'imagen' => 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
+  ],
+  [
+    'id' => 105,
+    'titulo' => 'Compiladores y Lenguajes',
+    'autor'  => 'Luis Alberto Torres',
+    'anio'   => 2023,
+    'carrera' => 'Ingeniería Informática',
+    'imagen' => 'https://images.unsplash.com/photo-1662638600476-d563fffbb072?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  ],
+  [
+    'id' => 106,
+    'titulo' => 'Inteligencia Artificial en Videojuegos',
+    'autor' => 'Pablo Luis Guiterrez',
+    'anio'   => 2025,
+    'carrera' => 'Ingeniería Informática',
+    'imagen' => 'https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  ],
+  [
+    'id' => 107,
+    'titulo' => 'Optimización de Bases de Datos',
+    'autor'  => 'Gisella Luisa ',
+    'anio'   => 2024,
+    'carrera' => 'Ingeniería Informática',
+    'imagen' => 'https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  ],
+  [
+    'id' => 108,
+    'titulo' => 'Aplicaciones Web Responsivas',
+    'autor'  => 'Marcos Gonzalez Pancho',
+    'anio'   => 2023,
+    'carrera' => 'Ingeniería Informática',
+    'imagen' => 'https://images.unsplash.com/photo-1740477959010-c2e99bf4a5ff?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   ],
 ];
 ?>

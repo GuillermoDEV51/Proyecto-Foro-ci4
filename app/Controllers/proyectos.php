@@ -14,20 +14,76 @@ class Proyectos extends BaseController
             'autor'  => 'Jonathan Alarcon',
             'anio'   => 2024,
             'carrera' => 'Ingeniería Informática',
-            'pdf'    => 'Tecnologia.pdf',
-            'descripcion' => 'Este documento presenta un sumador en TEC.',
+            'pdf'    => 'Tecno.pdf',
+            'descripcion' => 'Este documento presenta una vista crítica basado en experiencia tomada por viajes e interacciones con la tecnologia.',
         ],
-                [
-            'id' => 102,
-            'titulo' => 'Tecnologia Digital',
-            'autor'  => 'Jonathan Alarcon',
-            'anio'   => 2024,
-            'carrera' => 'Ingeniería Informática',
-            'pdf'    => 'parcial.pdf',
-            'descripcion' => 'Este documento presenta un sumador en TEC.',
-        ],
-        // Puedes añadir más proyectos aquí...
+
+        
+    [
+    'id' => 102,
+    'titulo' => 'Optimización de Procesos Industriales',
+    'autor'  => 'Jeyson Patricio Egas Garcia',
+    'anio'   => 2023,
+    'carrera' => 'Ingeniería Marítima',
+        'pdf' => 'OptimizacionDeProcesos.pdf',
+        'descripcion' => 'Optimización de procesos industriales.'
+    ],
+    [
+        'id' => 103,
+        'titulo' => 'Algoritmos Genéticos Aplicados',
+        'autor' => 'Carlos Mendoza',
+        'anio' => 2022,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'AlgoritmosGeneticos.pdf',
+        'descripcion' => 'Estudio sobre la optimización de rutas usando algoritmos evolutivos.'
+    ],
+    [
+        'id' => 104,
+        'titulo' => 'Seguridad en Redes',
+        'autor' => 'Ruben Bustamante',
+        'anio' => 2024,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'SeguridadRedes.pdf',
+        'descripcion' => 'Propuesta de un sistema de detección de intrusos basado en firmas.'
+    ],
+    [
+        'id' => 105,
+        'titulo' => 'Compiladores y Lenguajes',
+        'autor' => 'Luis Alberto Torres',
+        'anio' => 2023,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'Compiladores.pdf',
+        'descripcion' => 'Diseño de un compilador básico para un lenguaje de programación personalizado.'
+    ],
+    [
+        'id' => 106,
+        'titulo' => 'Inteligencia Artificial en Videojuegos',
+        'autor' => 'Pablo Luis Guiterrez',
+        'anio' => 2025,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'IA_Videojuegos.pdf',
+        'descripcion' => 'Implementación de algoritmos de IA para mejorar la experiencia del jugador.'
+    ],
+    [
+        'id' => 107,
+        'titulo' => 'Optimización de Bases de Datos',
+        'autor' => 'Gisella Luisa ',
+        'anio' => 2024,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'OptimizacionBD.pdf',
+        'descripcion' => 'Estudio de índices y consultas eficientes en MySQL.'
+    ],
+    [
+        'id' => 108,
+        'titulo' => 'Aplicaciones Web Responsivas',
+        'autor' => 'Marcos Gonzalez Pancho',
+        'anio' => 2023,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'WebResponsiva.pdf',
+        'descripcion' => 'Diseño de interfaces adaptables con HTML5, CSS3 y JavaScript.'
+    ],
     ];
+        // Puedes añadir más proyectos aquí...
 
     public function index()
     {
