@@ -27,7 +27,7 @@ class login extends BaseController
   public function loginAutenticacion()
     {
         
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
             $rules = [
                 'codigo' => 'required',
                 'password' => 'required'
@@ -39,24 +39,30 @@ class login extends BaseController
 
             $userModel = new UserModel();
             
-            $user = $userModel->where('codigo', $this->request->getPost('codigo'))->first();
+            $userPost = $this->request->getPost('codigo');
+            $passwordPost = $this->request->getPost('password');
 
-            if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
+            $user = $userModel->where('user', $userPost)->first();
+
+           
+            //if ($user && password_verify($this->request->getPost('contraseña'), $user['contraseña'])) {
+            if ($user['contraseña'] == $passwordPost) {
                 
                 $session = session();
                 
                 $ses_data = [
-                    'codigo_id'   => $user['id'],
-                    'codigo'  => $user['codigo'],
-                    'rol'      => $user['rol'],
+                    'id'   => $user['id'],
+                    'user'  => $user['user'],
+                    'rol'      => $user['id_rol'],
                     'LoggedIn'=> true
                 ];
                $session->set($ses_data);
-                if ($user['rol'] === 'administrador') {
+                if ($user['id_rol'] === 'administrador') {
                     return redirect()->to('');
                 } else {
-                    return redirect()->to('');
+                    return view('user/indexusuario');
                 }
+
             } else {
                 $session = session();
                 $session->setFlashdata('msg', 'Password is incorrect.');

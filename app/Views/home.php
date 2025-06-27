@@ -34,7 +34,7 @@
       <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
       <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
       <a href="<?php echo base_url() ?>contacto">Contacto</a>
-      <a href="<?php echo base_url() ?>DashbordAdmin">Admin</a>
+      
       
      <?php $role = session()->get('role'); ?>
 <?php if ($role === 'admin'): ?>
@@ -56,8 +56,8 @@
 
 
 
-    </div>
-  </nav>
+      </div>
+    </nav>
 
   <!-- Sección de búsqueda -->
   <section class="search-section">

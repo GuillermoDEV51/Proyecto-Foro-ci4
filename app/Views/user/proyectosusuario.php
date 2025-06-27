@@ -458,12 +458,14 @@
   <!-- Barra de navegación -->
   <nav>
     <div class="nav-container">
-      <a href="indexusuario.php">Inicio</a>
-      <a href="proyectosusuario.php">Proyectos</a>
-      <a href="ayudausuario.php">Ayuda</a>
-      <a href="contactousuario.php">Contacto</a>
+      <a href="<?php echo base_url() ?>user/indexusuario">Inicio</a>
+      <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
+      <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
+      <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
+      <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
+      
     </div>
-  </nav>
+ </nav>
 
 
   <!-- Contenido principal: Proyectos -->

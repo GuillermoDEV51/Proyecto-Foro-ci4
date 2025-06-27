@@ -26,10 +26,10 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => '127.0.0.',
+        'hostname'     => 'localhost',
         'username'     => 'root',
         'password'     => '',
-        'database'     => 'proyecto_foro_ci4',
+        'database'     => 'ci4_crud_app',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

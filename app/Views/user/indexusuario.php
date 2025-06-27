@@ -27,9 +27,10 @@
       <span class="user-status">
         <i class="fas fa-user-check"></i> Usuario Conectado
       </span>
-      <a href="index.php" class="logout-link">
-        <i class="fas fa-sign-out-alt"></i>
-      </a>
+      <form action="<?php echo base_url() ?>login/logout" method="POST">
+        <button type="submit">Salir </button>
+      </form>
+     
     </div>
   </div>
 </header>
@@ -37,10 +38,11 @@
   <!-- Barra de navegación -->
   <nav>
     <div class="nav-container">
-      <a href="indexusuario.php">Inicio</a>
-      <a href="proyectosusuario.php">Proyectos</a>
-      <a href="ayudausuario.php">Ayuda</a>
-      <a href="contactousuario.php">Contacto</a>
+      <a href="<?php echo base_url() ?>user/indexusuario">Inicio</a>
+      <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
+      <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
+      <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
+      <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
     </div>
   </nav>
 
@@ -60,9 +62,7 @@
         <option value="">Carrera</option>
         <option value="informatica">Informática</option>
         <option value="maritima">Marítima</option>
-        <option value="ambiental">Ambiental</option>
-        <option value="turismo">Turismo</option>
-        <option value="administracion">Administración</option>
+      
       </select>
       <button type="button"><i class="fas fa-search"></i> Buscar</button>
     </div>
@@ -148,8 +148,8 @@
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="nuestramisionusuario.php">Nuestra Misión</a></li>
-          <li><a href="equipousuario.php">Equipo</a></li>
+          <li><a href="<?php echo base_url() ?>?>user/nuestramisionusuario">Nuestra Misión</a></li>
+          <li><a href="<?php echo base_url() ?>?>user/equipousuario">Equipo</a></li>
         </ul>
       </div>
       <div class="footer-column">

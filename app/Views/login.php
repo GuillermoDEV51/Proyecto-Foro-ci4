@@ -1,3 +1,9 @@
+ <?php
+    if(session('user')) { 
+        return redirect()->to('/');
+    } 
+ ?>
+
 <!DOCTYPE html>
 <html lang="es">
 

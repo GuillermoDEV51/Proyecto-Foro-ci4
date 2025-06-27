@@ -22,4 +22,19 @@ $routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
 
 $routes->get('proyecto', 'Proyecto::index');
 $routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
+$routes->post('login/logout', 'Login::logout');
+
+
+// Rutas usuario y admin
+$routes->get('user/indexusuario', 'indexusuario::index');
+$routes->get('user/proyectosusuario', 'proyectosusuario::index');
+$routes->get('user/equipousuario', 'equipousuario::index');
+$routes->get('user/nuestramisionusuario', 'nuestramisionusuario::index');
+$routes->get('user/contactousuario', 'contactousuario::index');
+$routes->get('user/ayudausuario', 'ayudausuario::index');
+$routes->get('user/enviar_contactousuario', 'enviarcontactousuario::index');
+$routes->get('user/visorusuario', '::index');
+
+$routes->get('admin/VistaCRUD', 'VistaCRUD::index');
+
 
