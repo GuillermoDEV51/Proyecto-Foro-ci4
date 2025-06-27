@@ -26,8 +26,134 @@ class Proyectos extends BaseController
             'pdf'    => 'parcial.pdf',
             'descripcion' => 'Este documento presenta un sumador en TEC.',
         ],
-        // Puedes añadir más proyectos aquí...
+    [
+        'id' => 102,
+        'titulo' => 'Sistemas Distribuidos',
+        'autor' => 'María Fernanda Rivas',
+        'anio' => 2023,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'SistemasDistribuidos.pdf',
+        'descripcion' => 'Análisis de arquitectura cliente-servidor y su implementación en Java.'
+    ],
+    [
+        'id' => 103,
+        'titulo' => 'Algoritmos Genéticos Aplicados',
+        'autor' => 'Carlos Mendoza',
+        'anio' => 2022,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'AlgoritmosGeneticos.pdf',
+        'descripcion' => 'Estudio sobre la optimización de rutas usando algoritmos evolutivos.'
+    ],
+    [
+        'id' => 104,
+        'titulo' => 'Seguridad en Redes',
+        'autor' => 'Ana Sofía Delgado',
+        'anio' => 2024,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'SeguridadRedes.pdf',
+        'descripcion' => 'Propuesta de un sistema de detección de intrusos basado en firmas.'
+    ],
+    [
+        'id' => 105,
+        'titulo' => 'Compiladores y Lenguajes',
+        'autor' => 'Luis Alberto Torres',
+        'anio' => 2023,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'Compiladores.pdf',
+        'descripcion' => 'Diseño de un compilador básico para un lenguaje de programación personalizado.'
+    ],
+    [
+        'id' => 106,
+        'titulo' => 'Inteligencia Artificial en Videojuegos',
+        'autor' => 'Valeria Contreras',
+        'anio' => 2025,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'IA_Videojuegos.pdf',
+        'descripcion' => 'Implementación de algoritmos de IA para mejorar la experiencia del jugador.'
+    ],
+    [
+        'id' => 107,
+        'titulo' => 'Optimización de Bases de Datos',
+        'autor' => 'José Manuel Ortega',
+        'anio' => 2024,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'OptimizacionBD.pdf',
+        'descripcion' => 'Estudio de índices y consultas eficientes en MySQL.'
+    ],
+    [
+        'id' => 108,
+        'titulo' => 'Aplicaciones Web Responsivas',
+        'autor' => 'Camila Pérez',
+        'anio' => 2023,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'WebResponsiva.pdf',
+        'descripcion' => 'Diseño de interfaces adaptables con HTML5, CSS3 y JavaScript.'
+    ],
+    [
+        'id' => 109,
+        'titulo' => 'Criptografía Moderna',
+        'autor' => 'Andrés Salazar',
+        'anio' => 2025,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'Criptografia.pdf',
+        'descripcion' => 'Análisis de algoritmos criptográficos y su aplicación en la seguridad digital.'
+    ],
+    [
+        'id' => 110,
+        'titulo' => 'Automatización con Python',
+        'autor' => 'Lucía Herrera',
+        'anio' => 2024,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'AutomatizacionPython.pdf',
+        'descripcion' => 'Desarrollo de scripts para automatizar tareas administrativas.'
+    ],
+    [
+        'id' => 111,
+        'titulo' => 'Desarrollo de APIs RESTful',
+        'autor' => 'Miguel Ángel Suárez',
+        'anio' => 2025,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'APIsRESTful.pdf',
+        'descripcion' => 'Creación de servicios web RESTful con autenticación JWT en Laravel.'
+    ],
+    [
+        'id' => 112,
+        'titulo' => 'Machine Learning con Python',
+        'autor' => 'Daniela Paredes',
+        'anio' => 2024,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'ML_Python.pdf',
+        'descripcion' => 'Clasificación de datos usando algoritmos supervisados en scikit-learn.'
+    ],
+    [
+        'id' => 113,
+        'titulo' => 'Despliegue en la Nube con Docker',
+        'autor' => 'Esteban Rojas',
+        'anio' => 2023,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'DockerCloud.pdf',
+        'descripcion' => 'Contenerización de aplicaciones y despliegue en AWS usando Docker.'
+    ],
+    [
+        'id' => 114,
+        'titulo' => 'Interfaces Hombre-Máquina',
+        'autor' => 'Natalia Gómez',
+        'anio' => 2025,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'IHM.pdf',
+        'descripcion' => 'Diseño de interfaces accesibles para usuarios con discapacidad visual.'
+    ],
+    [
+        'id' => 115,
+        'titulo' => 'Blockchain y Contratos Inteligentes',
+        'autor' => 'Jorge Linares',
+        'anio' => 2024,
+        'carrera' => 'Ingeniería Informática',
+        'pdf' => 'Blockchain.pdf',
+        'descripcion' => 'Implementación de contratos inteligentes en Ethereum con Solidity.'
+    ]
     ];
+        // Puedes añadir más proyectos aquí...
 
     public function index()
     {
