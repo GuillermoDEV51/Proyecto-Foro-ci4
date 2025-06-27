@@ -6,56 +6,20 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-
- //routas de home
+// Rutas principales
 $routes->get('/', 'Home::index');
+$routes->get('proyectos', 'Proyectos::index');
+$routes->get('/ayuda', 'Ayuda::index');
+$routes->get('/contacto', 'Contacto::index');
+$routes->get('/login', 'Login::index');
+$routes->match(['get', 'post'], 'login/loginAutenticacion', 'Login::loginAutenticacion');
+$routes->get('/equipo', 'Equipo::index');
+$routes->get('/visor', 'Visor::index');
+$routes->get('/nuestramision', 'Nuestramision::index');
 
-/* */
-
-// routas para proyectos
-$routes->get('/proyectos', 'proyectos::index');
-
-// routas para ayuda
-$routes->get('/ayuda', 'ayuda::index');
-
-// routas para contacto
-$routes->get('/contacto', 'contacto::index');
-
-
-// routas para el login
-$routes->get('/login', 'login::index');
-$routes->match(['get', 'post'], 'login/loginAutenticacion', 'login::loginAutenticacion');
-
-
-// routas para el login
-$routes->get('/equipo',  'equipo::index');
-
-// rutas del visor de proyectos 
-$routes->get('/visor', 'visor::index');
-
-// rutas de nuestra misión
-$routes->get('/nuestramision', 'nuestramision::index');
-
-// rutas del visor de proyectos con ID
-$routes->get('visor/(:num)', 'VisorController::index/$1');
-<<<<<<< Updated upstream
-$routes->get('proyecto', 'Proyecto::index');
-$routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
-
-=======
-
-
+// Rutas para visor con ID
 $routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
 
-
-$routes->get('proyectos', 'Proyectos::index');
->>>>>>> Stashed changes
-
-
-
+// Rutas de prueba
 $routes->get('testdb', 'TestDB::index');
-$routes->get('TestDB2', 'TestDB2::index');
-
-
-
-
+$routes->get('testdb2', 'TestDB2::index');
