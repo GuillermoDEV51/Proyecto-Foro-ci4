@@ -20,13 +20,13 @@ class Proyectos extends BaseController
 
         
     [
-        'id' => 102,
-        'titulo' => 'Sistemas Distribuidos',
-        'autor' => 'María Fernanda Rivas',
-        'anio' => 2023,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'PRACTICA.pdf',
-        'descripcion' => 'Análisis de arquitectura cliente-servidor y su implementación en Java.'
+    'id' => 102,
+    'titulo' => 'Optimización de Procesos Industriales',
+    'autor'  => 'Carlos Méndez',
+    'anio'   => 2023,
+    'carrera' => 'Ingeniería Marítima',
+        'pdf' => 'OptimizacionDeProcesos.pdf',
+        'descripcion' => 'Optimización de procesos industriales.'
     ],
     [
         'id' => 103,
@@ -82,69 +82,6 @@ class Proyectos extends BaseController
         'pdf' => 'WebResponsiva.pdf',
         'descripcion' => 'Diseño de interfaces adaptables con HTML5, CSS3 y JavaScript.'
     ],
-    [
-        'id' => 109,
-        'titulo' => 'Criptografía Moderna',
-        'autor' => 'Andrés Salazar',
-        'anio' => 2025,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'Criptografia.pdf',
-        'descripcion' => 'Análisis de algoritmos criptográficos y su aplicación en la seguridad digital.'
-    ],
-    [
-        'id' => 110,
-        'titulo' => 'Automatización con Python',
-        'autor' => 'Lucía Herrera',
-        'anio' => 2024,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'AutomatizacionPython.pdf',
-        'descripcion' => 'Desarrollo de scripts para automatizar tareas administrativas.'
-    ],
-    [
-        'id' => 111,
-        'titulo' => 'Desarrollo de APIs RESTful',
-        'autor' => 'Miguel Ángel Suárez',
-        'anio' => 2025,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'APIsRESTful.pdf',
-        'descripcion' => 'Creación de servicios web RESTful con autenticación JWT en Laravel.'
-    ],
-    [
-        'id' => 112,
-        'titulo' => 'Machine Learning con Python',
-        'autor' => 'Daniela Paredes',
-        'anio' => 2024,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'ML_Python.pdf',
-        'descripcion' => 'Clasificación de datos usando algoritmos supervisados en scikit-learn.'
-    ],
-    [
-        'id' => 113,
-        'titulo' => 'Despliegue en la Nube con Docker',
-        'autor' => 'Esteban Rojas',
-        'anio' => 2023,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'DockerCloud.pdf',
-        'descripcion' => 'Contenerización de aplicaciones y despliegue en AWS usando Docker.'
-    ],
-    [
-        'id' => 114,
-        'titulo' => 'Interfaces Hombre-Máquina',
-        'autor' => 'Natalia Gómez',
-        'anio' => 2025,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'IHM.pdf',
-        'descripcion' => 'Diseño de interfaces accesibles para usuarios con discapacidad visual.'
-    ],
-    [
-        'id' => 115,
-        'titulo' => 'Blockchain y Contratos Inteligentes',
-        'autor' => 'Jorge Linares',
-        'anio' => 2024,
-        'carrera' => 'Ingeniería Informática',
-        'pdf' => 'Blockchain.pdf',
-        'descripcion' => 'Implementación de contratos inteligentes en Ethereum con Solidity.'
-    ]
     ];
         // Puedes añadir más proyectos aquí...
 

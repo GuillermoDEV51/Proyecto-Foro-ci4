@@ -270,8 +270,8 @@
       box-shadow: 0 1px 3px var(--sombra-card);
       overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
-      flex: 0 0 260px; /* Ancho fijo para las tarjetas */
-      min-height: 300px;
+      flex: 0 0 280px; /* Ancho fijo para las tarjetas */
+      min-height: 380px;
     }
     
     .project-card:hover {

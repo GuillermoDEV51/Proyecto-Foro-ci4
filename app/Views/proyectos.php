@@ -115,7 +115,7 @@ $proyectos = [
   [
     'id' => 101,
     'titulo' => 'Tecnologia Digital',
-    'autor'  => 'Jonathan Alarcon',
+    'autor'  => 'Ana Laura Rivoir',
     'anio'   => 2024,
     'carrera' => 'Ingeniería Informática',
     'imagen' => 'https://images.unsplash.com/photo-1617839625591-e5a789593135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/300x200'
@@ -176,62 +176,6 @@ $proyectos = [
     'carrera' => 'Ingeniería Informática',
     'imagen' => 'https://images.unsplash.com/photo-1581091012184-7f3c1f1f1f1f?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
   ],
-  [
-    'id' => 109,
-    'titulo' => 'Criptografía Moderna',
-    'autor'  => 'Andrés Salazar',
-    'anio'   => 2025,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1622547748220-3c6f2f3f2f3e?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
-  ],
-  [
-    'id' => 110,
-    'titulo' => 'Automatización con Python',
-    'autor'  => 'Lucía Herrera',
-    'anio'   => 2024,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1581090700227-1e8e5f06b1d5?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
-  ],
-  [
-    'id' => 111,
-    'titulo' => 'Desarrollo de APIs RESTful',
-    'autor'  => 'Miguel Ángel Suárez',
-    'anio'   => 2025,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1581090700227-1e8e5f06b1d5?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
-  ],
-  [
-    'id' => 112,
-    'titulo' => 'Machine Learning con Python',
-    'autor'  => 'Daniela Paredes',
-    'anio'   => 2024,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1581090700227-1e8e5f06b1d5?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
-  ],
-  [
-    'id' => 113,
-    'titulo' => 'Despliegue en la Nube con Docker',
-    'autor'  => 'Esteban Rojas',
-    'anio'   => 2023,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
-  ],
-  [
-    'id' => 114,
-    'titulo' => 'Interfaces Hombre-Máquina',
-    'autor'  => 'Natalia Gómez',
-    'anio'   => 2025,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1581093588401-9c80b6f6d1f4?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
-  ],
-  [
-    'id' => 115,
-    'titulo' => 'Blockchain y Contratos Inteligentes',
-    'autor'  => 'Jorge Linares',
-    'anio'   => 2024,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1622547748220-3c6f2f3f2f3e?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0'
-  ]
 ];
 ?>
 <?php foreach ($proyectos as $p): ?>
