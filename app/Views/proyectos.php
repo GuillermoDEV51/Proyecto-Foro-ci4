@@ -1,6 +1,3 @@
-<?php
-// proyectos.php
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,160 +5,114 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Proyectos – Forum de Proyectos</title>
-  <!-- Tipografía similar a Scribd -->
-    <style>
-
-    </style><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<link rel="stylesheet" href="<?= base_url('style/proyectos.css') ?>"/>
-  
+  <link rel="stylesheet" href="<?= base_url('style/proyectos.css') ?>"/>
 </head>
 
 <body>
   <!-- Header principal -->
   <header>
     <div class="header-container">
-    <a href="<?= base_url() ?>" class="logo">
-      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
-      <span>Foro de Proyectos</span>
-    </a>
-      <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
+      <a href="<?= base_url() ?>" class="logo">
+        <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+        <span>Foro de Proyectos</span>
+      </a>
+      <a href="<?= base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
   </header>
 
-   <!-- Barra de navegación -->
+  <!-- Barra de navegación -->
   <nav>
     <div class="nav-container">
-      <a href="<?php echo base_url() ?>">Inicio</a>
-      <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
-      <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
-      <a href="<?php echo base_url() ?>contacto">Contacto</a>
+      <a href="<?= base_url() ?>">Inicio</a>
+      <a href="<?= base_url() ?>proyectos">Proyectos</a>
+      <a href="<?= base_url() ?>ayuda">Ayuda</a>
+      <a href="<?= base_url() ?>contacto">Contacto</a>
     </div>
   </nav>
 
   <!-- Contenido principal: Proyectos -->
   <main class="main-content">
-    
     <!-- Filtros de búsqueda -->
     <div class="filters-container">
-      <div class="filters-title">
-        <i class="fas fa-filter"></i>
-        Filtrar Proyectos
-      </div>
-      <div class="filters-grid">
-        <div class="filter-group">
-          <label class="filter-label" for="search-input">Buscar por título</label>
-          <input 
-            type="text" 
-            id="search-input" 
-            class="filter-input" 
-            placeholder="Escribe el nombre del proyecto..."
-            onkeyup="applyFilters()"
-          />
+        <div class="filters-title">
+            <i class="fas fa-filter"></i> Filtrar Proyectos
+        </div>
+        <div class="filters-grid">
+            <div class="filter-group">
+                <label class="filter-label" for="search-input">Buscar por título</label>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    class="filter-input" 
+                    placeholder="Escribe el nombre del proyecto..."
+                    value="<?= isset($q) ? esc($q) : '' ?>"
+                    onkeyup="applyFilters()"
+                />
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label" for="year-filter">Año</label>
+                <select id="year-filter" class="filter-select" onchange="applyFilters()">
+                    <option value="">Todos los años</option>
+                    <?php for ($year = date('Y'); $year >= 2000; $year--): ?>
+                        <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label class="filter-label" for="career-filter">Carrera</label>
+                <select id="career-filter" class="filter-select" onchange="applyFilters()">
+                    <option value="">Todas las carreras</option>
+                    <option value="Ingeniería Informática" <?= (isset($carrera) && $carrera == 'Ingeniería Informática') ? 'selected' : '' ?>>Ingeniería de Informática</option>
+                    <option value="Ingeniería Marítima" <?= (isset($carrera) && $carrera == 'Ingeniería Marítima') ? 'selected' : '' ?>>Ingeniería Marítima</option>
+                </select>
+            </div>
         </div>
         
-        <div class="filter-group">
-          <label class="filter-label" for="year-filter">Año</label>
-          <select id="year-filter" class="filter-select" onchange="applyFilters()">
-            <option value="">Todos los años</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2020">2020</option>
-          </select>
-        </div>
-        
-          
-          
-        <div class="filter-group">
-          <label class="filter-label" for="career-filter">Carrera</label>
-          <select id="career-filter" class="filter-select" onchange="applyFilters()">
-            <option value="">Todas las carreras</option>
-            <option value="Ingeniería Informática">Ingeniería de Informática</option>
-            <option value="Ingeniería Marítima">Ingeniería Marítima</option>
-
-          </select>
-
-          <!-- Para agregar carreras a futuro -->
-
-        </div>
-      </div>
-      
-      <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
-        <button class="clear-filters-btn" onclick="clearAllFilters()">
-          <i class="fas fa-times"></i>
-          Limpiar Filtros
-        </button>
-        <div class="results-count" id="results-count">
-          Mostrando todos los proyectos
-        </div>
-      </div>
+        <!-- Mensaje de no resultados cuando se han aplicado filtros -->
+        <?php if (isset($filtrosAplicados) && $filtrosAplicados && empty($proyectos)): ?>
+            <div class="no-results" id="no-results">
+                <i class="fas fa-search"></i>
+                <h3>No se encontraron proyectos que coincidan con los filtros.</h3>
+            </div>
+        <?php endif; ?>
     </div>
-    
-    <div class="projects-container">
-      <!-- Botones de navegación -->
-      <button class="nav-button prev" onclick="scrollProjects(-1)">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="nav-button next" onclick="scrollProjects(1)">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-      
-<h2 class="section-title">Proyectos</h2>
-<div class="cards-grid" id="projects-scroll">
-  
-  <?php foreach ($proyectos as $p): ?>
-<div class="project-card card"
-     data-year="<?= htmlspecialchars($p['anio']) ?>"
-     data-career="<?= htmlspecialchars($p['carrera']) ?>"
-     data-title="<?= htmlspecialchars(strtolower($p['titulo'])) ?>">
 
-
-  <a href="<?= site_url('proyectos/visor/' . $p['id']) ?>">  
-
-
- <?php
-$nombreImagen = isset($p['imagen']) && !empty($p['imagen']) ? htmlspecialchars($p['imagen']) : 'placeholder.jpg';
-?>
-<img src="<?= base_url('img/proyectos/' . $nombreImagen) ?>" alt="<?= htmlspecialchars($p['titulo']) ?>">
-
-    <div class="card-body">
-      <h3 class="card-title"><?= htmlspecialchars($p['titulo']) ?></h3>
-      
-      <div class="card-meta">
-        <div class="meta-item"><i class="fas fa-user"></i> <?= htmlspecialchars($p['autor']) ?></div>
-        <div class="meta-item"><i class="fas fa-calendar-alt"></i> <?= htmlspecialchars($p['anio']) ?></div>
-        <div class="meta-item"><i class="fas fa-graduation-cap"></i> <?= htmlspecialchars($p['carrera']) ?></div>
-      </div>
-    </div>
-  </a>
-</div>
-
-  <?php endforeach; ?>
-</div>
-
-
-      <!-- Mensaje cuando no hay resultados -->
-      <div class="no-results" id="no-results" style="display: none;">
-        <i class="fas fa-search"></i>
-        <h3>No se encontraron proyectos</h3>
-        <p>Intenta ajustar los filtros de búsqueda para encontrar más resultados.</p>
-      </div>
-    </div>
-  </main>
-
+    <!-- Sección para mostrar los proyectos -->
+  <div class="cards-grid">
+    <?php if (!empty($proyectos)): ?>
+      <?php foreach ($proyectos as $p): ?>
+        <div class="project-card card">
+          <a href="<?= base_url('proyectos/visor/' . $p['id']) ?>">
+            <img src="<?= base_url('img/proyectos/' . (isset($p['imagen']) && !empty($p['imagen']) ? $p['imagen'] : 'placeholder.jpg')) ?>" alt="<?= esc($p['titulo']) ?>">
+          </a>
+          <div class="card-body">
+            <div class="card-title"><?= esc($p['titulo']) ?></div>
+            <div class="card-meta">
+              Autor: <?= esc($p['autor']) ?> · <?= esc($p['anio']) ?>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    <?php else: ?>
+      <p>No se encontraron proyectos.</p>
+    <?php endif; ?>
+  </div>
+</main>
   <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-<li><a href="<?= base_url('nuestramision') ?>">Nuestra Misión</a></li>
-<li><a href="<?= base_url('equipo') ?>">Equipo</a></li>
+          <li><a href="<?= base_url('nuestramision') ?>">Nuestra Misión</a></li>
+          <li><a href="<?= base_url('equipo') ?>">Equipo</a></li>
         </ul>
       </div>
-     <div class="footer-column">
+      <div class="footer-column">
         <h3>Redes Sociales</h3>
         <ul>
           <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
@@ -175,7 +126,7 @@ $nombreImagen = isset($p['imagen']) && !empty($p['imagen']) ? htmlspecialchars($
   </footer>
 
   <script>
-    // Variables globales para los filtros
+    // Lógica para los filtros y búsqueda
     let allProjects = [];
     let filteredProjects = [];
 
@@ -191,60 +142,50 @@ $nombreImagen = isset($p['imagen']) && !empty($p['imagen']) ? htmlspecialchars($
       filteredProjects = [...allProjects];
     }
 
-    function applyFilters() {
-      const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
-      const selectedYear = document.getElementById('year-filter').value;
-      const selectedCareer = document.getElementById('career-filter').value;
+function applyFilters() {
+  const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+  const selectedYear = document.getElementById('year-filter').value;
+  const selectedCareer = document.getElementById('career-filter').value;
 
-      filteredProjects = allProjects.filter(project => {
-        const title = project.getAttribute('data-title');
-        const year = project.getAttribute('data-year');
-        const career = project.getAttribute('data-career');
+  filteredProjects = allProjects.filter(project => {
+    const title = project.getAttribute('data-title');
+    const year = project.getAttribute('data-year');
+    const career = project.getAttribute('data-career');
 
-        // Filtro por título
-        const titleMatch = !searchTerm || title.includes(searchTerm);
-        
-        // Filtro por año
-        const yearMatch = !selectedYear || year === selectedYear;
-        
-        // Filtro por carrera
-        const careerMatch = !selectedCareer || career === selectedCareer;
+    const titleMatch = !searchTerm || title.includes(searchTerm);
+    const yearMatch = !selectedYear || year === selectedYear;
+    const careerMatch = !selectedCareer || career === selectedCareer;
 
-        // Para agregar carreras adicionales a futuro
+    return titleMatch && yearMatch && careerMatch;
+  });
 
-        return titleMatch && yearMatch && careerMatch;
-      });
+  displayFilteredProjects();
+  updateResultsCount();
+}
 
-      displayFilteredProjects();
-      updateResultsCount();
-    }
+function displayFilteredProjects() {
+  const container = document.getElementById('projects-scroll');
+  const noResultsDiv = document.getElementById('no-results');
 
-    function displayFilteredProjects() {
-      const container = document.getElementById('projects-scroll');
-      const noResultsDiv = document.getElementById('no-results');
+  // Ocultar todos los proyectos primero
+  allProjects.forEach(project => {
+    project.style.display = 'none';
+  });
 
-      // Ocultar todos los proyectos
-      allProjects.forEach(project => {
-        project.style.display = 'none';
-      });
+  // Mostrar los proyectos filtrados
+  if (filteredProjects.length === 0) {
+    container.style.display = 'none';
+    noResultsDiv.style.display = 'block';
+  } else {
+    container.style.display = 'flex';
+    noResultsDiv.style.display = 'none';
+    filteredProjects.forEach(project => {
+      project.style.display = 'block';
+    });
+  }
 
-      if (filteredProjects.length === 0) {
-        // Mostrar mensaje de no resultados
-        container.style.display = 'none';
-        noResultsDiv.style.display = 'block';
-      } else {
-        // Mostrar proyectos filtrados
-        container.style.display = 'flex';
-        noResultsDiv.style.display = 'none';
-        
-        filteredProjects.forEach(project => {
-          project.style.display = 'block';
-        });
-      }
-
-      // Resetear scroll al inicio
-      container.scrollLeft = 0;
-    }
+  container.scrollLeft = 0;
+}
 
     function updateResultsCount() {
       const count = filteredProjects.length;
@@ -261,12 +202,9 @@ $nombreImagen = isset($p['imagen']) && !empty($p['imagen']) ? htmlspecialchars($
     }
 
     function clearAllFilters() {
-      // Limpiar todos los campos de filtro
       document.getElementById('search-input').value = '';
       document.getElementById('year-filter').value = '';
       document.getElementById('career-filter').value = '';
-
-      // Mostrar todos los proyectos
       filteredProjects = [...allProjects];
       displayFilteredProjects();
       updateResultsCount();
@@ -274,8 +212,7 @@ $nombreImagen = isset($p['imagen']) && !empty($p['imagen']) ? htmlspecialchars($
 
     function scrollProjects(direction) {
       const container = document.getElementById('projects-scroll');
-      const scrollAmount = 300; // Cantidad de píxeles a desplazar
-      
+      const scrollAmount = 300;
       if (direction === 1) {
         container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       } else {
@@ -283,9 +220,7 @@ $nombreImagen = isset($p['imagen']) && !empty($p['imagen']) ? htmlspecialchars($
       }
     }
 
-    // Opcional: Auto-scroll con las teclas de flecha
     document.addEventListener('keydown', function(e) {
-      // Solo funcionar si no estamos escribiendo en un input
       if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'SELECT') {
         if (e.key === 'ArrowLeft') {
           scrollProjects(-1);
@@ -295,13 +230,11 @@ $nombreImagen = isset($p['imagen']) && !empty($p['imagen']) ? htmlspecialchars($
       }
     });
 
-    // Función para búsqueda en tiempo real más fluida
     let searchTimeout;
     document.getElementById('search-input').addEventListener('input', function() {
       clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(applyFilters, 300); // 300ms de delay
+      searchTimeout = setTimeout(applyFilters, 300);
     });
   </script>
 </body>
 </html>
-

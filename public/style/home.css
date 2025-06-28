@@ -278,11 +278,12 @@
       color: var(--color-acento);
       text-align: center;
     }
-    .quotes-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-    }
+.quotes-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
     .quote-item {
       background-color: var(--color-fondo);
       padding: 1rem;

@@ -1,6 +1,20 @@
 <IfModule authz_core_module>
-	Require all denied
+    Require all denied
 </IfModule>
 <IfModule !authz_core_module>
-	Deny from all
+    Deny from all
+</IfModule>
+
+# Permitir acceso a archivos estáticos
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Permitir acceso a las imágenes, CSS, JS, etc.
+    RewriteRule ^(public/img|public/css|public/js)/ - [L]
+
+    # Reglas de reescritura de URLs para CodeIgniter
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d    
+    RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
