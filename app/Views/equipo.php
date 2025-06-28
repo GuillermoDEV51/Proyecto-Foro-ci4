@@ -12,13 +12,13 @@
 
 <body>
   
-  <!-- Header -->
+  <!-- Header principal -->
   <header>
     <div class="header-container">
-      <div class="logo">
-        <img class="icono" src="<?php echo base_url() ?>img\LOGOFP.png" alt="LOGOFP" />
-        <span>Foro de Proyectos</span>
-      </div>
+    <a href="<?= base_url() ?>" class="logo">
+      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+      <span>Foro de Proyectos</span>
+    </a>
       <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
   </header>
@@ -69,7 +69,7 @@
         <h3 class="member-name">Guillermo Mendoza</h3>
         <p class="member-role">Desarrollador Backend</p>
         <p class="member-description">
-          Ingeniera en sistemas responsable de la arquitectura técnica de la plataforma.
+          Ingeniero en sistemas responsable de la arquitectura técnica de la plataforma.
         </p>
         <div class="member-social">
           <a href="#" class="social-link"><i class="fab fa-github"></i></a>

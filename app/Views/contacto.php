@@ -18,10 +18,10 @@
   <!-- Header principal -->
   <header>
     <div class="header-container">
-      <div class="logo">
-        <img class="icono" src="<?php echo base_url() ?>img\LOGOFP.png" alt="LOGOFP" />
-        <span>Foro de Proyectos</span>
-      </div>
+    <a href="<?= base_url() ?>" class="logo">
+      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+      <span>Foro de Proyectos</span>
+    </a>
       <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
   </header>
@@ -69,8 +69,8 @@
       <div class="footer-column">
         <h3>Redes Sociales</h3>
         <ul>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i> </a></li>
         </ul>
       </div>
     </div>

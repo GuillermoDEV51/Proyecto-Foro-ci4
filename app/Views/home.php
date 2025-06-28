@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forum de Proyectos</title>
-  <!-- Tipografía limpia similar a Scribd -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,10 +18,11 @@
   <!-- Header principal -->
   <header>
     <div class="header-container">
-      <div class="logo">
-        <img src="<?php echo base_url() ?>img\LOGOFP.png" alt="LOGOFP" />
-        <span>Foro de Proyectos</span>
-      </div>
+    <a href="<?= base_url() ?>" class="logo">
+      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+      <span>Foro de Proyectos</span>
+    </a>
+
       <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
   </header>
@@ -85,6 +85,8 @@
 
 <main class="main-content">
   <h2 class="section-title">Documentos Destacados</h2>
+
+  <!-- Este contenedor se alinea horizontalmente con scroll -->
   <div class="cards-grid">
     <?php foreach ($destacados as $doc): ?>
       <div class="card">
@@ -93,13 +95,42 @@
         </a>
         <div class="card-body">
           <div class="card-title"><?= esc($doc['titulo']) ?></div>
-          <div class="card-meta">Autor: <?= esc($doc['autor']) ?> · <?= esc($doc['anio']) ?></div>
+          <div class="card-meta">
+            Autor: <?= esc($doc['autor']) ?> · <?= esc($doc['anio']) ?>
+          </div>
         </div>
       </div>
     <?php endforeach; ?>
   </div>
+</main>
 
 
+<!--<section class="cards-grid">
+  <div class="card">
+    <img src="imagen1.jpg" alt="Documento 1">
+    <div class="card-body">
+      <h3 class="card-title">Tecnología Digital</h3>
+      <p class="card-meta">Autor: Ana Laura Rivoir · 2024</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="imagen2.jpg" alt="Documento 2">
+    <div class="card-body">
+      <h3 class="card-title">Optimización de Procesos Industriales</h3>
+      <p class="card-meta">Autor: Jeyson Patricio Egas García · 2023</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="imagen3.jpg" alt="Documento 3">
+    <div class="card-body">
+      <h3 class="card-title">Algoritmos Genéticos Aplicados</h3>
+      <p class="card-meta">Autor: ...</p>
+    </div>
+  </div>
+</section>
+-->
     <!-- Sección de frases motivacionales respecto al estudio -->
     <section class="motivational-quotes">
       <h2>Siempre aprende más</h2>
@@ -126,20 +157,20 @@
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="<?php echo base_url() ?>nuestramision">Nuestra Misión</a></li>
-          <li><a href="<?php echo base_url() ?>equipo">Equipo</a></li>
+<li><a href="<?= base_url('nuestramision') ?>">Nuestra Misión</a></li>
+<li><a href="<?= base_url('equipo') ?>">Equipo</a></li>
         </ul>
       </div>
-      <div class="footer-column">
+     <div class="footer-column">
         <h3>Redes Sociales</h3>
         <ul>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i> </a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 Forum de Proyectos. Todos los derechos reservados.</p>
+      <p>&copy; 2025 Foro de Proyectos. Todos los derechos reservados.</p>
     </div>
   </footer>
 </body>
