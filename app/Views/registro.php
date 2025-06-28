@@ -1,8 +1,8 @@
-        <?php
-            if (session('user')) {
-                return redirect()->to('/');
-            }
-         ?>
+ <?php
+    if (session('user')) {
+        return redirect()->to('/');
+    }
+    ?>
 
  <!DOCTYPE html>
  <html lang="es">
@@ -19,13 +19,15 @@
 
  <body>
 
- 
+
      <div class="login min-vh-100 position-relative">
 
-    <div class="position-absolute start-0 top-0 m-3">
-        <a href="<?php echo base_url() ?>" class="btn btn-secondary p-2">Volver al Inicio</a>
-    </div>
+            <!-- Botón para volver al inicio -->
+         <div class="position-absolute start-0 top-0 m-3">
+             <a href="<?php echo base_url() ?>" class="btn btn-secondary p-2">Volver al Inicio</a>
+         </div>
 
+            <!-- Contenedor principal del formulario de inicio de sesión -->
          <div class="login-box shadow-lg p-4 bg-white rounded w-75 h-50">
 
              <!-- Bloque superior con ícono y SVG -->
@@ -33,7 +35,7 @@
                  <a href="<?php echo base_url() ?>" class="d-inline-flex align-items-center mb-2 mb-lg-0 text-success text-decoration-none fs-2">
                      <img class="icono" src="<?php echo base_url() ?>img\LOGOFP.png" alt="LOGOFP" />
                  </a>
-                 <h2 class="text-secondary">Iniciar Sesion</h2>
+                 <h2 class="text-secondary">Registrate</h2>
              </div>
 
 
@@ -45,8 +47,9 @@
                  </div>
              <?php endif; ?>
 
+
              <!-- Formulario de inicio de sesión -->
-             <form method="post" action="<?php echo base_url() ?>login/loginAutenticacion">
+             <form method="post" action="<?php echo base_url() ?>registro-usuario">
 
 
                  <!-- Grupo usuario -->
@@ -61,19 +64,20 @@
                  <!-- Grupo contraseña -->
                  <div class="mb-3">
                      <label for="Password" class="form-label">Contraseña</label>
-                     <input type="password" class="form-control" id="Password" name="password" required>
-
-
-
+                     <input type="password" minlength="8" maxlength="20" class="form-control" id="Password" name="password" required>
+                 </div>
+                  <div class="mb-3">
+                     <label for="Password2" class="form-label">confirmar contraseña</label>
+                     <input type="password" minlength="8" maxlength="20" class="form-control" id="Password2" name="password2" required>
                  </div>
 
 
                  <!-- Botones de acción -->
 
                  <div class="d-flex mb-3 ">
-                     <button type="submit" class="btn btn-warning">Ingresar</button>
-                     <a href="<?php echo base_url() ?>registro" class="btn btn-success ms-auto p-2">Registrarse</a>
+                     <button type="submit" class="btn btn-success">Registrarse</button>
 
+                     <a href="<?php echo base_url() ?>login" class="btn btn-warning ms-auto p-2">Volver al login</a>
                  </div>
 
 

@@ -14,9 +14,12 @@ $routes->get('contacto', 'Contacto::index');
 $routes->get('equipo', 'Equipo::index');
 $routes->get('visor', 'Visor::index');
 $routes->get('nuestramision', 'Nuestramision::index');
+
+// Rutas para logueos y registro
 $routes->get('login', 'Login::index');
 $routes->match(['get', 'post'], 'login/loginAutenticacion', 'Login::loginAutenticacion');
 $routes->get('registro', 'Registro::index');
+$routes->match(['get', 'post'], 'registro-usuario', 'Registro::registroUsuario');
 
 
 // Rutas para visor con ID
