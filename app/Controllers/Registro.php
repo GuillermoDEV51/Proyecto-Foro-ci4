@@ -47,6 +47,6 @@ class Registro extends BaseController
             return redirect()->to('/registro');
         }*/
 
-        var_dump($codigo, $password, $password2);
+       
     }
 }

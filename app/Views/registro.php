@@ -67,7 +67,7 @@
                      <input type="password" minlength="8" maxlength="20" class="form-control" id="Password" name="password" required>
                  </div>
                   <div class="mb-3">
-                     <label for="Password2" class="form-label">confirmar contraseña</label>
+                     <label for="Password2" class="form-label">Confirmar Contraseña</label>
                      <input type="password" minlength="8" maxlength="20" class="form-control" id="Password2" name="password2" required>
                  </div>
 
