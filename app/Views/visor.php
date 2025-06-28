@@ -15,13 +15,12 @@
 </head>
 <body>
 
-  <!-- Header principal -->
   <header>
     <div class="header-container">
-    <a href="<?= base_url() ?>" class="logo">
-      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
-      <span>Foro de Proyectos</span>
-    </a>
+      <div class="logo">
+        <img src="<?= base_url('img/LOGOFP.png') ?>" alt="LOGOFP" />
+        <span>Foro de Proyectos</span>
+      </div>
       <div class="header-actions">
         <a href="<?= base_url('/') ?>" class="btn-back">
           <i class="fas fa-arrow-left"></i> Volver al Inicio

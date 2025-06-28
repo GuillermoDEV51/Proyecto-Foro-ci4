@@ -36,5 +36,8 @@ $routes->get('user/enviar_contactousuario', 'enviarcontactousuario::index');
 $routes->get('user/visorusuario', '::index');
 
 $routes->get('admin/VistaCRUD', 'VistaCRUD::index');
+$routes->get('proyectos/actualizar-imagenes', 'ProyectosController::actualizarImagenes');
 
-
+// Rutas para el controlador de proyectos
+$routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
+$routes->get('visor/(:num)', 'Visor::visor/$1');
