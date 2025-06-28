@@ -6,37 +6,36 @@
   <title>Nuestro Equipo - Foro de Proyectos</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <link rel="stylesheet" href="<?php echo base_url() ?>style/equipo.css"/>
+  <link rel="stylesheet" href="<?= base_url() ?>style/equipo.css"/>
 </head>
 
 <body>
-  
-  <!-- Header principal -->
+  <!-- Header -->
   <header>
     <div class="header-container">
-    <a href="<?= base_url() ?>" class="logo">
-      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
-      <span>Foro de Proyectos</span>
-    </a>
-      <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
+      <a href="<?= base_url() ?>" class="logo">
+        <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+        <span>Foro de Proyectos</span>
+      </a>
+      <a href="<?= base_url() ?>login" class="login-link">
+        <i class="fas fa-user"></i> Iniciar Sesión
+      </a>
     </div>
   </header>
 
-  <!-- Navigation -->
+  <!-- Navegación -->
   <nav>
     <div class="nav-container">
-      <a href="<?php echo base_url() ?>">Inicio</a>
-      <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
-      <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
-      <a href="<?php echo base_url() ?>contacto">Contacto</a>
+      <a href="<?= base_url() ?>">Inicio</a>
+      <a href="<?= base_url() ?>proyectos">Proyectos</a>
+      <a href="<?= base_url() ?>ayuda">Ayuda</a>
+      <a href="<?= base_url() ?>contacto">Contacto</a>
     </div>
   </nav>
 
-  <!-- Main Content -->
+  <!-- Contenido Principal -->
   <main class="main-content">
-    
-    <!-- Page Header -->
+    <!-- Encabezado de la Página -->
     <div class="page-header">
       <h1 class="page-title">Nuestro Equipo</h1>
       <p class="page-subtitle">
@@ -44,10 +43,10 @@
       </p>
     </div>
 
-    <!-- Team Members -->
+    <!-- Miembros del Equipo -->
     <div class="team-grid">
       
-      <div class="team-member">
+    <div class="team-member">
         <div class="member-avatar">
           <i class="fas fa-user-tie"></i>
         </div>
@@ -57,8 +56,10 @@
           Especialista en gestión de proyectos educativos. Lidera la visión estratégica del foro.
         </p>
         <div class="member-social">
-          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+<a href="" class="social-link copy-email" data-email="alarconbooking1@gmail.com">
+  <i class="fas fa-envelope"></i>
+</a>
+
         </div>
       </div>
 
@@ -72,8 +73,10 @@
           Ingeniero en sistemas responsable de la arquitectura técnica de la plataforma.
         </p>
         <div class="member-social">
-          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-          <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+<a href="" class="social-link copy-email" data-email="guillermobooking1@gmail.com">
+  <i class="fas fa-envelope"></i>
+</a>
+
         </div>
       </div>
 
@@ -87,12 +90,14 @@
           Diseñador de base de datos y optimización de consultas. Asegura la integridad y rendimiento de los datos.
         </p>
         <div class="member-social">
-          <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
-          <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+<a href="" class="social-link copy-email" data-email="alexisbooking1@gmail.com">
+  <i class="fas fa-envelope"></i>
+</a>
+
         </div>
       </div>
-
     </div>
+
 
     <!-- Call to Action -->
     <section class="cta-section">
@@ -104,6 +109,27 @@
         Contáctanos
       </a>
     </section>
+    <script>
+  document.querySelectorAll('.copy-email').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      const email = link.getAttribute('data-email');
+      if (!email) return;
+
+      // Copiar al portapapeles
+      navigator.clipboard.writeText(email).then(() => {
+        // Opcional: cambia el ícono temporalmente o muestra un mensaje
+        const original = link.innerHTML;
+        link.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => {
+          link.innerHTML = original;
+        }, 1500);
+      }).catch(err => {
+        console.error('Error al copiar el correo:', err);
+      });
+    });
+  });
+</script>
+
 
   </main>
 

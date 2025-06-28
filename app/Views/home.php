@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="<?php echo base_url() ?>boostra/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
   <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>style/home.css" rel="stylesheet">
 

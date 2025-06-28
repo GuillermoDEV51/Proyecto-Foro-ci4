@@ -4,7 +4,7 @@
       --color-texto: #333333;
       --color-header: #ffffff;
       --radio-bordes: 8px;
-      --sombra-card: rgba(0, 0, 0, 0.08);
+      --sombra-card: rgba(255, 255, 255, 0.08);
     }
 
     * {
@@ -41,6 +41,7 @@
     } 
 
   .logo {
+      text-decoration: none;
   display: flex;
   align-items: center;
   margin-left: -20px; /* más hacia la izquierda */
