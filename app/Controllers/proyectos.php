@@ -6,53 +6,50 @@ use App\Models\ProyectosModel;
 
 class Proyectos extends BaseController
 {
-public function index()
-{
-    $proyectosModel = new ProyectosModel();
+    public function index()
+    {
+        $proyectosModel = new ProyectosModel();
 
-    // Obtener todos los proyectos
-    $proyectos = $proyectosModel->findAll();
+        // Obtener los filtros si existen
+        $q = $this->request->getGet('q');
+        $anio = $this->request->getGet('anio');
+        $carrera = $this->request->getGet('carrera');
 
-    // Obtener los filtros si existen
-    $q = $this->request->getGet('q');
-    $anio = $this->request->getGet('anio');
-    $carrera = $this->request->getGet('carrera');
+        // Filtrar todos los proyectos
+        $builder = $proyectosModel->builder();
 
-    // Filtrar todos los proyectos
-    $builder = $proyectosModel->builder();
+        if (!empty($q)) {
+            $builder->groupStart()
+                ->like('titulo', $q)
+                ->orLike('autor', $q)
+                ->groupEnd();
+        }
 
-    if (!empty($q)) {
-        $builder->groupStart()
-            ->like('titulo', $q)
-            ->orLike('autor', $q)
-            ->groupEnd();
+        if (!empty($anio)) {
+            $builder->where('anio', $anio);
+        }
+
+        if (!empty($carrera)) {
+            $builder->where('carrera', $carrera);
+        }
+
+        // Obtener los proyectos filtrados
+        $resultados = $builder->get()->getResultArray();
+
+        // Verificar si hay filtros aplicados
+        $filtrosAplicados = !empty($q) || !empty($anio) || !empty($carrera);
+
+        // Pasar las variables 'proyectos', 'destacados', etc., a la vista 'proyectos'
+        return view('proyectos', [
+            'proyectos' => $resultados,  // Proyectos filtrados
+            'q' => $q,
+            'anio' => $anio,
+            'carrera' => $carrera,
+            'filtrosAplicados' => $filtrosAplicados  // Variable para saber si se aplicaron filtros
+        ]);
     }
 
-    if (!empty($anio)) {
-        $builder->where('anio', $anio);
-    }
-
-    if (!empty($carrera)) {
-        $builder->where('carrera', $carrera);
-    }
-
-    // Obtener los proyectos filtrados
-    $resultados = $builder->get()->getResultArray();
-
-    // Verificar si hay filtros aplicados
-    $filtrosAplicados = !empty($q) || !empty($anio) || !empty($carrera);
-
-    // Pasar las variables 'proyectos', 'destacados', etc., a la vista 'proyectos'
-    return view('proyectos', [
-        'proyectos' => $resultados,  // Proyectos filtrados
-        'q' => $q,
-        'anio' => $anio,
-        'carrera' => $carrera,
-        'filtrosAplicados' => $filtrosAplicados  // Variable para saber si se aplicaron filtros
-    ]);
-}
-
-
+    // Función para actualizar las imágenes (sin cambios)
     public function actualizarImagenes()
     {
         $proyectos = [
@@ -70,6 +67,7 @@ public function index()
         return redirect()->to('/proyectos')->with('success', 'Imágenes actualizadas correctamente');
     }
 
+    // Función de búsqueda (podría no ser necesaria si ya filtras en el controlador)
     public function buscar()
     {
         $model = new ProyectosModel();
@@ -111,6 +109,7 @@ public function index()
         ]);
     }
 
+    // Función visor (sin cambios)
     public function visor($id)
     {
         $model = new ProyectosModel();

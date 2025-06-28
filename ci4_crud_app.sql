@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2025 a las 00:29:53
+-- Tiempo de generación: 28-06-2025 a las 21:47:29
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ci4_crud_app`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proyectos`
+--
+
+CREATE TABLE `proyectos` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `autor` varchar(255) NOT NULL,
+  `carrera` varchar(100) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `anio` year(4) NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `pdf` varchar(255) DEFAULT NULL,
+  `destacado` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `proyectos`
+--
+
+INSERT INTO `proyectos` (`id`, `titulo`, `autor`, `carrera`, `descripcion`, `anio`, `imagen`, `pdf`, `destacado`) VALUES
+(1, 'Sistema de Gestión Escolar', 'Laura Mendoza', 'Ingeniería Informática', 'Este proyecto trata sobre...', '2024', 'proyecto1.jpg', 'proyecto1.pdf', 1),
+(2, 'Navegación Inteligente', 'Carlos Díaz', 'Ingeniería Marítima', NULL, '2023', 'proyecto2.jpg', 'proyecto2.pdf', 1),
+(3, 'Plataforma E-learning', 'Ana Torres', 'Ingeniería Informática', NULL, '2024', 'proyecto3.jpg', 'proyecto3.pdf\r\n', 1),
+(4, 'Desarrollo de Aplicación Web para Gestión de Inventarios', 'Juan Pérez', 'Ingeniería Informática', NULL, '2024', 'proyecto4.jpg', 'proyecto4.pdf', 0),
+(5, 'Estudio de Impacto Ambiental en el Puerto de la Ciudad', 'María García', 'Ingeniería Marítima', NULL, '2023', 'proyecto5.jpg', NULL, 0),
+(6, 'Análisis de Sostenibilidad en el Uso del Agua en Regiones Áridas', 'Carlos Sánchez', 'Ingeniería Ambiental', NULL, '2022', 'proyecto6.jpg', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -66,6 +96,12 @@ INSERT INTO `usuarios2` (`id`, `user`, `contraseña`, `id_rol`) VALUES
 --
 
 --
+-- Indices de la tabla `proyectos`
+--
+ALTER TABLE `proyectos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
@@ -81,6 +117,12 @@ ALTER TABLE `usuarios2`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `proyectos`
+--
+ALTER TABLE `proyectos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`

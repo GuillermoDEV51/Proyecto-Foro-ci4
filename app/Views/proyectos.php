@@ -33,61 +33,57 @@
   </nav>
 
   <!-- Contenido principal: Proyectos -->
-  <main class="main-content">
-    <!-- Filtros de búsqueda -->
-    <div class="filters-container">
-        <div class="filters-title">
-            <i class="fas fa-filter"></i> Filtrar Proyectos
-        </div>
-        <div class="filters-grid">
-            <div class="filter-group">
-                <label class="filter-label" for="search-input">Buscar por título</label>
-                <input 
-                    type="text" 
-                    id="search-input" 
-                    class="filter-input" 
-                    placeholder="Escribe el nombre del proyecto..."
-                    value="<?= isset($q) ? esc($q) : '' ?>"
-                    onkeyup="applyFilters()"
-                />
-            </div>
+ <!-- Contenido principal: Proyectos -->
+<main class="main-content">
+  <!-- Filtros de búsqueda -->
+  <div class="filters-container">
+      <div class="filters-title">
+          <i class="fas fa-filter"></i> Filtrar Proyectos
+      </div>
+      <div class="filters-grid">
+          <div class="filter-group">
+              <label class="filter-label" for="search-input">Buscar por título</label>
+              <input 
+                  type="text" 
+                  id="search-input" 
+                  class="filter-input" 
+                  placeholder="Escribe el nombre del proyecto..."
+                  value="<?= isset($q) ? esc($q) : '' ?>"
+                  onkeyup="applyFilters()"
+              />
+          </div>
 
-            <div class="filter-group">
-                <label class="filter-label" for="year-filter">Año</label>
-                <select id="year-filter" class="filter-select" onchange="applyFilters()">
-                    <option value="">Todos los años</option>
-                    <?php for ($year = date('Y'); $year >= 2000; $year--): ?>
-                        <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
-                    <?php endfor; ?>
-                </select>
-            </div>
+          <div class="filter-group">
+              <label class="filter-label" for="year-filter">Año</label>
+              <select id="year-filter" class="filter-select" onchange="applyFilters()">
+                  <option value="">Todos los años</option>
+                  <?php for ($year = date('Y'); $year >= 2000; $year--): ?>
+                      <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
+                  <?php endfor; ?>
+              </select>
+          </div>
 
-            <div class="filter-group">
-                <label class="filter-label" for="career-filter">Carrera</label>
-                <select id="career-filter" class="filter-select" onchange="applyFilters()">
-                    <option value="">Todas las carreras</option>
-                    <option value="Ingeniería Informática" <?= (isset($carrera) && $carrera == 'Ingeniería Informática') ? 'selected' : '' ?>>Ingeniería de Informática</option>
-                    <option value="Ingeniería Marítima" <?= (isset($carrera) && $carrera == 'Ingeniería Marítima') ? 'selected' : '' ?>>Ingeniería Marítima</option>
-                </select>
-            </div>
-        </div>
-        
-        <!-- Mensaje de no resultados cuando se han aplicado filtros -->
-        <?php if (isset($filtrosAplicados) && $filtrosAplicados && empty($proyectos)): ?>
-            <div class="no-results" id="no-results">
-                <i class="fas fa-search"></i>
-                <h3>No se encontraron proyectos que coincidan con los filtros.</h3>
-            </div>
-        <?php endif; ?>
-    </div>
+          <div class="filter-group">
+              <label class="filter-label" for="career-filter">Carrera</label>
+              <select id="career-filter" class="filter-select" onchange="applyFilters()">
+                  <option value="">Todas las carreras</option>
+                  <option value="Ingeniería Informática" <?= (isset($carrera) && $carrera == 'Ingeniería Informática') ? 'selected' : '' ?>>Ingeniería de Informática</option>
+                  <option value="Ingeniería Marítima" <?= (isset($carrera) && $carrera == 'Ingeniería Marítima') ? 'selected' : '' ?>>Ingeniería Marítima</option>
+              </select>
+          </div>
+      </div>
+  </div>
 
-    <!-- Sección para mostrar los proyectos -->
+<!-- Contenedor para el desplazamiento de proyectos -->
+<div id="projects-scroll" class="projects-scroll-container">
+
   <div class="cards-grid">
     <?php if (!empty($proyectos)): ?>
       <?php foreach ($proyectos as $p): ?>
-        <div class="project-card card">
+        <div class="project-card card" data-title="<?= strtolower(esc($p['titulo'])) ?>" data-year="<?= esc($p['anio']) ?>" data-career="<?= esc($p['carrera']) ?>">
           <a href="<?= base_url('proyectos/visor/' . $p['id']) ?>">
-            <img src="<?= base_url('img/proyectos/' . (isset($p['imagen']) && !empty($p['imagen']) ? $p['imagen'] : 'placeholder.jpg')) ?>" alt="<?= esc($p['titulo']) ?>">
+            <img src="<?= base_url('img/proyectos/' . (isset($p['imagen']) && !empty($p['imagen']) ? $p['imagen'] : 'placeholder.jpg')) ?>" alt="<?= esc($p['titulo']) ?>" loading="lazy">
+
           </a>
           <div class="card-body">
             <div class="card-title"><?= esc($p['titulo']) ?></div>
@@ -101,7 +97,11 @@
       <p>No se encontraron proyectos.</p>
     <?php endif; ?>
   </div>
+</div>
+
+
 </main>
+
   <!-- Footer -->
   <footer>
     <div class="footer-container">
@@ -126,15 +126,47 @@
   </footer>
 
   <script>
-    // Lógica para los filtros y búsqueda
     let allProjects = [];
     let filteredProjects = [];
 
     // Inicializar al cargar la página
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeProjects();
-      updateResultsCount();
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollContainer = document.getElementById('projects-scroll');
+  const scrollbar = document.getElementById('scrollbar');
+  const cardsGrid = document.querySelector('.cards-grid');
+
+  // Almacenar los valores iniciales
+  const totalWidth = cardsGrid.scrollWidth;
+  const visibleWidth = scrollContainer.offsetWidth;
+
+  let isScrolling = false;
+
+  // Función para actualizar la barra de desplazamiento
+  function updateScrollbar() {
+    const totalWidth = cardsGrid.scrollWidth;
+    const visibleWidth = scrollContainer.offsetWidth;
+    const scrollbarWidth = (visibleWidth / totalWidth) * 100;
+    scrollbar.style.width = `${scrollbarWidth}%`;
+  }
+
+  function handleScroll() {
+    if (!isScrolling) {
+      window.requestAnimationFrame(function() {
+        const scrollPosition = scrollContainer.scrollLeft;
+        const scrollbarPosition = (scrollPosition / (totalWidth - visibleWidth)) * 100;
+        scrollbar.style.transform = `translateX(${scrollbarPosition}%)`;
+        isScrolling = false;
+      });
+      isScrolling = true;
+    }
+  }
+
+  updateScrollbar(); // Inicializa la barra de desplazamiento
+
+  scrollContainer.addEventListener('scroll', handleScroll);
+});
+
+
 
     function initializeProjects() {
       const projectCards = document.querySelectorAll('.project-card');
@@ -142,50 +174,50 @@
       filteredProjects = [...allProjects];
     }
 
-function applyFilters() {
-  const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
-  const selectedYear = document.getElementById('year-filter').value;
-  const selectedCareer = document.getElementById('career-filter').value;
+    function applyFilters() {
+      const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+      const selectedYear = document.getElementById('year-filter').value;
+      const selectedCareer = document.getElementById('career-filter').value;
 
-  filteredProjects = allProjects.filter(project => {
-    const title = project.getAttribute('data-title');
-    const year = project.getAttribute('data-year');
-    const career = project.getAttribute('data-career');
+      filteredProjects = allProjects.filter(project => {
+        const title = project.getAttribute('data-title');
+        const year = project.getAttribute('data-year');
+        const career = project.getAttribute('data-career');
 
-    const titleMatch = !searchTerm || title.includes(searchTerm);
-    const yearMatch = !selectedYear || year === selectedYear;
-    const careerMatch = !selectedCareer || career === selectedCareer;
+        const titleMatch = !searchTerm || title.includes(searchTerm);
+        const yearMatch = !selectedYear || year === selectedYear;
+        const careerMatch = !selectedCareer || career === selectedCareer;
 
-    return titleMatch && yearMatch && careerMatch;
-  });
+        return titleMatch && yearMatch && careerMatch;
+      });
 
-  displayFilteredProjects();
-  updateResultsCount();
-}
+      displayFilteredProjects();
+      updateResultsCount();
+    }
 
-function displayFilteredProjects() {
-  const container = document.getElementById('projects-scroll');
-  const noResultsDiv = document.getElementById('no-results');
+    function displayFilteredProjects() {
+      const container = document.getElementById('projects-scroll');
+      const noResultsDiv = document.getElementById('no-results');
 
-  // Ocultar todos los proyectos primero
-  allProjects.forEach(project => {
-    project.style.display = 'none';
-  });
+      // Aseguramos que todos los proyectos sean visibles
+      allProjects.forEach(project => {
+        project.style.display = 'none'; // Inicialmente ocultar todos
+      });
 
-  // Mostrar los proyectos filtrados
-  if (filteredProjects.length === 0) {
-    container.style.display = 'none';
-    noResultsDiv.style.display = 'block';
-  } else {
-    container.style.display = 'flex';
-    noResultsDiv.style.display = 'none';
-    filteredProjects.forEach(project => {
-      project.style.display = 'block';
-    });
-  }
+      // Mostrar los proyectos filtrados
+      if (filteredProjects.length === 0) {
+        container.style.display = 'none';
+        noResultsDiv.style.display = 'block';
+      } else {
+        container.style.display = 'flex';
+        noResultsDiv.style.display = 'none';
+        filteredProjects.forEach(project => {
+          project.style.display = 'block'; // Mostrar los proyectos filtrados
+        });
+      }
 
-  container.scrollLeft = 0;
-}
+      container.scrollLeft = 0; // Restablecer la posición al inicio después de aplicar filtros
+    }
 
     function updateResultsCount() {
       const count = filteredProjects.length;
@@ -201,34 +233,33 @@ function displayFilteredProjects() {
       }
     }
 
-    function clearAllFilters() {
-      document.getElementById('search-input').value = '';
-      document.getElementById('year-filter').value = '';
-      document.getElementById('career-filter').value = '';
-      filteredProjects = [...allProjects];
-      displayFilteredProjects();
-      updateResultsCount();
-    }
 
-    function scrollProjects(direction) {
-      const container = document.getElementById('projects-scroll');
-      const scrollAmount = 300;
-      if (direction === 1) {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      }
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollContainer = document.getElementById('projects-scroll');
+  const scrollbar = document.getElementById('scrollbar');
+  const cardsGrid = document.querySelector('.cards-grid');
+  
+  function updateScrollbar() {
+    const totalWidth = cardsGrid.scrollWidth; 
+    const visibleWidth = scrollContainer.offsetWidth; 
+    const scrollbarWidth = (visibleWidth / totalWidth) * 100; 
+    scrollbar.style.width = `${scrollbarWidth}%`;
+  }
 
-    document.addEventListener('keydown', function(e) {
-      if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'SELECT') {
-        if (e.key === 'ArrowLeft') {
-          scrollProjects(-1);
-        } else if (e.key === 'ArrowRight') {
-          scrollProjects(1);
-        }
-      }
-    });
+  updateScrollbar();
+
+  scrollContainer.addEventListener('scroll', function() {
+    const scrollPosition = scrollContainer.scrollLeft;
+    const totalWidth = cardsGrid.scrollWidth;
+    const visibleWidth = scrollContainer.offsetWidth;
+    const scrollbarPosition = (scrollPosition / (totalWidth - visibleWidth)) * 100;
+    scrollbar.style.transform = `translateX(${scrollbarPosition}%)`;
+  });
+});
+
+
+
+
 
     let searchTimeout;
     document.getElementById('search-input').addEventListener('input', function() {
