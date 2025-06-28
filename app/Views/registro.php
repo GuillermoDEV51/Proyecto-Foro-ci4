@@ -22,12 +22,12 @@
 
      <div class="login min-vh-100 position-relative">
 
-            <!-- Botón para volver al inicio -->
+         <!-- Botón para volver al inicio -->
          <div class="position-absolute start-0 top-0 m-3">
              <a href="<?php echo base_url() ?>" class="btn btn-secondary p-2">Volver al Inicio</a>
          </div>
 
-            <!-- Contenedor principal del formulario de inicio de sesión -->
+         <!-- Contenedor principal del formulario de inicio de sesión -->
          <div class="login-box shadow-lg p-4 bg-white rounded w-75 h-50">
 
              <!-- Bloque superior con ícono y SVG -->
@@ -46,10 +46,16 @@
                      <?= session()->getFlashdata('msg') ?>
                  </div>
              <?php endif; ?>
+             <?php if (isset($validation)): ?>
+                 <div style="color: red;">
+                     <?= $validation->listErrors() ?>
+                 </div>
+             <?php endif; ?>
+
 
 
              <!-- Formulario de inicio de sesión -->
-             <form method="post" action="<?php echo base_url() ?>registro-usuario">
+             <form method="post" action="<?php echo base_url() ?>registro/registroUsuario">
 
 
                  <!-- Grupo usuario -->
@@ -66,7 +72,7 @@
                      <label for="Password" class="form-label">Contraseña</label>
                      <input type="password" minlength="8" maxlength="20" class="form-control" id="Password" name="password" required>
                  </div>
-                  <div class="mb-3">
+                 <div class="mb-3">
                      <label for="Password2" class="form-label">Confirmar Contraseña</label>
                      <input type="password" minlength="8" maxlength="20" class="form-control" id="Password2" name="password2" required>
                  </div>
@@ -77,7 +83,7 @@
                  <div class="d-flex mb-3 ">
                      <button type="submit" class="btn btn-success">Registrarse</button>
 
-                     <a href="<?php echo base_url() ?>login" class="btn btn-warning ms-auto p-2">Volver al login</a>
+                     <a href="<?php echo base_url() ?>login" class="btn btn-warning ms-auto p-2">Iniciar Sesion</a>
                  </div>
 
 

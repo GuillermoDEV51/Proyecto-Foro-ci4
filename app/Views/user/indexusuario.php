@@ -25,12 +25,11 @@
     </div>
     <div class="user-actions">
       <span class="user-status">
-        <i class="fas fa-user-check"></i> Usuario Conectado
+        <i class="fas fa-user-check"></i> <p>Bienvenido, <?= esc(session()->get('user')) ?>!</p>
       </span>
       <form action="<?php echo base_url() ?>login/logout" method="POST">
         <button type="submit">Salir </button>
       </form>
-     
     </div>
   </div>
 </header>
@@ -42,7 +41,25 @@
       <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
       <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
       <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
-      <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
+
+       <?php $role = session()->get('role'); ?>
+        <?php if ($role === 'admin'): ?>
+
+            <!-- Opciones para admin -->
+
+            <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
+
+
+        <?php elseif ($role === 'estudiante'): ?>
+
+            <!-- Opciones para estudiante -->
+
+        <?php else: ?>
+
+            <!-- Opciones para visitante -->
+            
+        <?php endif; ?>
+
     </div>
   </nav>
 

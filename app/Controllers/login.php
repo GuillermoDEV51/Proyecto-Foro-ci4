@@ -42,7 +42,7 @@ class login extends BaseController
             $userPost = $this->request->getPost('codigo');
             $passwordPost = $this->request->getPost('password');
 
-            $user = $userModel->where('user', $userPost)->first();
+            $user = $userModel->where('codigo', $userPost)->first();// cambien codigo por user
 
            
             //if ($user && password_verify($this->request->getPost('contraseña'), $user['contraseña'])) {
@@ -52,7 +52,7 @@ class login extends BaseController
                 
                 $ses_data = [
                     'id'   => $user['id'],
-                    'user'  => $user['user'],
+                    'user'  => $user['codigo'],// cambien codigo por user estoy probando cosas
                     'rol'      => $user['id_rol'],
                     'LoggedIn'=> true
                 ];

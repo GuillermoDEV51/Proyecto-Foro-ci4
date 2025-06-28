@@ -6,47 +6,45 @@ use App\Models\UserModel;
 
 class Registro extends BaseController
 {
-
     public function __construct()
     {
-        helper('url');
+        helper(['url', 'form']);
     }
-
-
 
     public function index(): string
     {
-
-       
         return view('registro');
-
     }
+
     public function registroUsuario()
     {
-       $codigo =$this->request->getPost('codigo');
-        $password = $this->request->getPost('password');
-        $password2 = $this->request->getPost('password2');
+        $rules = [
+            'codigo'    => 'required|max_length[30]',
+            'password'  => 'required|max_length[255]|min_length[8]',
+            'password2' => 'required|matches[password]',
+        ];
 
-        /*if ($password !== $password2) {
-            session()->setFlashdata('msg', 'Las contraseñas no coinciden.');
-            return redirect()->to('/registro');
+        if (!$this->validate($rules)) {
+            return view('registro', [
+                'validation' => $this->validator
+            ]);
         }
 
         $userModel = new UserModel();
+
         $data = [
-            'user' => $codigo,
-            'contraseña' => $password,
-            'id_rol' => 2 // Asignar rol de usuario
+            'codigo'      => $this->request->getPost('codigo'),
+            'contraseña'=> $this->request->getPost('password'),
+            'id_rol'    => 2 // Rol estudiante
         ];
 
         if ($userModel->insert($data)) {
             session()->setFlashdata('msg', 'Usuario registrado exitosamente.');
             return redirect()->to('/login');
-        } else {
-            session()->setFlashdata('msg', 'Error al registrar el usuario.');
-            return redirect()->to('/registro');
-        }*/
-
+         } else {
+                session()->setFlashdata('msg', 'Error al registrar el usuario: ' . implode(' ', $userModel->errors()));
+                return redirect()->to('/registro');
+            }
        
     }
 }

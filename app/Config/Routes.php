@@ -19,7 +19,7 @@ $routes->get('nuestramision', 'Nuestramision::index');
 $routes->get('login', 'Login::index');
 $routes->match(['get', 'post'], 'login/loginAutenticacion', 'Login::loginAutenticacion');
 $routes->get('registro', 'Registro::index');
-$routes->match(['get', 'post'], 'registro-usuario', 'Registro::registroUsuario');
+$routes->match(['get', 'post'], 'registro/registroUsuario', 'Registro::registroUsuario');
 
 
 // Rutas para visor con ID
@@ -46,3 +46,8 @@ $routes->get('proyectos/actualizar-imagenes', 'ProyectosController::actualizarIm
 // Rutas para el controlador de proyectos
 $routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
 $routes->get('visor/(:num)', 'Visor::visor/$1');
+
+
+// Rutas para el controlador de testeo
+$routes->get('testdb', 'testdb::index');
+$routes->get('TestDB2', 'TestDB2::index'); 
