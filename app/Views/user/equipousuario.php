@@ -413,7 +413,7 @@
         <h3 class="member-name">Guillermo Mendoza</h3>
         <p class="member-role">Desarrollador Backend</p>
         <p class="member-description">
-          Ingeniera en sistemas responsable de la arquitectura técnica de la plataforma.
+          Ingeniero en sistemas responsable de la arquitectura técnica de la plataforma.
         </p>
         <div class="member-social">
           <a href="#" class="social-link"><i class="fab fa-github"></i></a>

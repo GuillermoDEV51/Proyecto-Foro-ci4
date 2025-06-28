@@ -11,7 +11,7 @@ class Proyectos extends BaseController
         [
             'id' => 101,
             'titulo' => 'Tecnologia Digital',
-            'autor'  => 'Jonathan Alarcon',
+            'autor'  => 'Ana Laura Rivoir',
             'anio'   => 2024,
             'carrera' => 'Ingeniería Informática',
             'pdf'    => 'Tecno.pdf',
