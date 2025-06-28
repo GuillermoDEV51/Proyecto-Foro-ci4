@@ -9,13 +9,18 @@ use CodeIgniter\Router\RouteCollection;
 // Rutas principales
 $routes->get('/', 'Home::index');
 $routes->get('proyectos', 'Proyectos::index');
-$routes->get('/ayuda', 'Ayuda::index');
-$routes->get('/contacto', 'Contacto::index');
-$routes->get('/login', 'Login::index');
+$routes->get('ayuda', 'Ayuda::index');
+$routes->get('contacto', 'Contacto::index');
+$routes->get('equipo', 'Equipo::index');
+$routes->get('visor', 'Visor::index');
+$routes->get('nuestramision', 'Nuestramision::index');
+
+// Rutas para logueos y registro
+$routes->get('login', 'Login::index');
 $routes->match(['get', 'post'], 'login/loginAutenticacion', 'Login::loginAutenticacion');
-$routes->get('/equipo', 'Equipo::index');
-$routes->get('/visor', 'Visor::index');
-$routes->get('/nuestramision', 'Nuestramision::index');
+$routes->get('registro', 'Registro::index');
+$routes->match(['get', 'post'], 'registro-usuario', 'Registro::registroUsuario');
+
 
 // Rutas para visor con ID
 $routes->get('proyectos/visor/(:nsum)', 'Proyectos::visor/$1');
