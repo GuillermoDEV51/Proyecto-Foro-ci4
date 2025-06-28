@@ -46,8 +46,3 @@ $routes->get('proyectos/actualizar-imagenes', 'ProyectosController::actualizarIm
 // Rutas para el controlador de proyectos
 $routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
 $routes->get('visor/(:num)', 'Visor::visor/$1');
-
-
-// Rutas para el controlador de testeo
-$routes->get('testdb', 'testdb::index');
-$routes->get('TestDB2', 'TestDB2::index'); 

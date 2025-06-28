@@ -123,34 +123,35 @@ nav {
 }
 
 /* --------------------------------
-   Botones de navegación de proyectos
+   Barra de desplazamiento personalizada
    -------------------------------- */
-.nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.projects-scroll-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto; /* Habilita desplazamiento horizontal */
+  overflow-y: hidden; /* Deshabilita el desplazamiento vertical */
+  padding-bottom: 0; /* Elimina o ajusta el padding si no es necesario */
+}
+
+.scrollbar {
+  height: 5px;
   background-color: var(--color-acento);
-  color: white;
-  border: none;
-  padding: 0.75rem;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  z-index: 10;
+  width: 0%; /* Inicia con el ancho en 0, lo controlamos dinámicamente */
+  transition: width 0.3s ease-in-out;
+}
+
+/* --------------------------------
+   Contenedor de proyectos horizontal (cards-grid)
+   -------------------------------- */
+.cards-grid {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
-}
-.nav-button.prev {
-  left: 0.5rem;
-}
-.nav-button.next {
-  right: 0.5rem;
-}
-.nav-button:hover {
-  background-color: #e55a00;
+  gap: 20px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: fit-content; 
+  justify-content: flex-start;
+  overflow: auto; /* Cambiar a auto si deseas que se muestren las barras */
 }
 
 /* --------------------------------
@@ -258,72 +259,33 @@ nav {
 /* --------------------------------
    Contenedor de proyectos horizontal (cards-grid)
    -------------------------------- */
-.cards-grid {
-  display: flex;
-  gap: 3rem;
-  overflow-x: auto;
-  padding: 1.5rem 3rem;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-.cards-grid::-webkit-scrollbar {
-  height: 8px;
-}
-.cards-grid::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-.cards-grid::-webkit-scrollbar-thumb {
-  background: var(--color-acento);
-  border-radius: 4px;
-}
-.cards-grid::-webkit-scrollbar-thumb:hover {
-  background: #e55a00;
+.project-card {
+  flex: 0 0 auto; /* Las cartas no se estiran */
+  width: 250px;
+  background-color: #fff; /* Mantiene el fondo blanco en las cartas */
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-/* --------------------------------
-   Tarjeta de proyecto
-   -------------------------------- */
-.project-card {
-  background-color: #fff;
-  border-radius: var(--radio-bordes);
-  box-shadow: 0 1px 3px var(--sombra-card);
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-  flex: 0 0 500px;
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px var(--sombra-card);
-}
 .project-card img {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
 }
+
 .card-body {
-  padding: 1rem;
-  text-align: center;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 10px;
 }
+
 .card-title {
+  font-weight: bold;
   font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--color-texto);
-  line-height: 1.3;
 }
+
 .card-meta {
   font-size: 0.9rem;
   color: #666;
-  line-height: 1.4;
 }
 
 /* --------------------------------
@@ -336,8 +298,9 @@ footer {
   width: 100%;
   position: relative;
   z-index: 10;
-  margin-top: auto;
+  margin-top: auto; /* Asegura que el footer siempre se quede al final */
 }
+
 .footer-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -371,73 +334,3 @@ footer {
   font-size: 0.85rem;
   opacity: 0.9;
 }
-.card-body {
-  padding: 1rem;
-  text-align: center;
-}
-
-.card-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: var(--color-texto);
-  line-height: 1.2;
-}
-
-.card-meta {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.meta-item i {
-  color: var(--color-acento);
-  font-size: 1rem;
-}
-
-
-/* --------------------------------
-   Responsive (opcional)
-   -------------------------------- */
-/* Puedes activar si quieres que las tarjetas reduzcan tamaño en pantallas pequeñas */
-
-/*
-@media (max-width: 768px) {
-  .project-card {
-    flex: 0 0 250px;
-  }
-  .nav-button {
-    display: none;
-  }
-  .filters-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .clear-filters-btn {
-    justify-self: stretch;
-    justify-content: center;
-  }
-}
-@media (max-width: 480px) {
-  .project-card {
-    flex: 0 0 220px;
-  }
-  .main-content {
-    padding: 0 0.5rem;
-  }
-  .cards-grid {
-    padding: 1rem 0.5rem;
-  }
-  .filters-container {
-    padding: 1rem;
-  }
-}
-*/

@@ -17,10 +17,10 @@
 
   <header>
     <div class="header-container">
-      <div class="logo">
-        <img src="<?= base_url('img/LOGOFP.png') ?>" alt="LOGOFP" />
+      <a href="<?= base_url() ?>" class="logo">
+        <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
         <span>Foro de Proyectos</span>
-      </div>
+      </a>
       <div class="header-actions">
         <a href="<?= base_url('/') ?>" class="btn-back">
           <i class="fas fa-arrow-left"></i> Volver al Inicio

@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="<?php echo base_url() ?>boostra/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
   <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>style/home.css" rel="stylesheet">
 
@@ -60,49 +60,80 @@
     </nav>
 
   <!-- Sección de búsqueda -->
-  <section class="search-section">
-    <div class="search-container">
-      <input type="text" placeholder="Buscar documentos, tesis, proyectos..." />
-      <select>
-        <option value="">Seleccionar Año</option>
-        <?php
-          for ($year = date('Y'); $year >= 2000; $year--) {
-            echo "<option value='$year'>$year</option>";
-          }
-        ?>
-      </select>
-      <select>
-        <option value="">Carrera</option>
-        <option value="informatica">Informática</option>
-        <option value="maritima">Marítima</option>
-        <option value="ambiental">Ambiental</option>
-        <option value="turismo">Turismo</option>
-        <option value="administracion">Administración</option>
-      </select>
-      <button type="button"><i class="fas fa-search"></i> Buscar</button>
-    </div>
-  </section>
+<section class="search-section">
+    <form class="search-container" method="GET" action="<?= base_url('proyectos/buscar') ?>">
+        <input type="text" name="q" value="<?= isset($q) ? esc($q) : '' ?>" placeholder="Buscar documentos, tesis, proyectos..." />
+
+        <select name="anio">
+            <option value="">Seleccionar Año</option>
+            <?php for ($year = date('Y'); $year >= 2000; $year--): ?>
+                <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
+            <?php endfor; ?>
+        </select>
+
+        <select name="carrera">
+            <option value="">Carrera</option>
+            <option value="informatica" <?= (isset($carrera) && $carrera == 'informatica') ? 'selected' : '' ?>>Informática</option>
+            <option value="maritima" <?= (isset($carrera) && $carrera == 'maritima') ? 'selected' : '' ?>>Marítima</option>
+            <option value="ambiental" <?= (isset($carrera) && $carrera == 'ambiental') ? 'selected' : '' ?>>Ambiental</option>
+            <option value="turismo" <?= (isset($carrera) && $carrera == 'turismo') ? 'selected' : '' ?>>Turismo</option>
+            <option value="administracion" <?= (isset($carrera) && $carrera == 'administracion') ? 'selected' : '' ?>>Administración</option>
+        </select>
+
+        <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+    </form>
+</section>
 
 <main class="main-content">
-  <h2 class="section-title">Documentos Destacados</h2>
+    <!-- Sección de documentos destacados -->
+    <h2 class="section-title">Documentos Destacados</h2>
+    <div class="cards-grid">
+        <?php if (!empty($destacados)): ?>
+            <?php foreach ($destacados as $doc): ?>
+                <div class="card">
+                    <a href="<?= base_url('proyectos/visor/' . $doc['id']) ?>">
+                        <img src="<?= base_url('img/proyectos/' . $doc['imagen']) ?>" alt="<?= esc($doc['titulo']) ?>">
+                    </a>
+                    <div class="card-body">
+                        <div class="card-title"><?= esc($doc['titulo']) ?></div>
+                        <div class="card-meta">
+                            Autor: <?= esc($doc['autor']) ?> · <?= esc($doc['anio']) ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No se encontraron proyectos destacados.</p>
+        <?php endif; ?>
+    </div>
 
-  <!-- Este contenedor se alinea horizontalmente con scroll -->
-  <div class="cards-grid">
-    <?php foreach ($destacados as $doc): ?>
-      <div class="card">
-        <a href="<?= base_url('proyectos/visor/' . $doc['id']) ?>">
-          <img src="<?= esc($doc['imagen']) ?>" alt="<?= esc($doc['titulo']) ?>" />
-        </a>
-        <div class="card-body">
-          <div class="card-title"><?= esc($doc['titulo']) ?></div>
-          <div class="card-meta">
-            Autor: <?= esc($doc['autor']) ?> · <?= esc($doc['anio']) ?>
-          </div>
-        </div>
-      </div>
-    <?php endforeach; ?>
-  </div>
+    <!-- Sección para proyectos encontrados -->
+    <h2 class="section-title"> </h2>
+    <div class="cards-grid">
+        <?php if (!empty($proyectos)): ?>
+            <?php foreach ($proyectos as $doc): ?>
+                <div class="card">
+                    <a href="<?= base_url('proyectos/visor/' . $doc['id']) ?>">
+                        <img src="<?= base_url('img/proyectos/' . $doc['imagen']) ?>" alt="<?= esc($doc['titulo']) ?>">
+                    </a>
+                    <div class="card-body">
+                        <div class="card-title"><?= esc($doc['titulo']) ?></div>
+                        <div class="card-meta">
+                            Autor: <?= esc($doc['autor']) ?> · <?= esc($doc['anio']) ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <!-- Solo mostrar este mensaje si se ha realizado una búsqueda -->
+            <?php if (isset($q) || isset($anio) || isset($carrera)): ?>
+                <p>No se encontraron proyectos que coincidan con los filtros.</p>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
 </main>
+
+
 
 
 <!--<section class="cards-grid">
@@ -143,9 +174,6 @@
         </div>
         <div class="quote-item">
           "No te rindas. Sufre ahora y vive el resto de tu vida como un campeón." – Muhammad Ali
-        </div>
-        <div class="quote-item">
-          "La inversión en conocimiento paga el mejor interés." – Benjamin Franklin
         </div>
       </div>
     </section>

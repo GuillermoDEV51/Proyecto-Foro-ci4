@@ -1,47 +1,36 @@
 <?php
+namespace App\Models;
 
+use CodeIgniter\Model;
+
+class ProyectosModel extends Model
+{
+    protected $table = 'proyectos'; // nombre de tu tabla
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['titulo', 'autor', 'anio', 'carrera', 'imagen', 'pdf', 'descripcion', 'size', 'destacado'];
+}
 namespace App\Controllers;
+
+use App\Models\ProyectosModel; // <-- importante
 
 class Home extends BaseController
 {
-
     public function __construct()
     {
         helper('url');
     }
-    
-   public function index()
-{
-    $destacados = [
-      [
-    'id' => 101,
-    'titulo' => 'Tecnologia Digital',
-    'autor'  => 'Ana Laura Rivoir',
-    'anio'   => 2024,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1617839625591-e5a789593135?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/300x200'
-  ],
-  [
-    'id' => 102,
-    'titulo' => 'Optimización de Procesos Industriales',
-    'autor'  => 'Jeyson Patricio Egas Garcia',
-    'anio'   => 2023,
-    'carrera' => 'Ingeniería Marítima',
-    'imagen' => 'https://images.unsplash.com/photo-1568347877321-f8935c7dc5a3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D/300x200'
-  ],
-  [
-    'id' => 103,
-    'titulo' => 'Algoritmos Genéticos Aplicados',
-    'autor'  => 'Carlos Mendoza',
-    'anio'   => 2022,
-    'carrera' => 'Ingeniería Informática',
-    'imagen' => 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-  ],
 
+    public function index()
+    {
+        $proyectosModel = new ProyectosModel();
 
-  // Agrega más si lo deseas
-    ];
+        // Obtener los documentos destacados desde la base de datos
+        $destacados = $proyectosModel
+            ->where('destacado', 1)
+            ->orderBy('id', 'DESC')
+            ->limit(10)
+            ->findAll();
 
-    return view('home', ['destacados' => $destacados]);
+        return view('home', ['destacados' => $destacados]);
+    }
 }
- }
