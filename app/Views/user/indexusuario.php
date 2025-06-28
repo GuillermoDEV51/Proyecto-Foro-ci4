@@ -41,16 +41,17 @@
       <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
       <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
       <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
-
-       <?php $role = session()->get('role'); ?>
-        <?php if ($role === 'admin'): ?>
+      <?php  ?>
+      
+       <?php $role = session()->get('rol'); ?>
+        <?php if ($role === '1'): ?>
 
             <!-- Opciones para admin -->
 
             <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
 
 
-        <?php elseif ($role === 'estudiante'): ?>
+        <?php elseif ($role === '2'): ?>
 
             <!-- Opciones para estudiante -->
 
