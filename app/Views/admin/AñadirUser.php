@@ -32,6 +32,7 @@
     <div class="nav-container">
       <a href="<?php echo base_url() ?>">Inicio</a>
       <a href="<?php echo base_url() ?>">Proyectos</a>
+      <a href="<?php echo base_url() ?>">Ayuda</a>
       <a href="<?php echo base_url() ?>">Contacto</a>
       
             <div class="container">
