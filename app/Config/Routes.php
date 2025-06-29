@@ -18,16 +18,22 @@ $routes->get('nuestramision', 'General\Nuestramision::index');
 // Rutas para logueos y registro
 $routes->get('login', 'General\Login::index');
 $routes->match(['get', 'post'], 'login/loginAutenticacion', 'General\Login::loginAutenticacion');
-$routes->get('registro', 'General/Registro::index');
+$routes->get('registro', 'General\Registro::index');
 $routes->match(['get', 'post'], 'registro/registroUsuario', 'General\Registro::registroUsuario');
 $routes->post('login/logout', 'General\Login::logout');
 
 
 // Rutas para visor con ID
+
+$routes->get('proyectos/visor/(:nsum)', 'General\proyectos::visor/$1');
+$routes->get('proyecto', 'General\proyectos::index');
+$routes->get('proyecto/visor/(:num)', 'General\proyectos::visor/$1');
+
 $routes->get('proyectos/visor/(:nsum)', 'Proyectos::visor/$1');
 $routes->get('proyecto', 'Proyecto::index');
 $routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
 $routes->get('proyectos/visor/(:num)', 'General\Proyectos::visor/$1');
+
 
 
 
@@ -42,8 +48,9 @@ $routes->get('user/enviar_contactousuario', 'Usuario\Enviar_Contacto::index');
 $routes->get('user/visorusuario', 'Usuario\::index');
 
 $routes->get('admin/VistaCRUD', 'Admin\VistaCRUD::index');
+
 $routes->get('proyectos/actualizar-imagenes', 'ProyectosController::actualizarImagenes');
 
 // Rutas para el controlador de proyectos
-$routes->get('proyectos/visor/(:num)', 'Proyectos::visor/$1');
+$routes->get('proyectos/visor/(:num)', 'General\proyectos::visor/$1');
 $routes->get('visor/(:num)', 'Visor::visor/$1');
