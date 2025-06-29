@@ -16,7 +16,7 @@
 
 <body>
 
-            <
+            
             <!-- Header principal -->
             <header>
                 <div class="header-container">
@@ -31,9 +31,8 @@
   <nav>
     <div class="nav-container">
       <a href="<?php echo base_url() ?>">Inicio</a>
-      <a href="<?php echo base_url() ?>proyectos">Proyectos</a>
-      <a href="<?php echo base_url() ?>ayuda">Ayuda</a>
-      <a href="<?php echo base_url() ?>contacto">Contacto</a>
+      <a href="<?php echo base_url() ?>">Proyectos</a>
+      <a href="<?php echo base_url() ?>">Contacto</a>
       
             <div class="container">
                 
