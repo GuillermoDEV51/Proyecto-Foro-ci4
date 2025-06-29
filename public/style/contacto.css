@@ -160,7 +160,23 @@
     button[type="submit"]:hover {
       background-color: rgb(240, 78, 14);
     }
-
+.mensaje-enviado {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 1rem;
+  border-radius: var(--radio-bordes);
+  margin-top: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+.mensaje-enviado i {
+  color: #28a745;
+  font-size: 1.2rem;
+}
     /* -------------------------------
        Footer - FIJO EN LA PARTE INFERIOR
        ------------------------------- */
@@ -204,6 +220,7 @@
       font-size: 0.85rem;
       opacity: 0.9;
     }
+
 
     /* -------------------------------
        Responsive tweaks

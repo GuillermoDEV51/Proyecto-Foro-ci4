@@ -18,10 +18,10 @@
   <!-- Header principal -->
   <header>
     <div class="header-container">
-    <a href="<?= base_url() ?>" class="logo">
-      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
-      <span>Foro de Proyectos</span>
-    </a>
+      <a href="<?= base_url() ?>" class="logo">
+        <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+        <span>Foro de Proyectos</span>
+      </a>
       <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
   </header>
@@ -39,7 +39,8 @@
   <!-- Contenido principal: Formulario de Contacto -->
   <main class="main-content">
     <h2 class="section-title">Contáctanos</h2>
-    <form action="enviar_contacto.php" method="post">
+
+    <form id="formContacto">
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" name="nombre" required />
 
@@ -53,8 +54,21 @@
       <textarea id="mensaje" name="mensaje" required></textarea>
 
       <button type="submit">Enviar</button>
+
+      <!-- Mensaje de éxito (oculto al principio) -->
+      <div id="mensajeExito" class="mensaje-enviado" style="display: none;">
+        <i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito!
+      </div>
     </form>
   </main>
+
+  <script>
+    document.getElementById('formContacto').addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita envío real
+      document.getElementById('mensajeExito').style.display = 'block';
+      this.reset(); // Limpia el formulario
+    });
+  </script>
 
   <!-- Footer -->
   <footer>
