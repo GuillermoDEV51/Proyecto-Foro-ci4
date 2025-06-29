@@ -47,7 +47,16 @@ $routes->get('user/ayudausuario', 'Usuario\AyudaUsuario::index');
 $routes->get('user/enviar_contactousuario', 'Usuario\Enviar_Contacto::index');
 $routes->get('user/visorusuario', 'Usuario\::index');
 
+
+//rutas Admin dashbord
+
 $routes->get('admin/VistaCRUD', 'Admin\VistaCRUD::index');
+
+$routes->get('admin/AdminUser', 'Admin\AdminUser::index');
+$routes->get('admin/AddUser', 'Admin\AdminUser::new');
+$routes->post('admin/AddUser', 'Admin\AdminUser::create');
+
+$routes->get('admin/EditarProyecto', 'Admin\EditarProyecto::index');
 
 $routes->get('proyectos/actualizar-imagenes', 'ProyectosController::actualizarImagenes');
 

@@ -47,7 +47,7 @@ class login extends BaseController
             $user = $userModel->where('codigo', $userPost)->first();// cambien codigo por user
 
            
-            //if ($user && password_verify($this->request->getPost('contraseña'), $user['contraseña'])) {
+           
             if ($user['contraseña'] == $passwordPost) {
                 
                 $session = session();

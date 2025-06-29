@@ -11,34 +11,38 @@
   <script src="<?php echo base_url() ?>boostra/js/bootstrap.bundle.min.js"></script>
   <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
   <link href="<?php echo base_url() ?>style/home.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?= base_url('style/EstilosAdmin/vistacrud.css') ?>">
 
 </head>
 
 <body>
 
             
-            <!-- Header principal -->
-            <header>
-                <div class="header-container">
-                <div class="logo">
-                    <img src="<?php echo base_url() ?>img\LOGOFP.png" alt="LOGOFP" />
-                    <span>Foro de Proyectos</span>
-                </div>
-                <a href="<?php echo base_url() ?>login" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
-                </div>
-            </header>
-            <!-- Barra de navegación -->
-  <nav>
-    <div class="nav-container">
-      <a href="<?php echo base_url() ?>">Inicio</a>
-      <a href="<?php echo base_url() ?>">Proyectos</a>
-      <a href="<?php echo base_url() ?>">Ayuda</a>
-      <a href="<?php echo base_url() ?>">Contacto</a>
+       <!-- Header principal -->
+             <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="<?= base_url() ?>img/LOGOFP.png" alt="Logo Foro de Proyectos" class="logo-header">
+    <a href="<?= base_url() ?>admin/VistaCRUD"><i class="fa-solid fa-user-tie p-2"></i>Dashbord</a>
+    <a href="<?= base_url() ?>admin/EditarProyecto"><i class="fas fa-upload me-2"></i>Subir Proyecto</a>
+    <a href="<?= base_url() ?>user/indexusuario" class="text-warning fw-bold mt-5 ms-3 d-block">← Volver al Inicio</a>
+  </div>
+
+  <!-- Encabezado -->
+  <header class="content d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="<?= base_url() ?>img/LOGOFP.png" alt="Logo Foro de Proyectos" class="logo-header">
+      <span class="admin-title">Panel de Administración</span>
+    </div>
+    <form action="<?php echo base_url() ?>login/logout" method="POST">
+      <button class="btn btn-outline-dark" ><i class="fas fa-sign-out-alt"></i> Salir</button>
+    </form>
+  </header>
+
+           
+  
+  
       
-            <div class="container">
-                
-
-
+   <div class="content">
 
                 <?php
 
@@ -57,46 +61,54 @@
                     <div class="card-body">
 
                         <!-- Formulario de añadir usuario -->
-                        <form method="post" action="<?php echo base_url("/crud/add_validation")?>">
-                            <div class="form-group">
+                        <form method="post" action="<?php echo base_url("AdminUser/create")?>">
 
-                            <!-- Añadir nombre de usuario -->
-                                <label>Nombre</label>
-                                <input type="text" name="nombre" class="form-control" />
+
+                            <div class="form-group">
+                            <!-- Añadir codigo de usuario -->
+                                <label>codigo</label>
+                                <input type="text" name="codigo" class="form-control" />
+
                                 <!-- Error -->
                                 <?php
-                                if($validation->getError('nombre'))
+                                if($validation->getError('codigo'))
                                 {
-                                    echo '<div class="alert alert-danger mt-2">'.$validation->getError('nombre').'</div>';
+                                    echo '<div class="alert alert-danger mt-2">'.$validation->getError('codigo').'</div>';
                                 }
                                 ?>
                             </div>
 
 
-                            <!-- Añadir Codigo de usuario -->
+                            <!-- Añadir contraseña de usuario -->
                             <div class="form-group">
-                                <label>codigo</label>
-                                <input type="text" name="codigo" class="form-control" />
+                                <label>contraseña</label>
+                                <input type="password" name="contraseña" class="form-control" />
+
                                 <!-- Error -->
                                 <?php
-                                if($validation->getError('codigo'))
+                                if($validation->getError('password'))
                                 {
                                     echo "
                                     <div class='alert alert-danger mt-2'>
-                                    ".$validation->getError('codigo')."
+                                    ".$validation->getError('password')."
                                     </div>
                                     ";
                                 }
                                 ?>
                             </div>
-                            <!-- Añadir contraseña de usuario -->
+
+                            <!-- asiganar rol -->
                             <div class="form-group">
                                 <label>rol</label>
                                 <select name="role" class="form-control">
                                     <option value="">Seleccionar rol</option>
-                                    <option value="Male">Estudiante</option>
-                                    <option value="Female">administrador</option>
+                                    <?php
+                                    foreach($Rol as $rol):?>
+                                        <option value="<?= $rol['id'] ?>"><?= $rol['Rol'] ?></option>
+
+                                    <?php endforeach; ?>
                                 </select>
+
                                 <!-- Error -->
                                 <?php
 
@@ -109,14 +121,19 @@
 
                                 ?>
                             </div>
+                        
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="form-group text-right ">
+                                <a href="<?= base_url() ?>admin/AdminUser" class="btn btn-secondary">Volver</a>
                             </div>
                         </form>
                     </div>
                 </div>
 
-            </div>
+            
+     </div>
 
 
 
@@ -124,8 +141,7 @@
 
 
 
-
-            </div>
+        
 </body>
 
 </html>

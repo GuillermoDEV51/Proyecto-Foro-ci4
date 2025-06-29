@@ -10,7 +10,7 @@
   <!-- Tipografía similar a Scribd -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="<?php echo base_url() ?>/style/EstilosUser/proyectosusuario.css"/>
+  <link rel="stylesheet" href="<?php echo base_url() ?>/style/EstilosUser/proyectousuario.css"/>
 
   <style>
     
@@ -42,7 +42,24 @@
       <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
       <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
       <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
-      
+       <?php $role = session()->get('rol'); ?>
+        <?php if ($role === '1'): ?>
+
+            <!-- Opciones para admin -->
+
+            <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
+
+
+        <?php elseif ($role === '2'): ?>
+
+            <!-- Opciones para estudiante -->
+
+        <?php else: ?>
+
+            <!-- Opciones para visitante -->
+            
+        <?php endif; ?>
+
       
     </div>
  </nav>

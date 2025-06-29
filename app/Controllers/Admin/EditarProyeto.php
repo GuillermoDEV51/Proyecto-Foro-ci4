@@ -14,13 +14,9 @@ class VistaCRUD extends BaseController
 
     public function index(): string
     {
-        return view('admin/VistaCRUD');
+        return view('admin/EditarProyecto');
         
     }
 
-    public function addUser(): string
-    {
-        return view('admin/AñadirUser');
-    }
-
+  
 }

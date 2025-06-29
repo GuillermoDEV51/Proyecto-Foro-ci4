@@ -61,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   
+  
   <style>
 
     :root {
@@ -307,7 +308,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
       <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
       <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
-      <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
+       <?php $role = session()->get('rol'); ?>
+        <?php if ($role === '1'): ?>
+
+            <!-- Opciones para admin -->
+
+            <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
+
+
+        <?php elseif ($role === '2'): ?>
+
+            <!-- Opciones para estudiante -->
+
+        <?php else: ?>
+
+            <!-- Opciones para visitante -->
+            
+        <?php endif; ?>
+
       
     </div>
  </nav>
