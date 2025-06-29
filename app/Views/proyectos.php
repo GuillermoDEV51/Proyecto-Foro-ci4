@@ -33,8 +33,9 @@
   </nav>
 
   <!-- Contenido principal: Proyectos -->
- <!-- Contenido principal: Proyectos -->
+
 <main class="main-content">
+  
   <!-- Filtros de búsqueda -->
   <div class="filters-container">
       <div class="filters-title">
@@ -58,7 +59,7 @@
               <select id="year-filter" class="filter-select" onchange="applyFilters()">
                   <option value="">Todos los años</option>
                   <?php for ($year = date('Y'); $year >= 2000; $year--): ?>
-                      <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
+                   <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
                   <?php endfor; ?>
               </select>
           </div>
@@ -67,8 +68,11 @@
               <label class="filter-label" for="career-filter">Carrera</label>
               <select id="career-filter" class="filter-select" onchange="applyFilters()">
                   <option value="">Todas las carreras</option>
-                  <option value="Ingeniería Informática" <?= (isset($carrera) && $carrera == 'Ingeniería Informática') ? 'selected' : '' ?>>Ingeniería de Informática</option>
-                  <option value="Ingeniería Marítima" <?= (isset($carrera) && $carrera == 'Ingeniería Marítima') ? 'selected' : '' ?>>Ingeniería Marítima</option>
+             
+
+<option value="Ingeniería Informática" <?= (isset($carrera) && $carrera == 'Ingeniería Informática') ? 'selected' : '' ?>>Ingeniería de Informática</option>
+<option value="Ingeniería Marítima" <?= (isset($carrera) && $carrera == 'Ingeniería Marítima') ? 'selected' : '' ?>>Ingeniería Marítima</option>
+
               </select>
           </div>
       </div>
@@ -182,16 +186,18 @@ function applyFilters() {
     // Generamos el URL con los parámetros de búsqueda
     const url = new URL(window.location.href);
     const params = url.searchParams;
+
     if (searchTerm) params.set('q', searchTerm);
     else params.delete('q');
+    
     if (selectedYear) params.set('anio', selectedYear);
     else params.delete('anio');
+    
     if (selectedCareer) params.set('carrera', selectedCareer);
     else params.delete('carrera');
+    
     window.history.replaceState(null, '', url);
-    // Aquí evitamos que se redibuje todo el contenido de los filtros.
-    const filtersContainer = document.querySelector('.filters-container');
-    const currentHtml = filtersContainer.innerHTML;
+
     // Llamar al servidor para obtener los proyectos filtrados
     fetch(url.toString())
         .then(response => response.text())
