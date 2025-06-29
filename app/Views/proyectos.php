@@ -174,12 +174,33 @@ document.addEventListener('DOMContentLoaded', function() {
       filteredProjects = [...allProjects];
     }
 
-    function applyFilters() {
-      const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
-      const selectedYear = document.getElementById('year-filter').value;
-      const selectedCareer = document.getElementById('career-filter').value;
+function applyFilters() {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+    const selectedYear = document.getElementById('year-filter').value;
+    const selectedCareer = document.getElementById('career-filter').value;
 
-      filteredProjects = allProjects.filter(project => {
+    // Generamos el URL con los parámetros de búsqueda
+    const url = new URL(window.location.href);
+    const params = url.searchParams;
+    if (searchTerm) params.set('q', searchTerm);
+    else params.delete('q');
+    if (selectedYear) params.set('anio', selectedYear);
+    else params.delete('anio');
+    if (selectedCareer) params.set('carrera', selectedCareer);
+    else params.delete('carrera');
+    window.history.replaceState(null, '', url);
+    // Aquí evitamos que se redibuje todo el contenido de los filtros.
+    const filtersContainer = document.querySelector('.filters-container');
+    const currentHtml = filtersContainer.innerHTML;
+    // Llamar al servidor para obtener los proyectos filtrados
+    fetch(url.toString())
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('.cards-grid').innerHTML = new DOMParser().parseFromString(html, 'text/html').querySelector('.cards-grid').innerHTML;
+        });
+        
+    // Filtramos los proyectos
+    filteredProjects = allProjects.filter(project => {
         const title = project.getAttribute('data-title');
         const year = project.getAttribute('data-year');
         const career = project.getAttribute('data-career');
@@ -189,11 +210,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const careerMatch = !selectedCareer || career === selectedCareer;
 
         return titleMatch && yearMatch && careerMatch;
-      });
+        
+    });
 
-      displayFilteredProjects();
-      updateResultsCount();
-    }
+    displayFilteredProjects();
+    updateResultsCount();
+}
 
     function displayFilteredProjects() {
       const container = document.getElementById('projects-scroll');
@@ -235,6 +257,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+    initializeProjects();  // Inicializa los proyectos al cargar la página
+});
+
   const scrollContainer = document.getElementById('projects-scroll');
   const scrollbar = document.getElementById('scrollbar');
   const cardsGrid = document.querySelector('.cards-grid');
@@ -255,11 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollbarPosition = (scrollPosition / (totalWidth - visibleWidth)) * 100;
     scrollbar.style.transform = `translateX(${scrollbarPosition}%)`;
   });
-});
-
-
-
-
 
     let searchTimeout;
     document.getElementById('search-input').addEventListener('input', function() {

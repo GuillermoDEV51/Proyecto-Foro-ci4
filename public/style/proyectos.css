@@ -174,51 +174,88 @@ nav {
 /* --------------------------------
    Filtros de búsqueda
    -------------------------------- */
+/* --------------------------------
+   Contenedor de Filtros (ajustado)
+   -------------------------------- */
 .filters-container {
   background: #fff;
   border-radius: var(--radio-bordes);
   box-shadow: 0 2px 4px var(--sombra-card);
-  padding: 1.5rem;
+  padding: 1rem; /* Reducimos el padding para hacerlo más bajo */
   margin-bottom: 2rem;
+  width: 90%;  /* Hace que el contenedor ocupe el 90% del ancho de la página */
+  max-width: 1200px;  /* Aumenta el máximo para hacerlo aún más alargado */
+  min-height: 180px;  /* Ajustamos la altura mínima para que sea más bajo */
+  box-sizing: border-box;
+  margin: 0 auto;  /* Centra el contenedor horizontalmente */
+  overflow: hidden;  /* Evita cualquier desbordamiento */
 }
+
+/* --------------------------------
+   Título de los filtros
+   -------------------------------- */
 .filters-title {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--color-texto);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem; /* Reducimos un poco el espacio debajo del título */
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+
+/* --------------------------------
+   Grid de filtros
+   -------------------------------- */
 .filters-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);  /* Tres columnas para los filtros */
   gap: 1rem;
-  align-items: end;
+  align-items: center;  /* Alineación centrada para una mejor distribución */
 }
+
+/* --------------------------------
+   Contenedor individual de filtro
+   -------------------------------- */
 .filter-group {
   display: flex;
   flex-direction: column;
 }
+
+/* --------------------------------
+   Etiqueta del filtro
+   -------------------------------- */
 .filter-label {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--color-texto);
   margin-bottom: 0.5rem;
 }
-.filter-select, .filter-input {
-  padding: 0.6rem 0.8rem;
-  border: 2px solid #e0e0e0;
-  border-radius: var(--radio-bordes);
-  font-size: 0.9rem;
-  background: #fff;
-  transition: border-color 0.2s;
-  font-family: inherit;
+
+/* --------------------------------
+   Campos de selección y texto (filtro)
+   -------------------------------- */
+.filter-group select, .filter-group input {
+  width: 100%;  /* Ocupa todo el ancho disponible */
+  max-width: 300px;  /* Máximo tamaño para inputs y selects */
+  padding: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  min-width: 150px;  /* Fija un ancho mínimo para evitar que los filtros se encojan */
+  width: 100%; /* Fija el tamaño para evitar que cambie al buscar */
 }
+
+/* --------------------------------
+   Efectos de enfoque para los filtros
+   -------------------------------- */
 .filter-select:focus, .filter-input:focus {
   outline: none;
   border-color: var(--color-acento);
 }
+
+/* --------------------------------
+   Botón para limpiar filtros
+   -------------------------------- */
 .clear-filters-btn {
   background: var(--color-acento);
   color: white;
@@ -234,10 +271,18 @@ nav {
   gap: 0.5rem;
   justify-self: start;
 }
+
+/* --------------------------------
+   Hover en el botón de limpiar filtros
+   -------------------------------- */
 .clear-filters-btn:hover {
   background: #e55a00;
   transform: translateY(-1px);
 }
+
+/* --------------------------------
+   Contador de resultados
+   -------------------------------- */
 .results-count {
   text-align: center;
   color: #666;
@@ -245,16 +290,23 @@ nav {
   margin-bottom: 1rem;
   font-style: italic;
 }
+
+/* --------------------------------
+   No hay resultados
+   -------------------------------- */
 .no-results {
   text-align: center;
   padding: 3rem 1rem;
   color: #666;
 }
+
 .no-results i {
   font-size: 3rem;
   color: #ccc;
   margin-bottom: 1rem;
 }
+
+
 
 /* --------------------------------
    Contenedor de proyectos horizontal (cards-grid)
