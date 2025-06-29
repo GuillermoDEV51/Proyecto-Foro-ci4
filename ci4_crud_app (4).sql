@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-06-2025 a las 05:40:40
+-- Tiempo de generación: 29-06-2025 a las 07:35:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -51,7 +51,15 @@ INSERT INTO `proyectos` (`id`, `titulo`, `autor`, `carrera`, `descripcion`, `ani
 (3, 'Plataforma E-learning', 'Ana Torres', 'Ingeniería Informática', NULL, '2024', 'proyecto3.jpg', 'proyecto3.pdf\r\n', 1, NULL, NULL),
 (4, 'Desarrollo de Aplicación Web para Gestión de Inventarios', 'Juan Pérez', 'Ingeniería Informática', NULL, '2024', 'proyecto4.jpg', 'proyecto4.pdf', 0, NULL, NULL),
 (5, 'Estudio de Impacto Ambiental en el Puerto de la Ciudad', 'María García', 'Ingeniería Marítima', NULL, '2023', 'proyecto5.jpg', NULL, 0, NULL, NULL),
-(6, 'Análisis de Sostenibilidad en el Uso del Agua en Regiones Áridas', 'Carlos Sánchez', 'Ingeniería Ambiental', NULL, '2022', 'proyecto6.jpg', NULL, 0, NULL, NULL);
+(6, 'Análisis de Sostenibilidad en el Uso del Agua en Regiones Áridas', 'Carlos Sánchez', 'Ingeniería Ambiental', NULL, '2022', 'proyecto6.jpg', NULL, 0, NULL, NULL),
+(7, 'Implementación de un Sistema de Información para una Agencia Marítima', 'Elvis Claudio Huacachi Caldas', 'Ingeniería Informática', NULL, '2019', NULL, NULL, 0, NULL, NULL),
+(8, 'Desarrollo de un Data Lake para la Gestión de Datos sobre Navegación Marítima', 'Miguel de la Fuente Muñoz', 'Ingeniería Informática', NULL, '2018', NULL, NULL, 0, NULL, NULL),
+(9, 'Sistema de Gestión de Clubs de Golf', 'Roberto Blázquez Pardo', 'Ingeniería Informática', NULL, '2017', NULL, NULL, 0, NULL, NULL),
+(10, 'Digitalización de la Ordenación Académica', 'Carlos Rivas Pérez', 'Ingeniería Informática', NULL, '2022', NULL, NULL, 0, NULL, NULL),
+(11, 'Diseño de un Juego Multijugador en Android', 'Hugo Alberto Huerta García', 'Ingeniería Informática', NULL, '2016', NULL, NULL, 0, NULL, NULL),
+(12, 'Sistema de Engrase Automático en Barcos de Pesca', 'I. Guerrero & J. Medrano', 'Ingeniería Marítima', NULL, '2023', NULL, NULL, 0, NULL, NULL),
+(13, 'Optimización de Rutas Marítimas con Algoritmos Genéticos', 'Anónimo (UVa)', 'Ingeniería Informática', NULL, '2022', NULL, NULL, 0, NULL, NULL),
+(14, 'Pensum de Ingeniería Informática – UMC', 'Universidad Marítima del Caribe', 'Ingeniería Informática', NULL, '2010', NULL, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -156,7 +164,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `proyectos`
 --
 ALTER TABLE `proyectos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
