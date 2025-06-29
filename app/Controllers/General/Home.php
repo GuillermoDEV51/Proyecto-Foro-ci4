@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use CodeIgniter\Model;
@@ -9,7 +10,9 @@ class ProyectosModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['titulo', 'autor', 'anio', 'carrera', 'imagen', 'pdf', 'descripcion', 'size', 'destacado'];
 }
-namespace App\Controllers;
+namespace App\Controllers\General;
+
+use App\Controllers\BaseController;
 
 use App\Models\ProyectosModel; // <-- importante
 

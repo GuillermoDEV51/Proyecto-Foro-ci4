@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\General;
+
+use App\Controllers\BaseController;
 
 class ayuda extends BaseController
 {

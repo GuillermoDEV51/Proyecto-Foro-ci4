@@ -9,9 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link href="<?php echo base_url() ?>style/EstilosUser/IndexUsuario.css" rel="stylesheet">
 
-  <style>
-   
-  </style>
 </head>
 
 <body>
@@ -166,8 +163,8 @@
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="<?php echo base_url() ?>?>user/nuestramisionusuario">Nuestra Misión</a></li>
-          <li><a href="<?php echo base_url() ?>?>user/equipousuario">Equipo</a></li>
+          <li><a href="<?php echo base_url() ?>user/nuestramisionusuario">Nuestra Misión</a></li>
+          <li><a href="<?php echo base_url() ?>user/equipousuario">Equipo</a></li>
         </ul>
       </div>
       <div class="footer-column">
