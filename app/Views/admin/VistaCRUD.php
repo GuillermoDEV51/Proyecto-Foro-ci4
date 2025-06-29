@@ -1,204 +1,114 @@
-<!--$this->include('layouts/header.php'); -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Forum de Proyectos</title>
-  <!-- Tipografía limpia similar a Scribd -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
-  <script src="<?php echo base_url() ?>boostra/js/bootstrap.bundle.min.js"></script>
-  <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
-  <link href="<?php echo base_url() ?>style/home.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Panel de Administración – Foro de Proyectos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Fonts + Bootstrap + FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="<?= base_url('style/EstilosAdmin/vistacrud.css') ?>">
 </head>
+<body>
 
-<body id="page-top">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="<?= base_url() ?>img/LOGOFP.png" alt="Logo Foro de Proyectos" class="logo-header">
+    <a href="#usuarios"><i class="fas fa-users me-2"></i>Usuarios</a>
+    <a href="#proyectos"><i class="fas fa-upload me-2"></i>Subir Proyecto</a>
+    <a href="<?= base_url() ?>" class="text-warning fw-bold mt-5 ms-3 d-block">← Volver al Inicio</a>
+  </div>
 
-    <!-- Barra de navegación -->
-  <nav>
-    <div class="nav-container">
-      <a href="<?php echo base_url() ?>user/indexusuario">Inicio</a>
-      <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
-      <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
-      <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
-      
-      
+  <!-- Encabezado -->
+  <header class="content d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="<?= base_url() ?>img/LOGOFP.png" alt="Logo Foro de Proyectos" class="logo-header">
+      <span class="admin-title">Panel de Administración</span>
     </div>
- </nav>
+    <button class="btn btn-outline-dark"><i class="fas fa-sign-out-alt"></i> Salir</button>
+  </header>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+  <!-- Contenido principal -->
+  <main class="content">
+    <!-- Sección Usuarios -->
+    <section id="usuarios">
+      <h2 class="section-title">Gestión de Usuarios</h2>
+      <div class="mb-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarUsuarioModal">
+          <i class="fas fa-plus"></i> Agregar Usuario
+        </button>
+      </div>
+      <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Código</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Laura Gómez</td>
+            <td>ing-001</td>
+            <td>Administrador</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">
+                <i class="fas fa-edit"></i> Editar
+              </button>
+              <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-<!--$this->include('layouts/navsidebar.php'); -->
+    <!-- Sección Proyectos -->
+    <section id="proyectos">
+      <h2 class="section-title">Gestión de Proyectos</h2>
+      <div class="mb-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProyectoModal">
+          <i class="fas fa-plus"></i> Agregar Proyecto
+        </button>
+      </div>
+      <table class="table table-striped table-bordered shadow-sm">
+        <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Año</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>101</td>
+            <td>Sistema de Gestión Académica</td>
+            <td>Laura Gómez</td>
+            <td>2024</td>
+            <td>
+              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarProyectoModal">
+                <i class="fas fa-edit"></i> Editar
+              </button>
+              <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+  <!-- Modal Agregar Usuario -->
+  <!-- Modal code here -->
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard Admin</h1>
-                        
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        
-
-
-                    <div class="row">
-
-
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="card shadow mb-4">
-                               
-
-
-<!-- table data started-->
-
-<!-- table data started-->
-
-
- 
-
-
-<?php
-
-$session = \Config\Services::session();
-
-if($session->getFlashdata('success'))
-{
-    echo '
-    <div class="alert alert-success">'.$session->getFlashdata("success").'</div>
-    ';
-}
-
-?>
- <!--<div class="card">
-    <div class="card-header">
-        <div class="row">
-            <div class="col">User Data</div>
-            <div class="col text-right">
-                <a href="<?php echo base_url("/crud/add")?>" class="btn btn-success btn-sm">Create</a>
-            </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive display" id="myTable" >
-            <table class="table table-striped table-bordered">
-                <tr>
-                    <th>codigo</th>
-                    <th>nombre</th>
-                    <th>rol</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-                <?php
-
-                //if($ses_data)
-                //{
-                    //foreach($ses_data as $user)
-                    //{
-                       // echo '
-                       // <tr>
-                           // <td>'.$user["codigo"].'</td>
-                           // <td>'.$user["nombre"].'</td>
-                           // <td>'.$user["rol"].'</td>
-                           // <td><a href="'.base_url().'/crud/fetch_single_data/'.$user["id"].'" class="btn btn-sm btn-warning">Edit</a></td>
-                            //<td><button type="button" onclick="delete_data('.$user["id"].')" class="btn btn-danger btn-sm">Delete</button></td>
-                       // </tr>';
-                   // }
-               // }
-
-                ?>
-            </table>
-        </div>
-        <div>
-            <?php
-
-            //if($pagination_link)
-            //{
-              //  $pagination_link->setPath('crud');
-
-               // echo $pagination_link->links();
-            //}
-            
-            ?>
-
-        </div>
-    </div>
-</div> -->
-
-
-
-
-
-
-                    <!-- table -->
-
-
-
-
-
-
-
-                    <!-- table -->
-
-
-
-
-
-
-
-                        <!-- Pie Chart -->
-                        
-                             
-                            </div>
-                        </div>
-                    </div>
-
-                   
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            
-            <!--$this->include('layouts/footer.php');-->
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    
-
- 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<script>
-function delete_data(id)
-{
-    if(confirm("Are you sure you want to remove it?"))
-    {
-        window.location.href="<?php echo base_url(); ?>/crud/delete/"+id;
-    }
-    return false;
-}
-
-
-</script>
-
-
 </html>
