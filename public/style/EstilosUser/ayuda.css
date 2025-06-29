@@ -1,4 +1,4 @@
-/* -------------------------------
+ /* -------------------------------
        Variables de color
        ------------------------------- */
     :root {
@@ -55,18 +55,21 @@
       position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 4px var(--sombra-card);
     }
-    .header-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1rem;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-    }
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem 0.75rem 0;  /* reduciendo padding izquierdo */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: -20px; /* más hacia la izquierda */
+}
+
     .logo img {
       height: 32px;
       margin-right: 0.5rem;
@@ -147,12 +150,20 @@
       right: 0;
       transition: transform 0.2s;
     }
-    .faq-answer {
-      display: none;
-      margin-top: 0.5rem;
-      color: var(--color-texto);
-      line-height: 1.4;
-    }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-top: 0.75rem;
+  color: var(--color-texto);
+  line-height: 1.5;
+  padding-top: 0;
+}
+.faq-item.active .faq-answer {
+  max-height: 500px; /* ajusta si tus respuestas son muy largas */
+  padding-top: 0.5rem;
+}
+
 
      /* -------------------------------
        Footer - FIJO EN LA PARTE INFERIOR
@@ -198,6 +209,90 @@
       font-size: 0.85rem;
       opacity: 0.9;
     }
+    :root {
+  --color-acento: rgb(255, 94, 0);
+  --color-fondo: #f5f5f5;
+  --color-texto: #333333;
+  --color-header: #ffffff;
+  --radio-bordes: 6px;
+  --sombra-card: rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.faq-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 1rem;
+}
+
+/* Título */
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-acento);
+  font-size: 1.8rem;
+}
+
+/* Estilo de cada ítem */
+.faq-item {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: var(--radio-bordes);
+  background-color: #fff;
+  box-shadow: 0 2px 5px var(--sombra-card);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Pregunta */
+.faq-question {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-texto);
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+/* Indicador (+/-) opcional */
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Cambia el símbolo cuando está activo */
+.faq-item.active .faq-question::after {
+  content: "-";
+}
+
+/* Respuesta oculta y con animación */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-top: 0.75rem;
+  color: var(--color-texto);
+  line-height: 1.5;
+  padding-top: 0;
+}
+.faq-item.active .faq-answer {
+  max-height: 500px; /* ajusta si tus respuestas son muy largas */
+  padding-top: 0.5rem;
+}
+
 
     /* -------------------------------
        Responsive tweaks

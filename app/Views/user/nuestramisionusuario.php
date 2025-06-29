@@ -114,21 +114,21 @@
 
   </main>
 
-   <!-- Footer -->
+  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="nuestramisionusuario.php">Nuestra Misión</a></li>
-          <li><a href="equipousuario.php">Equipo</a></li>
+          <li><a href="<?php echo base_url() ?>nuestramision">Nuestra Misión</a></li>
+          <li><a href="<?php echo base_url() ?>equipo">Equipo</a></li>
         </ul>
       </div>
       <div class="footer-column">
         <h3>Redes Sociales</h3>
         <ul>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i> </a></li>
         </ul>
       </div>
     </div>
