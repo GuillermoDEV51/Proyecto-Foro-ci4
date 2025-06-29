@@ -129,20 +129,20 @@
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="nuestramisionusuario.php">Nuestra Misión</a></li>
-          <li><a href="equipousuario.php">Equipo</a></li>
+          <li><a href="nuestramision.php">Nuestra Misión</a></li>
+          <li><a href="equipo.php">Equipo</a></li>
         </ul>
       </div>
       <div class="footer-column">
         <h3>Redes Sociales</h3>
         <ul>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i> </a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 Forum de Proyectos. Todos los derechos reservados.</p>
+      <p>&copy; 2025 Foro de Proyectos. Todos los derechos reservados.</p>
     </div>
   </footer>
 </body>

@@ -1,0 +1,35 @@
+
+.login{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 94, 0);
+
+
+
+}
+
+/* Selecciona el icono por su clase o id */
+.icono {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    background-color: rgb(255, 255, 255);
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.login-box {
+    min-width: 340px;
+    max-width: 400px;
+
+    /* Puedes agregar más estilos personalizados aquí si quieres */
+    /* Por ejemplo: */
+    /* border: 2px solid #007bff; */
+    /* background-color: #fffbe6; */
+}

@@ -54,37 +54,82 @@
      
 <?php endif; ?>
 
-
-
-      </div>
-    </nav>
+    </div>
+  </nav>
 
   <!-- Sección de búsqueda -->
-<section class="search-section">
-    <form class="search-container" method="GET" action="<?= base_url('proyectos/buscar') ?>">
-        <input type="text" name="q" value="<?= isset($q) ? esc($q) : '' ?>" placeholder="Buscar documentos, tesis, proyectos..." />
+  <section class="search-section">
+<form class="search-container" method="GET" action="<?= base_url('proyectos') ?>">
+    <input type="text" name="q" value="<?= isset($q) ? esc($q) : '' ?>" placeholder="Buscar proyectos..." />
+    <select name="anio">
+        <option value="">Seleccionar Año</option>
+        <?php for ($year = date('Y'); $year >= 2000; $year--): ?>
+            <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
+        <?php endfor; ?>
+    </select>
+    <select name="carrera">
+        <option value="">Carrera</option>
+        <option value="informatica" <?= (isset($carrera) && $carrera == 'informatica') ? 'selected' : '' ?>>Ingeniería Informática</option>
+        <option value="maritima" <?= (isset($carrera) && $carrera == 'maritima') ? 'selected' : '' ?>>Ingeniería Marítima</option>
+    </select>
+    <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+</form>
 
-        <select name="anio">
-            <option value="">Seleccionar Año</option>
-            <?php for ($year = date('Y'); $year >= 2000; $year--): ?>
-                <option value="<?= $year ?>" <?= (isset($anio) && $anio == $year) ? 'selected' : '' ?>><?= $year ?></option>
-            <?php endfor; ?>
-        </select>
+  </section>
 
-        <select name="carrera">
-            <option value="">Carrera</option>
-            <option value="informatica" <?= (isset($carrera) && $carrera == 'informatica') ? 'selected' : '' ?>>Informática</option>
-            <option value="maritima" <?= (isset($carrera) && $carrera == 'maritima') ? 'selected' : '' ?>>Marítima</option>
-            <option value="ambiental" <?= (isset($carrera) && $carrera == 'ambiental') ? 'selected' : '' ?>>Ambiental</option>
-            <option value="turismo" <?= (isset($carrera) && $carrera == 'turismo') ? 'selected' : '' ?>>Turismo</option>
-            <option value="administracion" <?= (isset($carrera) && $carrera == 'administracion') ? 'selected' : '' ?>>Administración</option>
-        </select>
+<script>
+  function clearFilters() {
+    // Limpiar los valores de los filtros
+    document.querySelector('input[name="q"]').value = '';
+    document.querySelector('select[name="anio"]').value = '';
+    document.querySelector('select[name="carrera"]').value = '';
 
-        <button type="submit"><i class="fas fa-search"></i> Buscar</button>
-    </form>
-</section>
+    // Redirigir a la página de proyectos sin filtros
+    window.location.href = '<?= base_url('proyectos') ?>';
+  }
 
-<main class="main-content">
+  // Script para recargar la página completamente al hacer una búsqueda con filtros
+  document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.querySelector('input[name="q"]');
+      const yearSelect = document.querySelector('select[name="anio"]');
+      const careerSelect = document.querySelector('select[name="carrera"]');
+      const searchButton = document.querySelector('button[type="submit"]'); // Botón de búsqueda
+
+      // Aquí quitamos los event listeners automáticos para que no se active la búsqueda al escribir
+      // searchInput.addEventListener('input', function() {
+      //     applyFilters();
+      // });
+      // yearSelect.addEventListener('change', function() {
+      //     applyFilters();
+      // });
+      // careerSelect.addEventListener('change', function() {
+      //     applyFilters();
+      // });
+
+      searchButton.addEventListener('click', function(event) {
+          event.preventDefault();  // Evita el envío automático del formulario
+          applyFilters();  // Llama a la función solo cuando se haga clic en "Buscar"
+      });
+
+      function applyFilters() {
+          const query = searchInput.value;
+          const year = yearSelect.value;
+          const career = careerSelect.value;
+
+          // Construir la URL de la búsqueda
+          let url = '<?= base_url('proyectos') ?>?';
+          if (query) url += 'q=' + encodeURIComponent(query) + '&';
+          if (year) url += 'anio=' + encodeURIComponent(year) + '&';
+          if (career) url += 'carrera=' + encodeURIComponent(career) + '&';
+
+          // Recargar la página con los filtros aplicados
+          window.location.href = url;
+      }
+  });
+</script>
+
+
+  <main class="main-content">
     <!-- Sección de documentos destacados -->
     <h2 class="section-title">Documentos Destacados</h2>
     <div class="cards-grid">
@@ -131,75 +176,46 @@
             <?php endif; ?>
         <?php endif; ?>
     </div>
-</main>
-
-
-
-
-<!--<section class="cards-grid">
-  <div class="card">
-    <img src="imagen1.jpg" alt="Documento 1">
-    <div class="card-body">
-      <h3 class="card-title">Tecnología Digital</h3>
-      <p class="card-meta">Autor: Ana Laura Rivoir · 2024</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="imagen2.jpg" alt="Documento 2">
-    <div class="card-body">
-      <h3 class="card-title">Optimización de Procesos Industriales</h3>
-      <p class="card-meta">Autor: Jeyson Patricio Egas García · 2023</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="imagen3.jpg" alt="Documento 3">
-    <div class="card-body">
-      <h3 class="card-title">Algoritmos Genéticos Aplicados</h3>
-      <p class="card-meta">Autor: ...</p>
-    </div>
-  </div>
-</section>
--->
-    <!-- Sección de frases motivacionales respecto al estudio -->
-    <section class="motivational-quotes">
-      <h2>Siempre aprende más</h2>
-      <div class="quotes-list">
-        <div class="quote-item">
-          "El aprendizaje es un tesoro que seguirá a su dueño a todas partes." – Proverbio chino
-        </div>
-        <div class="quote-item">
-          "La educación no es preparación para la vida; la educación es la vida misma." – John Dewey
-        </div>
-        <div class="quote-item">
-          "No te rindas. Sufre ahora y vive el resto de tu vida como un campeón." – Muhammad Ali
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h3>Acerca de</h3>
-        <ul>
-<li><a href="<?= base_url('nuestramision') ?>">Nuestra Misión</a></li>
-<li><a href="<?= base_url('equipo') ?>">Equipo</a></li>
-        </ul>
+  <!-- Sección de frases motivacionales respecto al estudio -->
+  <section class="motivational-quotes">
+    <h2>Siempre aprende más</h2>
+    <div class="quotes-list">
+      <div class="quote-item">
+        "El aprendizaje es un tesoro que seguirá a su dueño a todas partes." – Proverbio chino
       </div>
-     <div class="footer-column">
-        <h3>Redes Sociales</h3>
-        <ul>
-          <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i> </a></li>
-        </ul>
+      <div class="quote-item">
+        "La educación no es preparación para la vida; la educación es la vida misma." – John Dewey
+      </div>
+      <div class="quote-item">
+        "No te rindas. Sufre ahora y vive el resto de tu vida como un campeón." – Muhammad Ali
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Foro de Proyectos. Todos los derechos reservados.</p>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Acerca de</h3>
+      <ul>
+        <li><a href="<?= base_url('nuestramision') ?>">Nuestra Misión</a></li>
+        <li><a href="<?= base_url('equipo') ?>">Equipo</a></li>
+      </ul>
     </div>
-  </footer>
+    <div class="footer-column">
+      <h3>Redes Sociales</h3>
+      <ul>
+        <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
+        <li><a href="#"><i class="fab fa-linkedin-in"></i> </a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Foro de Proyectos. Todos los derechos reservados.</p>
+  </div>
+</footer>
 </body>
 </html>
