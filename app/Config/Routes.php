@@ -24,9 +24,16 @@ $routes->post('login/logout', 'General\Login::logout');
 
 
 // Rutas para visor con ID
+<<<<<<< HEAD
 $routes->get('proyectos/visor/(:nsum)', 'General\proyectos::visor/$1');
 $routes->get('proyecto', 'General\proyectos::index');
 $routes->get('proyecto/visor/(:num)', 'General\proyectos::visor/$1');
+=======
+$routes->get('proyectos/visor/(:nsum)', 'Proyectos::visor/$1');
+$routes->get('proyecto', 'Proyecto::index');
+$routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
+$routes->get('proyectos/visor/(:num)', 'General\Proyectos::visor/$1');
+>>>>>>> a98bfbc88b1215d2f0b694ffcd021807ae367c63
 
 
 
