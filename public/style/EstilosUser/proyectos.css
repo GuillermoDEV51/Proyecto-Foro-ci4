@@ -121,9 +121,51 @@ nav {
   color: var(--color-acento);
   transform: translateY(-2px);
 }
+   .user-status {
+  display: flex;
+  align-items: center; /* Alineamos verticalmente */
+  gap: 0.5rem; /* Espacio entre el icono y el texto */
+}
 
+.user-status i {
+  font-size: 1.5rem; /* Aseguramos que el icono sea del tamaño adecuado */
+  color: var(--color-acento); /* Color del icono (puedes ajustarlo si lo deseas) */
+}
+.logout-btn {
+  background-color: var(--color-acento); /* Color de fondo más atractivo */
+  color: #fff; /* Texto blanco para resaltar */
+  border: none;
+  padding: 10px 20px; /* Aumentamos el padding para que se vea más grande */
+  font-size: 16px; /* Ajustamos la fuente para que sea más legible */
+  border-radius: var(--radio-bordes); /* Bordes redondeados */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease; /* Transición suave para el hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+
+.logout-btn i {
+  margin-right: 8px;
+}
+
+.logout-btn:hover {
+  background-color: #e55a00; /* Fondo más oscuro al pasar el ratón */
+  transform: translateY(-2px); /* Ligero desplazamiento hacia arriba para dar efecto de "elevación" */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Aumentamos la sombra en el hover */
+}
+
+.logout-btn:focus {
+  outline: none;
+  box-shadow: 0 0 8px var(--color-acento); /* Resaltamos el borde al hacer focus */
+}
+
+
+.logout-btn:focus {
+  outline: none;
+} 
 /* --------------------------------
-   Barra de desplazamiento personalizada
+   Contenedor de proyectos horizontal (projects-scroll-container)
    -------------------------------- */
 .projects-scroll-container {
   position: relative;

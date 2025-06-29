@@ -60,10 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <!-- Tipografía similar a Scribd -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  
-  
   <style>
-
     :root {
       --color-acento: rgb(255, 94, 0);
       --color-fondo: #f5f5f5;
@@ -284,52 +281,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
   <!-- Header principal -->
-<header>
-  <div class="header-container">
-    <div class="logo">
-      <img src="LOGOFP.png" alt="LOGOFP" />
+  <header>
+    <div class="header-container">
+    <a href="<?= base_url() ?>" class="logo">
+      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
       <span>Foro de Proyectos</span>
+    </a>
+      <a href="login.php" class="login-link"><i class="fas fa-user"></i> Iniciar Sesión</a>
     </div>
-    <div class="user-actions">
-      <span class="user-status">
-        <i class="fas fa-user-check"></i> Usuario Conectado
-      </span>
-      <a href="index.php" class="logout-link">
-        <i class="fas fa-sign-out-alt"></i>
-      </a>
-    </div>
-  </div>
-</header>
+  </header>
 
   <!-- Barra de navegación -->
-   <nav>
+  <nav>
     <div class="nav-container">
-      <a href="<?php echo base_url() ?>user/indexusuario">Inicio</a>
-      <a href="<?php echo base_url() ?>user/proyectosusuario">Proyectos</a>
-      <a href="<?php echo base_url() ?>user/ayudausuario">Ayuda</a>
-      <a href="<?php echo base_url() ?>user/contactousuario">Contacto</a>
-       <?php $role = session()->get('rol'); ?>
-        <?php if ($role === '1'): ?>
-
-            <!-- Opciones para admin -->
-
-            <a href="<?php echo base_url() ?>admin/VistaCRUD">Dashboard Admin</a>
-
-
-        <?php elseif ($role === '2'): ?>
-
-            <!-- Opciones para estudiante -->
-
-        <?php else: ?>
-
-            <!-- Opciones para visitante -->
-            
-        <?php endif; ?>
-
-      
+      <a href="index.php">Inicio</a>
+      <a href="proyectos.php">Proyectos</a>
+      <a href="ayuda.php">Ayuda</a>
+      <a href="contacto.php" class="active">Contacto</a>
     </div>
- </nav>
-
+  </nav>
 
   <!-- Contenido principal: Formulario de Contacto -->
   <main class="main-content">
@@ -374,8 +344,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="footer-column">
         <h3>Redes Sociales</h3>
         <ul>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> </a></li>
+          <li><a href="#"><i class="fab fa-linkedin-in"></i> </a></li>
         </ul>
       </div>
     </div>
