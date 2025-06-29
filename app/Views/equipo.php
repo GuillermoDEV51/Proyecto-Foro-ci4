@@ -45,8 +45,7 @@
 
     <!-- Miembros del Equipo -->
     <div class="team-grid">
-      
-    <div class="team-member">
+      <div class="team-member">
         <div class="member-avatar">
           <i class="fas fa-user-tie"></i>
         </div>
@@ -56,10 +55,9 @@
           Especialista en gestión de proyectos educativos. Lidera la visión estratégica del foro.
         </p>
         <div class="member-social">
-<a href="" class="social-link copy-email" data-email="alarconbooking1@gmail.com">
-  <i class="fas fa-envelope"></i>
-</a>
-
+          <a href="#" class="social-link copy-email" data-email="alarconbooking1@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
         </div>
       </div>
 
@@ -73,10 +71,9 @@
           Ingeniero en sistemas responsable de la arquitectura técnica de la plataforma.
         </p>
         <div class="member-social">
-<a href="" class="social-link copy-email" data-email="guillermobooking1@gmail.com">
-  <i class="fas fa-envelope"></i>
-</a>
-
+          <a href="#" class="social-link copy-email" data-email="guillermobooking1@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
         </div>
       </div>
 
@@ -90,14 +87,12 @@
           Diseñador de base de datos y optimización de consultas. Asegura la integridad y rendimiento de los datos.
         </p>
         <div class="member-social">
-<a href="" class="social-link copy-email" data-email="alexisbooking1@gmail.com">
-  <i class="fas fa-envelope"></i>
-</a>
-
+          <a href="#" class="social-link copy-email" data-email="alexisbooking1@gmail.com">
+            <i class="fas fa-envelope"></i>
+          </a>
         </div>
       </div>
     </div>
-
 
     <!-- Call to Action -->
     <section class="cta-section">
@@ -109,31 +104,8 @@
         Contáctanos
       </a>
     </section>
-    <script>
-  document.querySelectorAll('.copy-email').forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      const email = link.getAttribute('data-email');
-      if (!email) return;
-
-      // Copiar al portapapeles
-      navigator.clipboard.writeText(email).then(() => {
-        // Opcional: cambia el ícono temporalmente o muestra un mensaje
-        const original = link.innerHTML;
-        link.innerHTML = '<i class="fas fa-check"></i>';
-        setTimeout(() => {
-          link.innerHTML = original;
-        }, 1500);
-      }).catch(err => {
-        console.error('Error al copiar el correo:', err);
-      });
-    });
-  });
-</script>
-
-
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-links">
@@ -143,13 +115,29 @@
       </div>
       <p>&copy; 2025 Foro de Proyectos. Todos los derechos reservados.</p>
     </div>
-
-   
-  
-    
-
-    
   </footer>
 
+  <script>
+    document.querySelectorAll('.copy-email').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // Previene que la página se recargue
+
+        const email = link.getAttribute('data-email');
+        if (!email) return;
+
+        // Copiar al portapapeles
+        navigator.clipboard.writeText(email).then(() => {
+          // Cambiar el ícono a un "check" temporalmente
+          const originalIcon = link.innerHTML;
+          link.innerHTML = '<i class="fas fa-check"></i>';
+          setTimeout(() => {
+            link.innerHTML = originalIcon;
+          }, 1500);
+        }).catch(err => {
+          console.error('Error al copiar el correo:', err);
+        });
+      });
+    });
+  </script>
 </body>
 </html>

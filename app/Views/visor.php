@@ -53,10 +53,11 @@
             <i class="fas fa-file-pdf"></i>
             <span id="documentPages">-- páginas</span>
           </div>
-          <div class="meta-item">
-            <i class="fas fa-download"></i>
-            <span id="documentSize">--</span>
-          </div>
+ <div class="meta-item">
+    <i class="fas fa-download"></i>
+    <span id="documentSize"><?= esc($documento['size']) ?></span>
+</div>
+
         </div>
       </div>
 
