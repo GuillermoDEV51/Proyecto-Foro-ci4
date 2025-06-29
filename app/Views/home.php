@@ -61,8 +61,8 @@
 
   <!-- Sección de búsqueda -->
 <section class="search-section">
-    <form class="search-container" method="GET" action="<?= base_url('proyectos/buscar') ?>">
-        <input type="text" name="q" value="<?= isset($q) ? esc($q) : '' ?>" placeholder="Buscar documentos, tesis, proyectos..." />
+    <form class="search-container" method="GET" action="<?= base_url('proyectos') ?>"> <!-- Aquí apuntamos a la página de proyectos -->
+        <input type="text" name="q" value="<?= isset($q) ? esc($q) : '' ?>" placeholder="Buscar proyectos..." />
 
         <select name="anio">
             <option value="">Seleccionar Año</option>
@@ -73,16 +73,14 @@
 
         <select name="carrera">
             <option value="">Carrera</option>
-            <option value="informatica" <?= (isset($carrera) && $carrera == 'informatica') ? 'selected' : '' ?>>Informática</option>
-            <option value="maritima" <?= (isset($carrera) && $carrera == 'maritima') ? 'selected' : '' ?>>Marítima</option>
-            <option value="ambiental" <?= (isset($carrera) && $carrera == 'ambiental') ? 'selected' : '' ?>>Ambiental</option>
-            <option value="turismo" <?= (isset($carrera) && $carrera == 'turismo') ? 'selected' : '' ?>>Turismo</option>
-            <option value="administracion" <?= (isset($carrera) && $carrera == 'administracion') ? 'selected' : '' ?>>Administración</option>
+            <option value="informatica" <?= (isset($carrera) && $carrera == 'informatica') ? 'selected' : '' ?>>Ingenieria Informática</option>
+            <option value="maritima" <?= (isset($carrera) && $carrera == 'maritima') ? 'selected' : '' ?>>Ingenieria Marítima</option>
         </select>
 
         <button type="submit"><i class="fas fa-search"></i> Buscar</button>
     </form>
 </section>
+
 
 <main class="main-content">
     <!-- Sección de documentos destacados -->

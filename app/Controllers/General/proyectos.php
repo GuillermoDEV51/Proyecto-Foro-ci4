@@ -12,7 +12,7 @@ public function index()
     $proyectosModel = new ProyectosModel();
 
     // Obtener los filtros si existen (de la URL)
-    $q = $this->request->getGet('q');
+    $q = $this->request->getGet(index: 'q');
     $anio = $this->request->getGet('anio');
     $carrera = $this->request->getGet('carrera');
 
