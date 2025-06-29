@@ -202,6 +202,11 @@
       color: white;
       transform: translateY(-2px);
     }
+    .social-link i.fas.fa-check {
+  color: #28a745;  /* Verde para indicar éxito */
+  font-size: 1.2rem;  /* Asegura que el check sea visible */
+}
+
 
     /* Stats Section */
     .stats-section {

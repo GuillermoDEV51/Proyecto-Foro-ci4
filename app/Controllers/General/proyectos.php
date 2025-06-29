@@ -112,15 +112,27 @@ class Proyectos extends BaseController
     }
 
     // Función visor (sin cambios)
-    public function visor($id)
-    {
-        $model = new ProyectosModel();
-        $documento = $model->find($id);
+public function visor($id)
+{
+    $model = new ProyectosModel();
+    $documento = $model->find($id);
 
-        if (!$documento || empty($documento['pdf'])) {
-            return redirect()->to('/proyectos')->with('error', 'PDF no encontrado');
-        }
-
-        return view('visor', data: ['documento' => $documento]);
+    if (!$documento || empty($documento['pdf'])) {
+        return redirect()->to('/proyectos')->with('error', 'PDF no encontrado');
     }
+
+    // Obtener el tamaño del archivo
+    $filePath = FCPATH . 'uploads/' . $documento['pdf'];
+    $documento['size'] = (file_exists($filePath)) ? $this->formatSize(filesize($filePath)) : 'Desconocido';
+
+    return view('visor', ['documento' => $documento]);
+}
+
+// Función para formatear el tamaño del archivo en un formato legible (KB, MB, GB)
+private function formatSize($bytes)
+{
+    $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    $power = $bytes > 0 ? floor(log($bytes, 1024)) : 0;
+    return number_format($bytes / pow(1024, $power), 2) . ' ' . $units[$power];
+}
 }

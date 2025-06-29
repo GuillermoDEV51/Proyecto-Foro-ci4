@@ -27,6 +27,7 @@ $routes->post('login/logout', 'General\Login::logout');
 $routes->get('proyectos/visor/(:nsum)', 'Proyectos::visor/$1');
 $routes->get('proyecto', 'Proyecto::index');
 $routes->get('proyecto/visor/(:num)', 'Proyecto::visor/$1');
+$routes->get('proyectos/visor/(:num)', 'General\Proyectos::visor/$1');
 
 
 
