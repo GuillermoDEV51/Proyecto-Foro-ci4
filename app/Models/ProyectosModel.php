@@ -10,6 +10,7 @@ class ProyectosModel extends Model
     protected $primaryKey = 'id';       // Nombre de la columna clave primaria
 
     protected $allowedFields = ['titulo', 'anio', 'carrera', 'autor', 'imagen']; // Campos que puedes actualizar
+    
 
     // Otros métodos adicionales si lo necesitas
 }

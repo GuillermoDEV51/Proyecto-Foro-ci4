@@ -15,6 +15,7 @@ class VistaCRUD extends BaseController
     public function index(): string
     {
         return view('admin/VistaCRUD');
+        
     }
 
 }

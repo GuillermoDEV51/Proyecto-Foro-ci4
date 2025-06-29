@@ -20,7 +20,7 @@
     <img src="<?= base_url() ?>img/LOGOFP.png" alt="Logo Foro de Proyectos" class="logo-header">
     <a href="#usuarios"><i class="fas fa-users me-2"></i>Usuarios</a>
     <a href="#proyectos"><i class="fas fa-upload me-2"></i>Subir Proyecto</a>
-    <a href="<?= base_url() ?>" class="text-warning fw-bold mt-5 ms-3 d-block">← Volver al Inicio</a>
+    <a href="<?= base_url() ?>user/indexusuario" class="text-warning fw-bold mt-5 ms-3 d-block">← Volver al Inicio</a>
   </div>
 
   <!-- Encabezado -->
@@ -29,7 +29,9 @@
       <img src="<?= base_url() ?>img/LOGOFP.png" alt="Logo Foro de Proyectos" class="logo-header">
       <span class="admin-title">Panel de Administración</span>
     </div>
-    <button class="btn btn-outline-dark"><i class="fas fa-sign-out-alt"></i> Salir</button>
+    <form action="<?php echo base_url() ?>login/logout" method="POST">
+      <button class="btn btn-outline-dark" ><i class="fas fa-sign-out-alt"></i> Salir</button>
+    </form>
   </header>
 
   <!-- Contenido principal -->
@@ -42,7 +44,9 @@
           <i class="fas fa-plus"></i> Agregar Usuario
         </button>
       </div>
+
       <table class="table table-striped table-bordered shadow-sm">
+
         <thead class="table-dark">
           <tr>
             <th>ID</th>
@@ -52,6 +56,7 @@
             <th>Acciones</th>
           </tr>
         </thead>
+
         <tbody>
           <tr>
             <td>1</td>
@@ -66,7 +71,9 @@
             </td>
           </tr>
         </tbody>
+
       </table>
+      
     </section>
 
     <!-- Sección Proyectos -->

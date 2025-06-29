@@ -17,9 +17,14 @@
   <header>
   <div class="header-container">
     <div class="logo">
-      <img src="LOGOFP.png" alt="LOGOFP" />
+
+    <a href="<?= base_url() ?>" class="logo">
+      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
       <span>Foro de Proyectos</span>
+    </a>
+
     </div>
+    
     <div class="user-actions">
       <span class="user-status">
         <i class="fas fa-user-check"></i> <p>Bienvenido, <?= esc(session()->get('user')) ?>!</p>
