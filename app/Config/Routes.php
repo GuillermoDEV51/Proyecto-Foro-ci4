@@ -47,7 +47,13 @@ $routes->get('user/ayudausuario', 'Usuario\AyudaUsuario::index');
 $routes->get('user/enviar_contactousuario', 'Usuario\Enviar_Contacto::index');
 $routes->get('user/visorusuario', 'Usuario\::index');
 $routes->get('user/visorusuario/(:num)', 'Usuario\VisorUsuario::index/$1');
-$routes->get('/user/indexusuario', 'UserController::indexusuario');
+$routes->get('user/indexusuario', 'UserController::indexusuario');
+// Ruta para logout
+$routes->get('login/logout', 'General\Login::logout');  // Definir la ruta para logout
+
+// Rutas para login
+$routes->get('login', 'General\Login::index');
+$routes->match(['get', 'post'], 'login/loginAutenticacion', 'General\Login::loginAutenticacion');
 
 
 //rutas Admin dashbord

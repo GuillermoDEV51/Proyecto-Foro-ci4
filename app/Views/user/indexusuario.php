@@ -13,7 +13,6 @@
 
 <body>
   
-  <!-- Header principal -->
 <!-- Header principal -->
 <header>
   <div class="header-container">
