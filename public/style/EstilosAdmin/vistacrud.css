@@ -47,6 +47,77 @@ body {
 .sidebar .logo-header:hover {
   transform: scale(1.1);
 }
+/* Botón base */
+.btn {
+    padding: 0.25rem 0.5rem; /* Reducido el padding */
+    border: none;
+    border-radius: var(--radio-bordes);
+    font-size: 0.7rem; /* Tamaño de fuente más pequeño */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem; /* Menor espacio entre icono y texto */
+}
+
+/* Botón primario */
+.btn-primary {
+    background-color: var(--color-botones);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: rgb(230, 85, 0);
+}
+
+/* Botón secundario */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-texto);
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #f5f5f5;
+}
+/* Botón de Agregar Proyecto */
+.btn-lg-custom {
+    padding: 0.25rem 1rem; /* Reduce el relleno para hacer el botón más compacto */
+    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+    width: auto; /* Permite que el botón se ajuste al contenido */
+    display: inline-flex; /* Alinea el contenido */
+    justify-content: center; /* Centra el contenido dentro del botón */
+}
+
+/* Estilo para botón de descarga PDF */
+.btn-download-pdf {
+    display: inline-block;
+    padding: 6px 12px; /* Relleno reducido */
+    background-color: #ff4800;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.btn-download-pdf:hover {
+    background-color: #ce6402;
+    text-decoration: none;
+}
+
+/* Estilo personalizado para botones aún más pequeños */
+.btn-sm-custom {
+    font-size: 10px; /* Reduce aún más el tamaño de la fuente */
+    padding: 3px 6px; /* Aún más pequeño el padding */
+}
+/* Separar los botones de Editar y Eliminar */
+.btn-sm-custom-edit {
+    margin-right: 8px; /* Espacio entre los botones */
+}
+
 
 /* Barra de desplazamiento personalizada */
 .sidebar::-webkit-scrollbar {
@@ -113,31 +184,11 @@ table {
   vertical-align: middle;
 }
 
-/* Botones personalizados */
-.btn-sm {
-  margin-right: 5px;
-  transition: 0.3s;
-}
-
-.btn-warning {
-  background-color: #ffc107;
-  border: none;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  border: none;
-}
-
-/* Efectos hover para botones */
-.btn-sm:hover {
-  transform: scale(1.05);
-}
 
 /* Tarjetas para usuarios y proyectos */
 section h2 {
   margin-top: 3rem;
-  color: rgb(255, 94, 0);
+  color: rgb(0, 0, 0);
 }
 
 section {
@@ -164,7 +215,6 @@ section {
 .card-body {
   padding: 1.5rem;
 }
-
 /* Footer */
 footer {
   background-color: #333;
