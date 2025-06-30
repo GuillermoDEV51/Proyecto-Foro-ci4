@@ -66,9 +66,9 @@
 
                     <div class="form-group mb-3">
                         <label for="codigo" class="form-label">Año</label>
-                        <input type="text" name="codigo" id="codigo" class="form-control" />
-                        <?php if (isset($validation) && $validation->getError('codigo')): ?>
-                            <div class="alert alert-danger mt-2"><?= $validation->getError('codigo') ?></div>
+                        <input type="number" name="anio" id="anio" class="form-control" />
+                        <?php if (isset($validation) && $validation->getError('anio')): ?>
+                            <div class="alert alert-danger mt-2"><?= $validation->getError('anio') ?></div>
                         <?php endif; ?>
                     </div>
 

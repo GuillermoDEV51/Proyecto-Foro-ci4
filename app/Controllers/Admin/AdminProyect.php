@@ -44,9 +44,9 @@ class AdminProyect extends BaseController
         $rules = [
             'titulo' => 'required|min_length[3]|max_length[100]|is_unique[proyectos.titulo]',
             'autor' => 'required|min_length[3]|max_length[50]',
-            'carrera' => 'required|in_list[Ingeniería de Informatica,Ingeniería Maritima,Ingeniería de Ambiental]',
+            'carrera' => 'required|in_list[Ingeniería de Informática,Ingeniería Marítima,Ingeniería Ambiental]',
             'anio' => 'required|integer',
-            'documento' => 'uploaded[documento]|max_size[documento,2048]|ext_in[documento,pdf,doc,docx]' // Validación del archivo
+            'documento' => 'uploaded[documento]|max_size[documento,2048]|ext_in[documento,pdf]' // Validación del archivo
         ];
 
         if (!$this->validate($rules)) {
