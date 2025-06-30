@@ -77,6 +77,4 @@ public function logout()
     return redirect()->to('/login');  // Redirige a la página de login
 }
 
-
-
 }

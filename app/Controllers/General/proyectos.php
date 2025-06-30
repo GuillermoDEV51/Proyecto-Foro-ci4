@@ -7,8 +7,8 @@ use App\Models\ProyectosModel;
 
 class Proyectos extends BaseController
 {
-    public function index()
-    {
+   public function index()
+   {
         $proyectosModel = new ProyectosModel();
 
         // Obtener los filtros si existen (de la URL)
@@ -37,16 +37,29 @@ class Proyectos extends BaseController
         // Obtener los proyectos filtrados
         $resultados = $builder->get()->getResultArray();
 
-        // Verificar si hay filtros aplicados
-        $filtrosAplicados = !empty($q) || !empty($anio) || !empty($carrera);
+        if ($this->request->isAJAX()) {
+            // Si es una solicitud AJAX, devolver solo los resultados de la tabla
+            $html = '';
+            foreach ($resultados as $proyecto) {  // Cambié 'user' por 'proyecto'
+                $html .= '<div class="project-card card">';
+                $html .= '<a href="' . base_url('proyectos/visor/' . $proyecto['id']) . '">';
+                $html .= '<img src="' . base_url('img/proyectos/' . $proyecto['imagen']) . '" alt="' . esc($proyecto['titulo']) . '" loading="lazy">';
+                $html .= '</a>';
+                $html .= '<div class="card-body">';
+                $html .= '<div class="card-title">' . esc($proyecto['titulo']) . '</div>';
+                $html .= '<div class="card-meta">Autor: ' . esc($proyecto['autor']) . ' · ' . esc($proyecto['anio']) . '</div>';
+                $html .= '</div>';
+                $html .= '</div>';
+            }
+            return $this->response->setJSON($html);
+        }
 
-        // Pasar las variables 'proyectos', 'q', 'anio', 'carrera', etc., a la vista 'proyectos'
+        // Si no es AJAX, pasar los resultados a la vista
         return view('proyectos', [
             'proyectos' => $resultados,  // Proyectos filtrados
             'q' => $q,
             'anio' => $anio,
-            'carrera' => $carrera,
-            'filtrosAplicados' => $filtrosAplicados  // Variable para saber si se aplicaron filtros
+            'carrera' => $carrera
         ]);
     }
 

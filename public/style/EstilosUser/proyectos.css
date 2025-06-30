@@ -216,6 +216,31 @@ nav {
 /* --------------------------------
    Filtros de búsqueda
    -------------------------------- */
+.filters-container {
+  margin-top: 20px;  /* Añadir un margen superior a todo el contenedor de filtros */
+}
+
+.clear-filters-btn {
+  background-color: #ff5c00;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;  /* Aumentar o reducir el espacio en este botón */
+  display: inline-block;
+}
+
+.clear-filters-btn:hover {
+  background-color: #e04e00;
+}
+
+.clear-filters-btn:focus {
+  outline: none;
+}
+
+
 /* --------------------------------
    Contenedor de Filtros (ajustado)
    -------------------------------- */
@@ -231,6 +256,7 @@ nav {
   box-sizing: border-box;
   margin: 0 auto;  /* Centra el contenedor horizontalmente */
   overflow: hidden;  /* Evita cualquier desbordamiento */
+  
 }
 
 /* --------------------------------
