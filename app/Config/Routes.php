@@ -63,6 +63,7 @@ $routes->match(['get', 'post'], 'login/loginAutenticacion', 'General\Login::logi
 
 $routes->get('admin/VistaCRUD', 'Admin\VistaCRUD::index');
 
+// Rutas para añadir y gestionar usuarios en el panel de administración
 $routes->get('admin/AdminUser', 'Admin\AdminUser::index');
 $routes->get('admin/AddUser', 'Admin\AdminUser::new');
 $routes->post('AdminUser/create', 'Admin\AdminUser::create');
@@ -72,9 +73,12 @@ $routes->delete('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1');
 $routes->get('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1');
 $routes->post('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1'); 
 
+// Rutas para editar proyectos en el panel de administración
+$routes->get('admin/AdminProyect', 'Admin\AdminProyect::index');
+$routes->get('admin/AddProyect', 'Admin\AdminProyect::new');
 
 
-$routes->get('admin/EditarProyecto', 'Admin\EditarProyecto::index');
+
 
 $routes->get('proyectos/actualizar-imagenes', 'ProyectosController::actualizarImagenes');
 
