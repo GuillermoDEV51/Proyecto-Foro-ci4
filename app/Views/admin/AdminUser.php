@@ -9,7 +9,6 @@
     <!-- Google Fonts + Bootstrap + FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
     <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
     <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
@@ -50,7 +49,7 @@
         <section id="usuarios" class="mb-5">
             <h2 class="section-title text-center mb-4">Gestión de Usuarios</h2>
             <div class="mb-3 text-center">
-                <a href="<?php echo base_url() ?>admin/AddUser" class="btn btn-primary btn-lg p-2"><i class="fas fa-plus"></i> Agregar Usuario</a>
+                <a href="<?php echo base_url() ?>admin/AddUser" class="btn btn-primary btn-lg p-3"><i class="fas fa-plus"></i> Agregar Usuario</a>
             </div>
 
             <table class="table table-striped table-bordered shadow-sm">
@@ -78,12 +77,15 @@
                                 }
                                 ?>
                             </td>
-                            <td>
-                                <a href="<?php echo base_url('AdminUser/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-url="<?php echo base_url('AdminUser/' . $user['id']) ?>">
-                                    <i class="fas fa-trash-alt"></i> Eliminar
-                                </button>
-                            </td>
+                          <td>
+    <a href="<?php echo base_url('AdminUser/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm btn-sm-custom-edit">
+        <i class="fas fa-edit"></i> Editar
+    </a>
+    <button class="btn btn-danger btn-sm btn-sm-custom-delete" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-url="<?php echo base_url('AdminUser/' . $user['id']) ?>">
+        <i class="fas fa-trash-alt"></i> Eliminar
+    </button>
+</td>
+
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

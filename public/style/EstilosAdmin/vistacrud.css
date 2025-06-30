@@ -47,77 +47,143 @@ body {
 .sidebar .logo-header:hover {
   transform: scale(1.1);
 }
+
 /* Botón base */
 .btn {
-    padding: 0.25rem 0.5rem; /* Reducido el padding */
-    border: none;
-    border-radius: var(--radio-bordes);
-    font-size: 0.7rem; /* Tamaño de fuente más pequeño */
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem; /* Menor espacio entre icono y texto */
+  padding: 0.25rem 0.5rem; /* Reducido el padding */
+  border: none;
+  border-radius: var(--radio-bordes);
+  font-size: 0.7rem; /* Tamaño de fuente más pequeño */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem; /* Menor espacio entre icono y texto */
 }
 
 /* Botón primario */
 .btn-primary {
-    background-color: var(--color-botones);
-    color: white;
+  background-color: var(--color-botones);
+  color: white;
 }
 
 .btn-primary:hover {
-    background-color: rgb(230, 85, 0);
+  background-color: rgb(230, 85, 0);
 }
 
 /* Botón secundario */
 .btn-secondary {
-    background-color: transparent;
-    color: var(--color-texto);
-    border: 1px solid #ddd;
+  background-color: transparent;
+  color: var(--color-texto);
+  border: 1px solid #ddd;
 }
 
 .btn-secondary:hover {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
+
 /* Botón de Agregar Proyecto */
 .btn-lg-custom {
-    padding: 0.25rem 1rem; /* Reduce el relleno para hacer el botón más compacto */
-    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
-    width: auto; /* Permite que el botón se ajuste al contenido */
-    display: inline-flex; /* Alinea el contenido */
-    justify-content: center; /* Centra el contenido dentro del botón */
+  padding: 0.25rem 1rem; /* Reduce el relleno para hacer el botón más compacto */
+  font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+  width: auto; /* Permite que el botón se ajuste al contenido */
+  display: inline-flex; /* Alinea el contenido */
+  justify-content: center; /* Centra el contenido dentro del botón */
 }
 
 /* Estilo para botón de descarga PDF */
 .btn-download-pdf {
-    display: inline-block;
-    padding: 6px 12px; /* Relleno reducido */
-    background-color: #ff4800;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-top: 8px;
+  display: inline-block;
+  padding: 6px 12px; /* Relleno reducido */
+  background-color: #ff4800;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 .btn-download-pdf:hover {
-    background-color: #ce6402;
-    text-decoration: none;
+  background-color: #ce6402;
+  text-decoration: none;
 }
 
 /* Estilo personalizado para botones aún más pequeños */
 .btn-sm-custom {
-    font-size: 10px; /* Reduce aún más el tamaño de la fuente */
-    padding: 3px 6px; /* Aún más pequeño el padding */
-}
-/* Separar los botones de Editar y Eliminar */
-.btn-sm-custom-edit {
-    margin-right: 8px; /* Espacio entre los botones */
+  font-size: 10px; /* Reduce aún más el tamaño de la fuente */
+  padding: 3px 6px; /* Aún más pequeño el padding */
 }
 
+/* Separar los botones de Editar y Eliminar */
+.btn-sm-custom-edit {
+  margin-right: 8px; /* Espacio entre los botones */
+}
+
+/* Botones Editar y Eliminar Simétricos */
+.btn-sm-custom-edit, .btn-sm-custom-delete {
+    padding: 6px 15px; /* Asegúrate de que el padding sea igual para ambos botones */
+    font-size: 14px; /* Mantén el mismo tamaño de fuente */
+    border-radius: 5px; /* Redondeo de bordes consistente */
+    display: inline-flex; /* Asegura que los botones se comporten igual */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo específico para el botón Editar */
+.btn-sm-custom-edit {
+    background-color: #ffc107; /* Color de fondo para el botón editar */
+    color: white;
+    border: none;
+}
+
+.btn-sm-custom-edit:hover {
+    background-color: #e0a800; /* Color al pasar el ratón */
+}
+
+/* Estilo específico para el botón Eliminar */
+.btn-sm-custom-delete {
+    background-color: #dc3545; /* Color de fondo para el botón eliminar */
+    color: white;
+    border: none;
+}
+
+.btn-sm-custom-delete:hover {
+    background-color: #c82333; /* Color al pasar el ratón */
+}
+
+/* Botones Editar y Eliminar Simétricos en AdminProyect */
+.btn-sm-custom-edit, .btn-sm-custom-delete {
+    padding: 6px 15px; /* Asegúrate de que el padding sea igual para ambos botones */
+    font-size: 14px; /* Mantén el mismo tamaño de fuente */
+    border-radius: 5px; /* Redondeo de bordes consistente */
+    display: inline-flex; /* Asegura que los botones se comporten igual */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo específico para el botón Editar */
+.btn-sm-custom-edit {
+    background-color: #ffc107; /* Color de fondo para el botón editar */
+    color: white;
+    border: none;
+}
+
+.btn-sm-custom-edit:hover {
+    background-color: #e0a800; /* Color al pasar el ratón */
+}
+
+/* Estilo específico para el botón Eliminar */
+.btn-sm-custom-delete {
+    background-color: #dc3545; /* Color de fondo para el botón eliminar */
+    color: white;
+    border: none;
+}
+
+.btn-sm-custom-delete:hover {
+    background-color: #c82333; /* Color al pasar el ratón */
+}
 
 /* Barra de desplazamiento personalizada */
 .sidebar::-webkit-scrollbar {
@@ -151,10 +217,12 @@ header {
   border-bottom: 2px solid #e8e8e8;
 }
 
+
 header img {
   height: 50px;
   margin-right: 10px;
 }
+
 
 .admin-title {
   font-size: 1.5rem;
@@ -184,7 +252,6 @@ table {
   vertical-align: middle;
 }
 
-
 /* Tarjetas para usuarios y proyectos */
 section h2 {
   margin-top: 3rem;
@@ -195,10 +262,13 @@ section {
   margin-bottom: 3rem;
 }
 
+/* Estilo para las tarjetas */
 .card {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 600px; /* Limita el ancho de la tarjeta */
+  margin: 2rem auto; /* Centra la tarjeta */
 }
 
 .card:hover {
@@ -215,6 +285,66 @@ section {
 .card-body {
   padding: 1.5rem;
 }
+
+/* Estilo para el formulario */
+form {
+  max-width: 600px; /* Limitar el ancho del formulario */
+  margin: 0 auto; /* Centrar el formulario */
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Campos de entrada */
+input, select, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Botones */
+button[type="submit"], .btn-lg-custom {
+  width: auto; /* Deja que el botón se ajuste al contenido */
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* Espaciado entre los elementos */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+
+/* Sección de imagen o carga de archivo */
+.input-file {
+    margin-bottom: 1rem;
+}
+
+/* Estilo de la tabla para agregar proyectos */
+table {
+    width: 100%; /* Aseguramos que la tabla ocupe todo el ancho disponible */
+    border-collapse: collapse; /* Eliminamos los espacios entre celdas */
+}
+
+.table th, .table td {
+    padding: 0.75rem;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.table td {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 /* Footer */
 footer {
   background-color: #333;

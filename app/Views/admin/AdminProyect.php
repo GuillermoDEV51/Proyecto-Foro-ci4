@@ -73,12 +73,17 @@
                             <td><?php echo $user['autor'] ?></td>
                             <td><?php echo $user['carrera'] ?></td>
                             <td><?php echo $user['anio'] ?></td>   
-                            <td><?php echo $user['pdf'] ?></td>
+                            <td>
+    <a href="<?= base_url('user/visorusuario/' . $user['id']) ?>" target="_blank">
+        <?php echo $user['pdf'] ?>
+    </a>
+</td>
+
 <td>
-    <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm btn-sm-custom btn-sm-custom-edit">
+    <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm btn-sm-custom-edit">
         <i class="fas fa-edit"></i> Editar
     </a>
-    <button class="btn btn-danger btn-sm btn-sm-custom" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-url="<?php echo base_url('AdminProyect/' . $user['id']) ?>">
+    <button class="btn btn-danger btn-sm btn-sm-custom-delete" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-url="<?php echo base_url('AdminProyect/' . $user['id']) ?>">
         <i class="fas fa-trash-alt"></i> Eliminar
     </button>
 </td>
