@@ -30,6 +30,7 @@ class VistaCRUD extends BaseController
     $data = [
         'users' => $users,
         'roles' => $roles,
+        'proyectos' => $proyectosModel->findAll(),
         
     ];
 

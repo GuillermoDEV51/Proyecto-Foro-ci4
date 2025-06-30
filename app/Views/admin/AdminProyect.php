@@ -74,10 +74,10 @@
                             <td><?php echo $user['carrera'] ?></td>
                             <td><?php echo $user['anio'] ?></td>   
                             <td>
-    <a href="<?= base_url('user/visorusuario/' . $user['id']) ?>" target="_blank">
-        <?php echo $user['pdf'] ?>
-    </a>
-</td>
+                            <a href="<?= base_url('user/visorusuario/' . $user['id']) ?>" target="_blank">
+                                <?php echo $user['pdf'] ?>
+                            </a>
+                             </td>
 
 <td>
     <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm btn-sm-custom-edit">
@@ -99,7 +99,7 @@
                 </div>
             <?php endif; ?>
 
-            <!-- Modal para eliminar usuario -->
+            <!-- Modal para eliminar proyecto -->
             <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -111,7 +111,7 @@
                             <p>¿Desea eliminar este registro?</p>
                         </div>
                         <div class="modal-footer">
-                            <!-- Formulario para eliminar usuario -->
+                            <!-- Formulario para eliminar proyecto -->
                             <?= form_open('', ['method' => 'delete', 'id' => 'form-elimina']) ?>
                             <input type="hidden" name="_method" value="delete">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

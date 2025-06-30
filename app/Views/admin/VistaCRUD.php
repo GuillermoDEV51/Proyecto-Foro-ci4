@@ -81,11 +81,8 @@
 
     <!-- Sección Proyectos -->
     <section id="proyectos">
-<<<<<<< HEAD
        <h2 class="section-title">Gestión de Proyectos</h2>
-            <div class="mb-3">
-                <a href="<?php echo base_url() ?>admin/AddProyect" class="btn btn-primary ms-auto p-2"><i class="fas fa-plus"></i> Add Proyect</a>
-            </div>
+            
 
             <table class="table table-striped table-bordered shadow-sm">
 
@@ -99,7 +96,7 @@
                         <th>año</th>
                         <th>Documento</th>
 
-                        <th>Acciones</th>
+                        
                     </tr>
                 </thead>
 
@@ -114,33 +111,17 @@
                             <td><?php echo $user['carrera'] ?></td>
                             <td><?php echo $user['anio'] ?></td>
                             <td>
-                                <?php if (!empty($user['pdf'])): ?>
-                                    <a href="<?= base_url('uploads/' . $user['pdf']) ?>" target="_blank">
-                                        <?= $user['pdf'] ?>
-                                    </a>
-                                <?php else: ?>
-                                    Sin archivo
-                                <?php endif; ?>
+                               <a href="<?= base_url('user/visorusuario/' . $user['id']) ?>" target="_blank">
+        <?php echo $user['pdf'] ?>
+    </a>
+</td>
                             </td>
 
 
 
 
 
-                            <td>
-
-
-                                <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
-
-                                <button
-                                    class="btn btn-danger btn-sm"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#eliminaModal"
-                                    data-bs-url="<?php echo base_url('AdminProyect/' . $user['id']) ?>">
-                                    <i class="fas fa-trash-alt"></i> Eliminar
-                                </button>
-                            </td>
-                        </tr>
+                            
                     <?php endforeach; ?>
 
 
@@ -180,39 +161,6 @@
                 </div>
             </div>
 
-=======
-      <h2 class="section-title text-center mb-4">Gestión de Proyectos</h2>
-      <div class="mb-4 text-center">
-        <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#agregarProyectoModal">
-          <i class="fas fa-plus"></i> Agregar Proyecto
-        </button>
-      </div>
-      <table class="table table-striped table-bordered shadow-sm">
-        <thead class="table-dark">
-          <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Año</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>101</td>
-            <td>Sistema de Gestión Académica</td>
-            <td>Laura Gómez</td>
-            <td>2024</td>
-            <td>
-              <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarProyectoModal">
-                <i class="fas fa-edit"></i> Editar
-              </button>
-              <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
->>>>>>> 3fba1c55a1a49c8a15cad204a2ae3b6b972f0dad
     </section>
   </main>
 
