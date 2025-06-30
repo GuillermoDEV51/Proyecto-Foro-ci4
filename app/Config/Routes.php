@@ -61,6 +61,7 @@ $routes->get('AdminUser/(:segment)/edit', 'Admin\AdminUser::edit/$1');
 $routes->put('AdminUser/(:segment)', 'Admin\AdminUser::update/$1');
 $routes->delete('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1');
 $routes->get('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1');
+$routes->post('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1'); 
 
 
 
