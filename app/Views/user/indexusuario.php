@@ -28,9 +28,12 @@
      <div class="user-status">
   <i class="fas fa-user-check"></i> 
   <p>Bienvenido, <?= esc(session()->get('user')) ?>!</p>
-      </span>
-      <form action="<?= base_url('login/logout') ?>" method="POST">
-        <button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Salir</button>
+     </span>
+        <!-- Formulario para Logout -->
+      <form action="<?= base_url('user/logout') ?>" method="GET">
+        <button type="submit" class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Salir
+        </button>
       </form>
     </div>
   </div>
@@ -69,7 +72,7 @@
 
   <!-- Sección de búsqueda -->
   <section class="search-section">
-<form class="search-container" method="GET" action="<?= base_url('proyectos') ?>">
+<form class="search-container" method="GET" action="<?= base_url('user/proyectosusuario') ?>">
     <input type="text" name="q" value="<?= isset($q) ? esc($q) : '' ?>" placeholder="Buscar proyectos..." />
     <select name="anio">
         <option value="">Seleccionar Año</option>
