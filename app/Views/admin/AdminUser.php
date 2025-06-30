@@ -16,10 +16,6 @@
 
     <script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
 
-
-  
-    
-
     <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
 
     <link href="<?php echo base_url() ?>style/home.css" rel="stylesheet">
@@ -56,6 +52,7 @@
 
 
     <main class="content">
+        
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <?= session()->getFlashdata('success') ?>
