@@ -146,7 +146,7 @@
         <?php if (!empty($destacados)): ?>
             <?php foreach ($destacados as $doc): ?>
                 <div class="card">
-                    <a href="<?= base_url('proyectos/visor/' . $doc['id']) ?>">
+             <a href="<?= base_url('user/visorusuario/' . $doc['id']) ?>">
                         <img src="<?= base_url('img/proyectos/' . $doc['imagen']) ?>" alt="<?= esc($doc['titulo']) ?>">
                     </a>
                     <div class="card-body">
@@ -168,7 +168,7 @@
         <?php if (!empty($proyectos)): ?>
             <?php foreach ($proyectos as $doc): ?>
                 <div class="card">
-                    <a href="<?= base_url('proyectos/visor/' . $doc['id']) ?>">
+               <a href="<?= base_url('user/visorusuario/' . $doc['id']) ?>">
                         <img src="<?= base_url('img/proyectos/' . $doc['imagen']) ?>" alt="<?= esc($doc['titulo']) ?>">
                     </a>
                     <div class="card-body">
