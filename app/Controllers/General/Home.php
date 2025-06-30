@@ -20,7 +20,7 @@ class Home extends BaseController
 {
     public function __construct()
     {
-        helper('url');
+        helper(filenames: 'url');
     }
 
     public function index()
@@ -36,4 +36,5 @@ class Home extends BaseController
 
         return view('home', ['destacados' => $destacados]);
     }
+    
 }

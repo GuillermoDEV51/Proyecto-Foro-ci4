@@ -64,3 +64,4 @@ $routes->get('proyectos/actualizar-imagenes', 'ProyectosController::actualizarIm
 // Rutas para el controlador de proyectos
 $routes->get('proyectos/visor/(:num)', 'General\proyectos::visor/$1');
 $routes->get('visor/(:num)', 'Visor::visor/$1');
+

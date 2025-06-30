@@ -7,7 +7,7 @@
   <!-- Tipografía limpia similar a Scribd -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="<?php echo base_url() ?>/style/EstilosUser/nuestramisionusuario.css"/>
+  <link rel="stylesheet" href="<?php echo base_url() ?>/style/EstilosUser/nuestramision.css"/>
 
   <style>
     
@@ -16,23 +16,30 @@
 
 <body>
   
-  <!-- Header principal -->
+<!-- Header principal -->
 <header>
   <div class="header-container">
     <div class="logo">
-      <img src="LOGOFP.png" alt="LOGOFP" />
-      <span>Foro de Proyectos</span>
-    </div>
-    <div class="user-actions">
-      <span class="user-status">
-        <i class="fas fa-user-check"></i> Usuario Conectado
-      </span>
-      <a href="index.php" class="logout-link">
-        <i class="fas fa-sign-out-alt"></i>
+      <a href="<?= base_url() ?>" class="logo">
+        <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+        <span>Foro de Proyectos</span>
       </a>
+    </div>
+
+    <div class="user-actions">
+     <div class="user-status">
+  <i class="fas fa-user-check"></i> 
+  <p>Bienvenido, <?= esc(session()->get('user')) ?>!</p>
+      </span>
+      <form action="<?= base_url('login/logout') ?>" method="POST">
+        <button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Salir</button>
+      </form>
     </div>
   </div>
 </header>
+
+
+
 
   <!-- Barra de navegación -->
    <nav>
@@ -137,8 +144,8 @@
       <div class="footer-column">
         <h3>Acerca de</h3>
         <ul>
-          <li><a href="<?php echo base_url() ?>nuestramision">Nuestra Misión</a></li>
-          <li><a href="<?php echo base_url() ?>equipo">Equipo</a></li>
+        <li><a href="<?= base_url('user/nuestramisionusuario') ?>">Nuestra Misión</a></li>
+        <li><a href="<?= base_url('user/equipousuario') ?>">Equipo</a></li>
         </ul>
       </div>
       <div class="footer-column">
