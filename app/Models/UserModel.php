@@ -27,9 +27,20 @@ class UserModel extends Model
         'codigo'     => 'required|max_length[30]|is_unique[users.codigo]', // evita duplicados y limita longitud (cambien a 'users.codigo' al nombre de tu tabla usuarios)
         'contraseña' => 'required|max_length[255]|min_length[8]',
     ];
-    protected $validationMessages = [
+   protected $validationMessages = [
         'codigo' => [
-            'is_unique' => 'Este código ya está registrado.'
+            'required' => 'El campo código es obligatorio.',
+            'is_unique' => 'Este código ya está registrado.',
+            'min_length' => 'El código debe tener al menos 3 caracteres.',
+            'max_length' => 'El código no puede superar los 20 caracteres.'
+        ],
+        'contraseña' => [
+            'required' => 'La contraseña es obligatoria.',
+            'min_length' => 'La contraseña debe tener al menos 6 caracteres.',
+            'max_length' => 'La contraseña no puede superar los 255 caracteres.'
+        ],
+        'role' => [
+            'required' => 'Debe seleccionar un rol.'
         ]
     ];
     protected $skipValidation     = false;

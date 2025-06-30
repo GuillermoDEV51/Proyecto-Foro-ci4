@@ -54,7 +54,8 @@ $routes->get('admin/VistaCRUD', 'Admin\VistaCRUD::index');
 
 $routes->get('admin/AdminUser', 'Admin\AdminUser::index');
 $routes->get('admin/AddUser', 'Admin\AdminUser::new');
-$routes->post('admin/AddUser', 'Admin\AdminUser::create');
+$routes->post('AdminUser/create', 'Admin\AdminUser::create');
+
 
 $routes->get('admin/EditarProyecto', 'Admin\EditarProyecto::index');
 

@@ -93,7 +93,7 @@ public string $baseURL = 'http://localhost/Proyecto-Foro-ci4/public/';
      * strings (like currency markers, numbers, etc), that your program
      * should run under for this request.
      */
-    public string $defaultLocale = 'en';
+    public string $defaultLocale = 'es';
 
     /**
      * --------------------------------------------------------------------------

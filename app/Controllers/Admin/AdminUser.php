@@ -16,7 +16,9 @@ class AdminUser extends BaseController
 
     public function index(): string
     {
-        return view('admin/AdminUser');
+        $userModel = new UserModel();
+        $data['users'] = $userModel->findAll();
+        return view('admin/AdminUser', $data);
         
     }
     public function new(): string
@@ -29,15 +31,31 @@ class AdminUser extends BaseController
 
     }
     public function create()
-    {
-      $rules = [
-            'codigo' => 'required|min_length[3]|max_length[20]|is_unique[users.codigo]',
-            'contraseña' => 'required|min_length[6]|max_length[255]',
-            'rol' => 'required'
-        ];
+{
+    $rules = [
+        'codigo' => 'required|min_length[3]|max_length[20]|is_unique[users.codigo]',
+        'contraseña' => 'required|min_length[6]|max_length[255]',
+        'role' => 'required'
+    ];
 
-        
-        
+    if (!$this->validate($rules)) {
+        $RolModel = new \App\Models\RolModel();
+        $data['Rol'] = $RolModel->findAll();
+        $data['validation'] = $this->validator;
+        return view('admin/AddUser', $data);
     }
-  
+
+    $userModel = new \App\Models\UserModel();
+    
+    $userData = [
+        'codigo'      => $this->request->getPost('codigo'),
+        'contraseña'  => $this->request->getPost('contraseña'),
+        'id_rol'      => $this->request->getPost('role')
+    ];
+
+    $userModel->insert($userData);
+
+    return redirect()->to(base_url('admin/AdminUser'))->with('success', 'Usuario creado correctamente');
+}
+
 }

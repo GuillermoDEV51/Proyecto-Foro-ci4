@@ -43,6 +43,12 @@
 
 
 <main class="content">
+    <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?= session()->getFlashdata('success') ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
         <section id="usuarios">
             <h2 class="section-title">Gestión de Usuarios</h2>
             <div class="mb-3">
@@ -62,7 +68,25 @@
                 </thead>
 
                 <tbody>
+
+                <!-- Aquí se mostrarán los usuarios -->
+                <?php foreach ($users as $user): ?>
                     <tr>
+                        <td><?= $user['id'] ?></td>
+                        <td><?= $user['nombre'] ?></td>
+                        <td><?= $user['codigo'] ?></td>
+                        <td><?= $user['rol'] ?></td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal<?= $user['id'] ?>">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+
+                    
+                    <!--<tr>
                         <td>1</td>
                         <td>Laura Gómez</td>
                         <td>ing-001</td>
@@ -73,7 +97,7 @@
                             </button>
                             <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
                         </td>
-                    </tr>
+                    </tr>-->
                 </tbody>
 
             </table>
