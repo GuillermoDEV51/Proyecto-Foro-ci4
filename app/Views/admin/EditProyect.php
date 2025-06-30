@@ -104,7 +104,7 @@
                         <option value="">Seleccionar carrera</option>
                         <option value="Ingeniería de Informatica" <?= $proyecto['carrera'] == 'Ingeniería de Informatica' ? 'selected' : '' ?>>Ingeniería de Informatica
                         <option value="Ingeniería de Maritima" <?= $proyecto['carrera'] == 'Ingeniería de Maritima' ? 'selected' : '' ?>>Ingeniería de Maritima</option>
-                        <option value="Ingeniería de Maritima" <?= $proyecto['carrera'] == 'Ingeniería de Maritima' ? 'selected' : '' ?>>Ingeniería de Maritima</option>
+                        <option value="Ingeniería de Maritima" <?= $proyecto['carrera'] == 'Ingeniería de Maritima' ? 'selected' : '' ?>>Ingeniería de Ambiental</option>
 
                     </select>
                     <?php if (isset($validation) && $validation->getError('carrera')): ?>
