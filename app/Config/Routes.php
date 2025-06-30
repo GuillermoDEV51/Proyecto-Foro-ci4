@@ -47,6 +47,7 @@ $routes->get('user/ayudausuario', 'Usuario\AyudaUsuario::index');
 $routes->get('user/enviar_contactousuario', 'Usuario\Enviar_Contacto::index');
 $routes->get('user/visorusuario', 'Usuario\::index');
 $routes->get('user/visorusuario/(:num)', 'Usuario\VisorUsuario::index/$1');
+$routes->get('/user/indexusuario', 'UserController::indexusuario');
 
 
 //rutas Admin dashbord

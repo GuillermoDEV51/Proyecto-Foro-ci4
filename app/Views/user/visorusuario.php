@@ -14,23 +14,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
+  <!-- HEADER PRINCIPAL -->
 
-  <header>
-    <div class="header-container">
-      <a href="<?= base_url() ?>" class="logo">
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <a href="<?= base_url('user/indexusuario') ?>" class="logo">
         <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
         <span>Foro de Proyectos</span>
       </a>
-      <div class="header-actions">
-        <a href="<?= base_url('/') ?>" class="btn-back">
-          <i class="fas fa-arrow-left"></i> Volver al Inicio
+    </div>
+
+    <div class="user-actions">
+      <div class="user-status">
+        <i class="fas fa-user-check"></i> 
+        <p>Bienvenido, <?= esc(session()->get('user')) ?>!</p>
+        
+        <!-- Botón Ver Proyectos -->
+        <a href="<?= base_url('user/proyectosusuario') ?>" class="btn-ver-proyectos">
+          <i class="fas fa-clipboard-list"></i> Ver Proyectos
         </a>
-        <a href="<?= base_url('login') ?>" class="login-link">
-          <i class="fas fa-user"></i> Iniciar Sesión
-        </a>
+        
+        <form action="<?= base_url('login/logout') ?>" method="POST">
+          <button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Salir</button>
+        </form>
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
+
+
+  <!-- Barra de navegación -->
+
 
   <div class="viewer-container">
     <aside class="info-panel">

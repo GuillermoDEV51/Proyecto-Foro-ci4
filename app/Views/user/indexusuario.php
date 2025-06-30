@@ -18,7 +18,8 @@
 <header>
   <div class="header-container">
     <div class="logo">
-      <a href="<?= base_url() ?>" class="logo">
+      <a href="<?= base_url('user/indexusuario') ?>" class="logo">
+
         <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
         <span>Foro de Proyectos</span>
       </a>
