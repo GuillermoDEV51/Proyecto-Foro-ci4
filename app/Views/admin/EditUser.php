@@ -8,8 +8,12 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
+    <link href="<?php
+
+use App\Controllers\Admin\AdminUser;
+
+ echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="<?php echo base_url() ?>boostra/js/bootstrap.bundle.min.js"></script>
     <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>style/home.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('style/EstilosAdmin/vistacrud.css') ?>">
@@ -42,81 +46,87 @@
 
 
 
-
-    <div class="content">
-
-        <?php
-
-        $validation = \Config\Services::validation();
-
-        ?>
+    <main class="content">
 
 
+       <div class="card-body">
 
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col">Añadir Usuario</div>
-                    <div class="col text-right">
+             <form action="<?= base_url('AdminUser/'.$user['id']) ?>" class="row g-3" method="post" autocomplete="off">
 
-                    </div>
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="id" value="<?= $user['id'] ?>">
+
+                <div class="col-md-4">
+                    <label for="clave" class="form-label">codigo</label>
+                    <input type="text" class="form-control" id="codigo" name="codigo" value="<?= $user['codigo'] ?>" required autofocus>
                 </div>
-            </div>
-            <div class="card-body">
 
+                <div class="col-md-8">
+                    <label for="nombre" class="form-label">contraseña</label>
+                    <input type="password" class="form-control" id="password" name="contraseña" value="<?= $user['contraseña'] ?>" required>
+                </div>
 
-                <!-- Formulario de añadir usuario -->
-                <form method="post" action="<?php echo base_url("AdminUser/create") ?>">
+                
 
-
-
-                    <div class="form-group">
-                        <label>codigo</label>
-                        <input type="text" name="codigo" class="form-control" />
-                        <?php if (isset($validation) && $validation->getError('codigo')): ?>
-                            <div class="alert alert-danger mt-2"><?= $validation->getError('codigo') ?></div>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="form-group">
-                        <label>contraseña</label>
-                        <input type="password" name="contraseña" class="form-control" />
-                        <?php if (isset($validation) && $validation->getError('contraseña')): ?>
-                            <div class="alert alert-danger mt-2"><?= $validation->getError('contraseña') ?></div>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="form-group">
+                <div class="form-group">
                         <label>rol</label>
                         <select name="role" class="form-control">
                             <option value="">Seleccionar rol</option>
-                            <?php foreach ($Rol as $rol): ?>
-                                <option value="<?= $rol['id'] ?>"><?= $rol['Rol'] ?></option>
+                            <?php foreach ($roles as $rol): ?>
+                                <option value="<?= $rol['id'] ?>" <?php echo($rol['id'] == $user['id_rol']) ? 'selected':''; ?>><?= $rol['Rol'] ?></option>
                             <?php endforeach; ?>
                         </select>
                         <?php if (isset($validation) && $validation->getError('role')): ?>
                             <div class="alert alert-danger mt-2"><?= $validation->getError('role') ?></div>
                         <?php endif; ?>
                     </div>
+                
+                <div class="col-12">
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="mostrarPass" onclick="mostrarPassword()">
+                        <label class="form-check-label" for="mostrarPass">
+                            Mostrar contraseña
+                        </label>
+                    </div>
+                </div>
 
-                    <div class="form-group text-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    <div class="form-group text-right ">
-                        <a href="<?= base_url() ?>admin/AdminUser" class="btn btn-secondary">Volver</a>
-                    </div>
-                </form>
-            </div>
+               
+
+                <div class="col-12">
+                    <a href="<?= base_url() ?>admin/AdminUser" class="btn btn-secondary">Volver</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+            </form>
         </div>
+                    
+                   
 
 
-    </div>
+                   
+                
+
+        
+
+       
+    </main>
 
 
 
 
 
 
+
+<script>
+function mostrarPassword() {
+  var input = document.getElementById("password");
+  if (input.type === "password") {
+    input.type = "text";
+  } else {
+    input.type = "password";
+  }
+}
+</script>
 
 
 </body>

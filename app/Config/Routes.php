@@ -63,6 +63,12 @@ $routes->get('admin/VistaCRUD', 'Admin\VistaCRUD::index');
 $routes->get('admin/AdminUser', 'Admin\AdminUser::index');
 $routes->get('admin/AddUser', 'Admin\AdminUser::new');
 $routes->post('AdminUser/create', 'Admin\AdminUser::create');
+$routes->get('AdminUser/(:segment)/edit', 'Admin\AdminUser::edit/$1');
+$routes->put('AdminUser/(:segment)', 'Admin\AdminUser::update/$1');
+$routes->delete('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1');
+$routes->get('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1');
+$routes->post('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1'); 
+
 
 
 $routes->get('admin/EditarProyecto', 'Admin\EditarProyecto::index');

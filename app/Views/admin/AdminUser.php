@@ -8,11 +8,20 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="<?php echo base_url() ?>boostra/js/bootstrap.bundle.min.js"></script>
+
+    <link href="<?php
+
+                use App\Controllers\Admin\AdminUser;
+  echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
+
     <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
+
     <link href="<?php echo base_url() ?>style/home.css" rel="stylesheet">
+
     <link rel="stylesheet" href="<?= base_url('style/EstilosAdmin/vistacrud.css') ?>">
+
 
 </head>
 
@@ -43,6 +52,7 @@
 
 
     <main class="content">
+        
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <?= session()->getFlashdata('success') ?>
@@ -85,30 +95,58 @@
                                 ?>
                             </td>
                             <td>
-                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal<?= $user['id'] ?>">
-                                    <i class="fas fa-edit"></i> Editar
+
+                                <a href="<?php echo base_url('AdminUser/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
+
+                                <button
+                                    class="btn btn-danger btn-sm"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#eliminaModal"
+                                    data-bs-url="<?php echo base_url('AdminUser/' . $user['id']) ?>">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
                                 </button>
-                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
 
 
-                    <!--<tr>
-                        <td>1</td>
-                        <td>Laura Gómez</td>
-                        <td>ing-001</td>
-                        <td>Administrador</td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">
-                                <i class="fas fa-edit"></i> Editar
-                            </button>
-                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</button>
-                        </td>
-                    </tr>-->
+
                 </tbody>
 
             </table>
+            <?php if (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?= session()->getFlashdata('error') ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<?php endif; ?>
+
+            <!-- Modal para eliminar usuario -->
+            <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="eliminaModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="eliminaModalLabel">Aviso</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Desea eliminar este registro?</p>
+                        </div>
+                        <div class="modal-footer">
+                            
+                            <!-- Formulario para eliminar usuario -->
+                                <?= form_open('', ['method' => 'delete', 'id' => 'form-elimina']) ?>
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                <?= form_close() ?>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+
 
         </section>
 
@@ -116,10 +154,25 @@
 
 
 
+    <script>
+        const eliminaModal = document.getElementById('eliminaModal')
+        if (eliminaModal) {
+            eliminaModal.addEventListener('show.bs.modal', event => {
+                // Button that triggered the modal
+                const button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                const url = button.getAttribute('data-bs-url')
+
+                // Update the modal's content.
+                const form = eliminaModal.querySelector('#form-elimina')
+                form.setAttribute('action', url)
+            })
+        }
+    </script>
 
 
-
-
+<script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
+    
 
 </body>
 
