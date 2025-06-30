@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Visor de PDFs - Forum de Proyectos</title>
-  <!-- Tipografía limpia similar a Scribd -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="<?php echo base_url() ?>/style/EstilosUser/visor.css"/>
   
-  <!-- PDF.js Library -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visor de PDFs - Foro de Proyectos | <?= esc($documento['titulo']) ?></title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="<?= base_url('style/EstilosUser/visor.css') ?>" />
+
+  <!-- PDF.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
 </head>
-
 <body>
-  <!-- Header principal -->
-  <header>
-    <div class="header-container">
-    <a href="<?= base_url() ?>" class="logo">
-      <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
-      <span>Foro de Proyectos</span>
-    </a>
-    
-    <div class="header-actions">
-  <a href="indexusuario.php" class="btn-back">
-    <i class="fas fa-arrow-left"></i> Volver al Inicio
-  </a>
-  <div class="user-connected">
-    <i class="fas fa-user-check"></i> Usuario Conectado
-  </div>
-</div>
-    </div>
-  </header>
+  <!-- HEADER PRINCIPAL -->
 
- <div class="viewer-container">
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <a href="<?= base_url('user/indexusuario') ?>" class="logo">
+        <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
+        <span>Foro de Proyectos</span>
+      </a>
+    </div>
+
+    <div class="user-actions">
+      <div class="user-status">
+        <i class="fas fa-user-check"></i> 
+        <p>Bienvenido, <?= esc(session()->get('user')) ?>!</p>
+        
+        <!-- Botón Ver Proyectos -->
+        <a href="<?= base_url('user/proyectosusuario') ?>" class="btn-ver-proyectos">
+          <i class="fas fa-clipboard-list"></i> Ver Proyectos
+        </a>
+        
+        <form action="<?= base_url('login/logout') ?>" method="POST">
+          <button type="submit" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Salir</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+  <!-- Barra de navegación -->
+
+
+  <div class="viewer-container">
     <aside class="info-panel">
       <div class="document-info">
         <h1 class="document-title" id="documentTitle"><?= esc($documento['titulo']) ?></h1>
@@ -76,7 +90,8 @@
             <button class="toolbar-btn" id="prevPage" onclick="previousPage()">
               <i class="fas fa-chevron-left"></i>
             </button>
-            <input type="number" class="page-input" id="pageInput" min="1" onchange="goToPage()" />
+           <input type="number" class="page-input" id="pageInput" min="1" max="1000" onchange="goToPage()" />
+
             <span>de <span id="totalPages">--</span></span>
             <button class="toolbar-btn" id="nextPage" onclick="nextPage()">
               <i class="fas fa-chevron-right"></i>
@@ -124,7 +139,8 @@
     description: <?= json_encode($documento['descripcion']) ?>,
     size: <?= json_encode($documento['size'] ?? 'Desconocido') ?>,
 
-    pdfUrl: "<?= base_url('uploads/' . $documento['pdf']) ?>"
+pdfUrl: "<?= base_url('uploads/' . $documento['pdf']) ?>"
+
   };
 
     // Resto del código JavaScript para PDF.js (igual que en tu visor, adaptado)...
@@ -137,7 +153,8 @@
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    const MAX_PAGES_ALLOWED = 7;
+    const MAX_PAGES_ALLOWED = Number.MAX_VALUE; // Cambia esto si quieres limitar el número de páginas visibles
+    // const MAX_PAGES_ALLOWED = 7; // Descomentar si quieres limitar a 7 páginas
 
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -154,11 +171,10 @@
         pdfDoc = await loadingTask.promise;
 
         const totalPages = pdfDoc.numPages;
-        const availablePages = Math.min(totalPages, MAX_PAGES_ALLOWED);
+     const availablePages = totalPages;
 
-        const pagesText = totalPages > MAX_PAGES_ALLOWED
-          ? `${availablePages} de ${totalPages} (Vista previa)`
-          : `${availablePages} páginas`;
+const pagesText = `${totalPages} páginas`;
+
           if (totalPages > MAX_PAGES_ALLOWED) {
   const notice = document.createElement('p');
   notice.textContent = `Estás viendo una vista previa pública. Inicia sesión para ver el documento completo.`;
@@ -188,8 +204,9 @@
     }
 
 async function renderPage(num) {
-  const maxPage = Math.min(pdfDoc.numPages, MAX_PAGES_ALLOWED);
-  if (num > maxPage) num = maxPage;
+
+if (num > Math.min(pdfDoc.numPages, MAX_PAGES_ALLOWED)) num = Math.min(pdfDoc.numPages, MAX_PAGES_ALLOWED);
+
 
       if (pageIsRendering) {
         pageNumIsPending = num;
@@ -236,8 +253,8 @@ async function renderPage(num) {
     
     function goToPage() {
   const inputPage = parseInt(document.getElementById('pageInput').value);
-  const maxPage = Math.min(pdfDoc.numPages, MAX_PAGES_ALLOWED);
-  if (inputPage >= 1 && inputPage <= maxPage) {
+if (inputPage >= 1 && inputPage <= pdfDoc.numPages) {
+
     renderPage(inputPage);
   } else {
     alert(`Esta es una vista pública. Solo puedes ver hasta ${maxPage} páginas.`);
@@ -408,6 +425,7 @@ async function renderPage(num) {
         if (pdfDoc && !pageIsRendering) renderPage(pageNum);
       }, 100);
     });
+    
   </script>
 
 </body>

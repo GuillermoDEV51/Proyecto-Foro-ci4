@@ -22,7 +22,8 @@
 <header>
   <div class="header-container">
     <div class="logo">
-      <a href="<?= base_url() ?>" class="logo">
+      <a href="<?= base_url('user/indexusuario') ?>" class="logo">
+
         <img src="<?= base_url() ?>img/LOGOFP.png" alt="LOGOFP" />
         <span>Foro de Proyectos</span>
       </a>
@@ -125,7 +126,8 @@
     <?php if (!empty($proyectos)): ?>
       <?php foreach ($proyectos as $p): ?>
         <div class="project-card card" data-title="<?= strtolower(esc($p['titulo'])) ?>" data-year="<?= esc($p['anio']) ?>" data-career="<?= esc($p['carrera']) ?>">
-          <a href="<?= base_url('proyectos/visor/' . $p['id']) ?>">
+      <a href="<?= base_url('user/visorusuario/' . $p['id']) ?>">
+
             <img src="<?= base_url('img/proyectos/' . (isset($p['imagen']) && !empty($p['imagen']) ? $p['imagen'] : 'placeholder.jpg')) ?>" alt="<?= esc($p['titulo']) ?>" loading="lazy">
 
           </a>
