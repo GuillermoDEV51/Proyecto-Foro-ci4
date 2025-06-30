@@ -46,7 +46,8 @@ class AdminProyect extends BaseController
             'autor' => 'required|min_length[3]|max_length[50]',
             'carrera' => 'required|in_list[Ingeniería de Informática,Ingeniería Marítima,Ingeniería Ambiental]',
             'anio' => 'required|integer',
-            'documento' => 'uploaded[documento]|max_size[documento,2048]|ext_in[documento,pdf]' // Validación del archivo
+            'documento' => 'uploaded[documento]|max_size[documento,2048]|ext_in[documento,pdf]', // Validación del archivo
+            'descripcion' => 'required|min_length[10]|max_length[500]'
         ];
 
         if (!$this->validate($rules)) {
@@ -65,6 +66,7 @@ class AdminProyect extends BaseController
             'autor' => $this->request->getPost('autor'),
             'carrera' => $this->request->getPost('carrera'),
             'anio' => $this->request->getPost('anio'),
+            'descripcion' => $this->request->getPost('descripcion'), // Nueva descripción
             'pdf' => $nombreArchivo
         ];
 
@@ -91,7 +93,8 @@ class AdminProyect extends BaseController
             'autor' => 'required|min_length[3]|max_length[50]',
             'carrera' => 'required|in_list[Ingeniería de Informatica,Ingeniería Maritima,Ingeniería de Ambiental]',
             'anio' => 'required|integer',
-            'documento' => 'uploaded[documento]|max_size[documento,2048]|ext_in[documento,pdf,doc,docx]' // Validación del archivo
+            'documento' => 'if_exist|max_size[documento,2048]|ext_in[documento,pdf,doc,docx]', // Validación del archivo
+            'descripcion' => 'required|min_length[10]|max_length[500]' // Nueva validación para la descripción
         ];
 
         if (!$this->validate($rules)) {
@@ -115,6 +118,7 @@ class AdminProyect extends BaseController
             'autor' => $this->request->getPost('autor'),
             'carrera' => $this->request->getPost('carrera'),
             'anio' => $this->request->getPost('anio'),
+            'descripcion' => $this->request->getPost('descripcion'), // Nueva descripción
             'pdf' => $nombreArchivo
         ];
 

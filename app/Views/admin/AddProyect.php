@@ -65,12 +65,22 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="codigo" class="form-label">Año</label>
+                        <label for="año" class="form-label">Año</label>
                         <input type="number" name="anio" id="anio" class="form-control" />
                         <?php if (isset($validation) && $validation->getError('anio')): ?>
                             <div class="alert alert-danger mt-2"><?= $validation->getError('anio') ?></div>
                         <?php endif; ?>
                     </div>
+
+                    <div class="form-group mb-3">
+                        <label for="año" class="form-label">descripcion</label>
+                        <textarea name="descripcion" id="descripcion" class="form-control" rows="3"></textarea>
+                        <?php if (isset($validation) && $validation->getError('descripcion')): ?>
+                            <div class="alert alert-danger mt-2"><?= $validation->getError('descripcion') ?></div>
+                        <?php endif; ?>
+                    </div>
+
+
 
                     <div class="form-group mb-3">
                         <label for="documento" class="form-label">Documento</label>

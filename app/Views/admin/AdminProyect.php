@@ -49,7 +49,7 @@
         <section id="usuarios" class="mb-5">
             <h2 class="section-title text-center mb-4">Gestión de Proyectos</h2>
             <div class="mb-3 text-center">
-<a href="<?php echo base_url() ?>admin/AddProyect" class="btn btn-primary btn-lg btn-lg-custom"><i class="fas fa-plus"></i> Agregar Proyecto</a>
+                <a href="<?php echo base_url() ?>admin/AddProyect" class="btn btn-primary btn-lg btn-lg-custom"><i class="fas fa-plus"></i> Agregar Proyecto</a>
 
             </div>
 
@@ -72,21 +72,21 @@
                             <td><?php echo $user['titulo'] ?></td>
                             <td><?php echo $user['autor'] ?></td>
                             <td><?php echo $user['carrera'] ?></td>
-                            <td><?php echo $user['anio'] ?></td>   
+                            <td><?php echo $user['anio'] ?></td>
                             <td>
-                            <a href="<?= base_url('user/visorusuario/' . $user['id']) ?>" target="_blank">
-                                <?php echo $user['pdf'] ?>
-                            </a>
-                             </td>
+                                <a href="<?= base_url('user/visorusuario/' . $user['id']) ?>" target="_blank">
+                                    <?php echo $user['pdf'] ?>
+                                </a>
+                            </td>
 
-<td>
-    <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm btn-sm-custom-edit">
-        <i class="fas fa-edit"></i> Editar
-    </a>
-    <button class="btn btn-danger btn-sm btn-sm-custom-delete" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-url="<?php echo base_url('AdminProyect/' . $user['id']) ?>">
-        <i class="fas fa-trash-alt"></i> Eliminar
-    </button>
-</td>
+                            <td>
+                                <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm btn-sm-custom-edit">
+                                    <i class="fas fa-edit"></i> Editar
+                                </a>
+                                <button class="btn btn-danger btn-sm btn-sm-custom-delete" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-url="<?php echo base_url('AdminProyect/' . $user['id']) ?>">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -110,7 +110,7 @@
                         <div class="modal-body">
                             <p>¿Desea eliminar este registro?</p>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer justify-content-center">
                             <!-- Formulario para eliminar proyecto -->
                             <?= form_open('', ['method' => 'delete', 'id' => 'form-elimina']) ?>
                             <input type="hidden" name="_method" value="delete">

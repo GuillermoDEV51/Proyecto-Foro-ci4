@@ -71,6 +71,12 @@
                     <input type="number" class="form-control" id="anio" name="anio" value="<?= $proyecto['anio'] ?>" required>
                 </div>
 
+                <div class="col-md-8">
+                    <label for="nombre" class="form-label">Descripcion</label>
+                    <textarea  class="form-control" id="descripcion" name="descripcion"  required><?= $proyecto['descripcion'] ?></textarea>
+
+                </div>
+
                 <div class="form-group">
                     <!-- Documento actual -->
                     <?php if (!empty($proyecto['pdf'])): ?>
