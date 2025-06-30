@@ -117,6 +117,8 @@
               </select>
           </div>
       </div>
+        <button id="clear-filters" class="clear-filters-btn" onclick="clearFilters()">Eliminar Filtros</button>
+</div>
   </div>
 
 <!-- Contenedor para el desplazamiento de proyectos -->
@@ -334,6 +336,20 @@ document.addEventListener('DOMContentLoaded', function() {
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(applyFilters, 300);
     });
+
+  // Función para eliminar los filtros y redirigir a la página de proyectos
+  function clearFilters() {
+    const url = new URL(window.location.href);
+    
+    // Borrar los parámetros de filtro en la URL
+    url.searchParams.delete('q');
+    url.searchParams.delete('anio');
+    url.searchParams.delete('carrera');
+
+    // Redirigir a la URL sin filtros
+    window.location.href = url.toString();
+  }
+
   </script>
 </body>
 </html>

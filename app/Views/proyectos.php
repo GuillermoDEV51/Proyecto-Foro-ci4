@@ -76,7 +76,9 @@
               </select>
           </div>
       </div>
-  </div>
+        <!-- Botón para eliminar filtros -->
+  <button id="clear-filters" class="clear-filters-btn" onclick="clearFilters()">Eliminar Filtros</button>
+</div>
 
 <!-- Contenedor para el desplazamiento de proyectos -->
 <div id="projects-scroll" class="projects-scroll-container">
@@ -293,5 +295,88 @@ document.addEventListener('DOMContentLoaded', function() {
       searchTimeout = setTimeout(applyFilters, 300);
     });
   </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const yearSelect = document.getElementById('year-filter');
+    const careerSelect = document.getElementById('career-filter');
+    const noResultsDiv = document.getElementById('no-results'); // Asegúrate de tener este div en el HTML
+    const cardsGrid = document.querySelector('.cards-grid');
+
+    let searchTimeout;
+
+    // Inicializar los proyectos
+    function initializeProjects() {
+      const projectCards = document.querySelectorAll('.project-card');
+      allProjects = Array.from(projectCards);
+      filteredProjects = [...allProjects];
+    }
+
+    // Aplicar filtros y hacer la solicitud AJAX
+    function applyFilters() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const selectedYear = yearSelect.value;
+      const selectedCareer = careerSelect.value;
+
+      const url = new URL(window.location.href);
+      const params = url.searchParams;
+
+      if (searchTerm) params.set('q', searchTerm);
+      else params.delete('q');  // Borrar el parámetro si no hay búsqueda
+
+      if (selectedYear) params.set('anio', selectedYear);
+      else params.delete('anio');  // Borrar el parámetro si no hay año seleccionado
+    
+      if (selectedCareer) params.set('carrera', selectedCareer);
+      else params.delete('carrera');  // Borrar el parámetro si no hay carrera seleccionada
+    
+      window.history.replaceState(null, '', url);
+
+      // Llamar al servidor para obtener los proyectos filtrados
+      fetch(url.toString())
+        .then(response => response.text())
+        .then(html => {
+          const newContent = new DOMParser().parseFromString(html, 'text/html');
+          const newProjectsGrid = newContent.querySelector('.cards-grid');
+          
+          // Actualizar los resultados en la página
+          cardsGrid.innerHTML = newProjectsGrid.innerHTML;
+
+          // Verificar si hay proyectos después de aplicar los filtros
+          if (newProjectsGrid.children.length === 0) {
+            noResultsDiv.style.display = 'block'; // Mostrar mensaje de no resultados
+          } else {
+            noResultsDiv.style.display = 'none'; // Ocultar mensaje de no resultados
+          }
+        });
+    }
+
+    // Event listeners para los filtros
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(applyFilters, 300);
+    });
+
+    yearSelect.addEventListener('change', applyFilters);
+    careerSelect.addEventListener('change', applyFilters);
+
+    // Llamar a initializeProjects solo una vez cuando se cargue la página
+    initializeProjects();
+  });
+    function clearFilters() {
+    const url = new URL(window.location.href);
+    
+    // Borrar los parámetros de filtro en la URL
+    url.searchParams.delete('q');
+    url.searchParams.delete('anio');
+    url.searchParams.delete('carrera');
+
+    // Redirigir a la URL sin filtros
+    window.location.href = url.toString();
+  }
+</script>
+
+
+
 </body>
 </html>
