@@ -29,7 +29,8 @@ class VistaCRUD extends BaseController
 
     $data = [
         'users' => $users,
-        'roles' => $roles
+        'roles' => $roles,
+        
     ];
 
     return view('admin/VistaCRUD', $data);
