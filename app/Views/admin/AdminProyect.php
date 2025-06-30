@@ -92,7 +92,15 @@
                             <td><?php echo $user['autor'] ?></td>
                             <td><?php echo $user['carrera'] ?></td>
                             <td><?php echo $user['anio'] ?></td>   
-                            <td><?php echo $user['pdf']?></td>
+                            <td>
+    <?php if (!empty($user['pdf'])): ?>
+        <a href="<?= base_url('uploads/' . $user['pdf']) ?>" target="_blank">
+    <?= $user['pdf'] ?>
+</a>
+    <?php else: ?>
+        Sin archivo
+    <?php endif; ?>
+</td>
 
                             
 
@@ -101,13 +109,13 @@
                             <td>
 
 
-                                <a href="<?php echo base_url('AdminUser/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
 
                                 <button
                                     class="btn btn-danger btn-sm"
                                     data-bs-toggle="modal"
                                     data-bs-target="#eliminaModal"
-                                    data-bs-url="<?php echo base_url('AdminUser/' . $user['id']) ?>">
+                                    data-bs-url="<?php echo base_url('AdminProyect/' . $user['id']) ?>">
                                     <i class="fas fa-trash-alt"></i> Eliminar
                                 </button>
                             </td>

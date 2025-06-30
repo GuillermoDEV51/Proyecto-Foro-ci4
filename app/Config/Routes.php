@@ -76,6 +76,11 @@ $routes->post('AdminUser/(:segment)', 'Admin\AdminUser::delete/$1');
 // Rutas para editar proyectos en el panel de administración
 $routes->get('admin/AdminProyect', 'Admin\AdminProyect::index');
 $routes->get('admin/AddProyect', 'Admin\AdminProyect::new');
+$routes->post('AdminProyect/create', 'Admin\AdminProyect::create');
+$routes->get('admin/AdminProyect/(:segment)/edit', 'Admin\AdminProyect::edit/$1');
+$routes->put('admin/AdminProyect/(:segment)', 'Admin\AdminProyect::update/$1');
+$routes->delete('admin/AdminProyect/(:segment)', 'Admin\AdminProyect::delete/$1');
+$routes->post('admin/AdminProyect/(:segment)', 'Admin\AdminProyect::delete/$1');
 
 
 

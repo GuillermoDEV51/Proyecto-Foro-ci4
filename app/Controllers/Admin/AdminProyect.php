@@ -42,7 +42,7 @@ class AdminProyect extends BaseController
     public function create()
     {
         $rules = [
-            'titulo' => 'required|min_length[3]|max_length[100]',
+            'titulo' => 'required|min_length[3]|max_length[100]|is_unique[proyectos.titulo]',
             'autor' => 'required|min_length[3]|max_length[50]',
             'carrera' => 'required|in_list[Ingeniería de Informatica,Ingeniería Maritima,Ingeniería de Ambiental]',
             'anio' => 'required|integer',
@@ -55,13 +55,17 @@ class AdminProyect extends BaseController
         }
 
         $proyectosModel = new ProyectosModel();
-        
+
+        $file = $this->request->getFile('documento');
+        $nombreArchivo = $file->getClientName();
+        $file->move(FCPATH . 'uploads', $nombreArchivo);
+
         $proyectoData = [
             'titulo' => $this->request->getPost('titulo'),
             'autor' => $this->request->getPost('autor'),
             'carrera' => $this->request->getPost('carrera'),
             'anio' => $this->request->getPost('anio'),
-            'documento' => $this->request->getFile('documento')->getName() // Aquí puedes manejar el archivo si es necesario
+            'pdf' => $nombreArchivo
         ];
 
         $proyectosModel->insert($proyectoData);

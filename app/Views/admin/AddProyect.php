@@ -66,7 +66,7 @@
 
 
                 <!-- Formulario de añadir usuario -->
-                <form method="post" action="<?php echo base_url("AdminProyect/create") ?>">
+                <form method="post" action="<?php echo base_url("AdminProyect/create") ?>" enctype="multipart/form-data">
 
 
 
@@ -88,7 +88,7 @@
 
                     <div class="form-group">
                         <label>año</label>
-                        <input type="text" name="codigo" class="form-control" />
+                        <input type="number" name="anio" class="form-control" />
                         <?php if (isset($validation) && $validation->getError('añio')): ?>
                             <div class="alert alert-danger mt-2"><?= $validation->getError('añio') ?></div>
                         <?php endif; ?>
@@ -101,7 +101,7 @@
                             <div class="alert alert-danger mt-2"><?= $validation->getError('documento') ?></div>
                         <?php endif; ?>
                     </div>
-                    
+
 
                    
 
