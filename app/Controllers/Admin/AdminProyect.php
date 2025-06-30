@@ -44,7 +44,7 @@ class AdminProyect extends BaseController
         $rules = [
             'titulo' => 'required|min_length[3]|max_length[100]',
             'autor' => 'required|min_length[3]|max_length[50]',
-            'carrera' => 'required|min_length[3]|max_length[50]',
+            'carrera' => 'required|in_list[Ingeniería de Informatica,Ingeniería Maritima,Ingeniería de Ambiental]',
             'anio' => 'required|integer',
             'documento' => 'uploaded[documento]|max_size[documento,2048]|ext_in[documento,pdf,doc,docx]' // Validación del archivo
         ];
@@ -61,7 +61,7 @@ class AdminProyect extends BaseController
             'autor' => $this->request->getPost('autor'),
             'carrera' => $this->request->getPost('carrera'),
             'anio' => $this->request->getPost('anio'),
-            // 'documento' => $this->request->getFile('documento')->getName() // Aquí puedes manejar el archivo si es necesario
+            'documento' => $this->request->getFile('documento')->getName() // Aquí puedes manejar el archivo si es necesario
         ];
 
         $proyectosModel->insert($proyectoData);

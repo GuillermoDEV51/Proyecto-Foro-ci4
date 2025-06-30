@@ -101,6 +101,7 @@
                             <div class="alert alert-danger mt-2"><?= $validation->getError('documento') ?></div>
                         <?php endif; ?>
                     </div>
+                    
 
                    
 
@@ -123,7 +124,7 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     <div class="form-group text-right ">
-                        <a href="<?= base_url() ?>admin/AdminUser" class="btn btn-secondary">Volver</a>
+                        <a href="<?= base_url() ?>admin/AdminProyect" class="btn btn-secondary">Volver</a>
                     </div>
                 </form>
             </div>

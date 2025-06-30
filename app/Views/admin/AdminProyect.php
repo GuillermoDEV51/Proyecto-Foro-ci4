@@ -77,6 +77,7 @@
                         <th>Carrera</th>
                         <th>año</th>
                         <th>Documento</th>
+                        
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -91,7 +92,7 @@
                             <td><?php echo $user['autor'] ?></td>
                             <td><?php echo $user['carrera'] ?></td>
                             <td><?php echo $user['anio'] ?></td>   
-                            <td></td>
+                            <td><?php echo $user['pdf']?></td>
 
                             
 
