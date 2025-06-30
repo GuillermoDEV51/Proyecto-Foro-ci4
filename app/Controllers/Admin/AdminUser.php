@@ -15,12 +15,20 @@ class AdminUser extends BaseController
     }
 
     public function index(): string
-    {
-        $userModel = new UserModel();
-        $data['users'] = $userModel->findAll();
-        return view('admin/AdminUser', $data);
-        
-    }
+{
+    $RolModel = new RolModel();
+    $roles = $RolModel->findAll();
+
+    $userModel = new UserModel();
+    $users = $userModel->findAll();
+
+    $data = [
+        'users' => $users,
+        'roles' => $roles
+    ];
+
+    return view('admin/AdminUser', $data);
+}
     public function new(): string
     {
         
