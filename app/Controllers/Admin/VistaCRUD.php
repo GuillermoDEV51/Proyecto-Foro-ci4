@@ -9,31 +9,33 @@ use App\Models\UserModel;
 
 class VistaCRUD extends BaseController
 {
-
+    // Constructor: carga los helpers necesarios
     public function __construct()
     {
         helper('url');
         helper('form');
     }
 
+    // Muestra la vista principal con usuarios, roles y proyectos
     public function index(): string
     {
+        // Instancia el modelo de roles y obtiene todos los roles
         $RolModel = new RolModel();
-    $roles = $RolModel->findAll();
+        $roles = $RolModel->findAll();
+        // Instancia el modelo de usuarios y obtiene todos los usuarios
+        $userModel = new UserModel();
+        $users = $userModel->findAll();
 
-    $userModel = new UserModel();
-    $users = $userModel->findAll();
-
-
+        // Instancia el modelo de proyectos
         $proyectosModel = new ProyectosModel();
+        // Prepara los datos para la vista
+        $data = [
+            'users' => $users,
+            'roles' => $roles,
+            'proyectos' => $proyectosModel->findAll(),
 
-    $data = [
-        'users' => $users,
-        'roles' => $roles,
-        'proyectos' => $proyectosModel->findAll(),
-        
-    ];
-
+        ];
+    // Retorna la vista con los datos
     return view('admin/VistaCRUD', $data);
         
     }

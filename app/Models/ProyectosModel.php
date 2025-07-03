@@ -11,5 +11,5 @@ class ProyectosModel extends Model
 
     protected $allowedFields = ['titulo', 'anio', 'carrera', 'autor', 'imagen', 'pdf', 'descripcion']; // Campos que puedes actualizar
 
-    // Otros métodos adicionales si lo necesitas
+  
 }

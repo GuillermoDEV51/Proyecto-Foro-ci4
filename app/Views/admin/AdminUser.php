@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forum de Proyectos</title>
 
-    <!-- Google Fonts + Bootstrap + FontAwesome -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">

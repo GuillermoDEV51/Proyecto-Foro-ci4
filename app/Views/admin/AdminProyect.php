@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forum de Proyectos</title>
 
-    <!-- Google Fonts + Bootstrap + FontAwesome -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <link href="<?php echo base_url() ?>boostrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="<?php echo base_url() ?>boostrap/js/bootstrap.bundle.min.js"></script>
     <link href="<?php echo base_url() ?>style/normalize.css" rel="stylesheet">
@@ -48,11 +49,12 @@
 
         <section id="usuarios" class="mb-5">
             <h2 class="section-title text-center mb-4">Gestión de Proyectos</h2>
+            <!-- Botón para agregar nuevo proyecto -->
             <div class="mb-3 text-center">
                 <a href="<?php echo base_url() ?>admin/AddProyect" class="btn btn-primary btn-lg btn-lg-custom"><i class="fas fa-plus"></i> Agregar Proyecto</a>
 
             </div>
-
+            <!-- Tabla de proyectos -->
             <table class="table table-striped table-bordered shadow-sm">
                 <thead class="table-dark">
                     <tr>
@@ -66,6 +68,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    <!-- Itera sobre los proyectos y muestra cada uno en una fila de la tabla -->
                     <?php foreach ($proyectos as $user): ?>
                         <tr>
                             <td><?php echo $user['id'] ?></td>
@@ -74,15 +78,18 @@
                             <td><?php echo $user['carrera'] ?></td>
                             <td><?php echo $user['anio'] ?></td>
                             <td>
+                                <!-- Enlace para ver el documento del proyecto -->
                                 <a href="<?= base_url('user/visorusuario/' . $user['id']) ?>" target="_blank">
                                     <?php echo $user['pdf'] ?>
                                 </a>
                             </td>
 
                             <td>
+                                <!-- Botón para editar el proyecto -->
                                 <a href="<?php echo base_url('AdminProyect/' . $user['id'] . '/edit') ?>" class="btn btn-warning btn-sm btn-sm-custom-edit">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
+                                <!-- Botón para eliminar el proyecto (abre modal) -->
                                 <button class="btn btn-danger btn-sm btn-sm-custom-delete" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-url="<?php echo base_url('AdminProyect/' . $user['id']) ?>">
                                     <i class="fas fa-trash-alt"></i> Eliminar
                                 </button>
@@ -91,7 +98,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-
+                        <!-- Mensaje de error si existe -->
             <?php if (session()->getFlashdata('error')): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('error') ?>
@@ -124,7 +131,8 @@
 
         </section>
     </main>
-
+    
+      <!-- Script para pasar la URL de eliminación al formulario del modal -->
     <script>
         const eliminaModal = document.getElementById('eliminaModal')
         if (eliminaModal) {
